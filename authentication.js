@@ -5,7 +5,7 @@ var OnshapeStrategy = require('passport-onshape').Strategy;
 
 var oauthClientId;
 var oauthClientSecret;
-var callbackUrl = "https://onshape-app-stl.herokuapp.com/oauthRedirect";
+var callbackUrl = "https://secret-tundra-50844.herokuapp.com/oauthRedirect";
 var oauthUrl = 'https://oauth.onshape.com';
 var apiUrl = 'https://cad.onshape.com';
 
