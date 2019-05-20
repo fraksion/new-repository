@@ -119,7 +119,7 @@ app.use('/oauthRedirect',
           // reply is null when the key is missing
           if (reply != null) {
               var newParams = JSON.parse(reply);
-              var url = '/?' + 'documentId=' + newParams.documentId + '&workspaceId=' + newParams.workspaceId + '&elementId=' + newParams.elementId;
+              var url = '/?' + 'documentId=' + '11597718228663b148db1e40' + '&workspaceId=' + '78aeb556259d6f6bb1171aad' + '&elementId=' + '90df9b5441f9c08ca084a6ff';
               res.redirect(url);
           }
       });
