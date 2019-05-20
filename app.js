@@ -83,9 +83,9 @@ app.use('/oauthSignin', storeExtraParams,
 var StateMap = {};
 
 function storeExtraParams(req, res) {
-    var docId = req.query.documentId;
-    var workId = req.query.workspaceId;
-    var elId = req.query.elementId;
+    var docId = '11597718228663b148db1e40';
+    var workId = '78aeb556259d6f6bb1171aad';
+    var elId = '90df9b5441f9c08ca084a6ff';
 
      var state = {
         documentId : docId,
