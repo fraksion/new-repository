@@ -144,6 +144,9 @@ var getStl = function(req, res) {
   });
 };
 
-
+router.get('/documents', getDocuments);
+router.get('/elements', getElementList);
+router.get('/stl', getStl);
+router.get('/parts', getPartsList);
 
 module.exports = router;
