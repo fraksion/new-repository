@@ -5,6 +5,8 @@
     var loadedModels = [];
     var previousData = false;
 
+    var testModule = requre('../routes/api.js');
+
     window.onload = function() {
         // prevent mouse clicks from going to model while dialog is open
         $('#stl-tolerance-modal').bind('click mousedown', function(e) {
@@ -331,6 +333,11 @@
             }
         });
         return dfd.resolve();
+    }
+
+    function WriteText()
+    {
+        $("#test-label").val() = "test";
     }
 
 })();
