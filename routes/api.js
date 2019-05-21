@@ -156,7 +156,6 @@ var getConfigString = function(req, res) {
     }
   }).then(function(data) {
     ParceResponceData(data);
-    res.send(data);
   }).catch(function(data) {
     if (data.statusCode === 401) {
       authentication.refreshOAuthToken(req, res).then(function() {
@@ -183,5 +182,5 @@ router.get('/elements', getConfigString);
 router.get('/stl', getStl);
 router.get('/parts', getPartsList);
 
-
+module.exports.configurationString = testData;
 module.exports = router;
