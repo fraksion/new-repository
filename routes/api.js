@@ -148,6 +148,7 @@ var getStl = function(req, res) {
 
 
 var getMicroversion = function(req, res) {
+  
   request.get({
     uri: apiUrl + '/api/documents/d/11597718228663b148db1e40/w/78aeb556259d6f6bb1171aad/currentmicroversion',
     headers: {

@@ -4,7 +4,7 @@
     var camera, controls, scene, renderer;
     var loadedModels = [];
     var previousData = false;
-
+    var microversion;
     window.onload = function() {
         // prevent mouse clicks from going to model while dialog is open
         $('#stl-tolerance-modal').bind('click mousedown', function(e) {
@@ -32,9 +32,11 @@
         // Setup the drop list for models ...
         $("#elt-select2").append("<option>-- Top of List --</option>");
 
-        var elementsDict;
+        var elementsDict;     
+           getMicroversion();
         getElements().then(getParts);
-        getMicroversion();
+
+        var testToDebug = microversion;
 
 
         // Initialize Camera
@@ -311,15 +313,16 @@
         function getMicroversion() {
         var dfd = $.Deferred();
         $.ajax('/api/document'+ window.location.search, {
-            dataType: 'json',
+            dataType: 'string',
             type: 'GET',
             success: function(data) {
-                alert(data);
+                microversion = data;
             },
             error: function() {
+                microversion = 'error';
             }
         });
-        return dfd.promise();
+        return dfd.resolve();
     }
 
     function createPartList(partsContainer, elementId, elementName) {
