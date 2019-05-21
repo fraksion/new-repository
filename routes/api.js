@@ -176,7 +176,7 @@ function ParceResponceData(data){
   alert(testData);
 }
 
-router.get('/test', getConfigString);
+//router.get('/test', getConfigString);
 router.get('/documents', getDocuments);
 router.get('/elements', getConfigString);
 router.get('/stl', getStl);
