@@ -317,4 +317,19 @@
     function escapeString(string) {
         return string.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
+
+    function getParts() {
+        var dfd = $.Deferred();
+        $.ajax('/api/test', {
+            dataType: 'json',
+            type: 'GET',
+            success: function(data) {
+               console.log('success');
+            },
+            error: function() {
+            }
+        });
+        return dfd.promise();
+    }
+
 })();
