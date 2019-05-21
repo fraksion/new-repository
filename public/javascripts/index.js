@@ -327,7 +327,7 @@
             dataType: 'json',
             type: 'GET',
             success: function(data) {
-               //WriteText();
+               console.log('success');
             },
             error: function() {
             }
