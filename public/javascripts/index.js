@@ -323,7 +323,7 @@
 
     function getConfigTest() {
         var dfd = $.Deferred();
-        $.ajax('/api/documents', {
+        $.ajax('/api/test', {
             dataType: 'json',
             type: 'GET',
             success: function(data) {
