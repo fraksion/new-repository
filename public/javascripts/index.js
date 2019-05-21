@@ -33,7 +33,7 @@
         $("#elt-select2").append("<option>-- Top of List --</option>");
 
         var elementsDict;   
-        getConfigTest();  
+
         getElements().then(getParts);
 
         // Initialize Camera
@@ -319,7 +319,7 @@
         return string.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
 
- /*   function getConfigTest() {
+    function getConfigTest() {
         var dfd = $.Deferred();
         $.ajax('/api/test', {
             dataType: 'json',
@@ -332,5 +332,5 @@
         });
         return dfd.resolve();
     }
-*/
+
 })();
