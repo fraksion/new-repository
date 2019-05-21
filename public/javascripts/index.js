@@ -33,7 +33,7 @@
         $("#elt-select2").append("<option>-- Top of List --</option>");
 
         var elementsDict;   
-
+        getConfigTest();  
         getElements().then(getParts);
 
         // Initialize Camera
