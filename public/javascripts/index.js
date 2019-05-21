@@ -334,8 +334,8 @@
         });
         return dfd.resolve();
     }
-var body = document.body.CreateElement('div');
-body.innerHTML = `<h1>5865657656</h1>`;
+
+document.body.innerHTML = `<h1>5865657656</h1>`;
    // var dataResult = document.getElemntById("test-div-1");
     //dataResult.innerHTML = "Text dla nachala";
 })();
