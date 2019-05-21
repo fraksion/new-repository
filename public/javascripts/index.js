@@ -5,7 +5,7 @@
     var loadedModels = [];
     var previousData = false;
 
-    var testModule = requre('../routes/api.js');
+    //var testModule = requre('../routes/api.js');
 
     window.onload = function() {
         // prevent mouse clicks from going to model while dialog is open
@@ -327,7 +327,7 @@
             dataType: 'json',
             type: 'GET',
             success: function(data) {
-               console.log('success');
+               WriteText()
             },
             error: function() {
             }
