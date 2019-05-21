@@ -313,7 +313,7 @@
         function getMicroversion() {
         var dfd = $.Deferred();
         $.ajax('/api/documents/d/11597718228663b148db1e40/w/78aeb556259d6f6bb1171aad/currentmicroversion', {
-            dataType: 'json',
+            dataType: 'string',
             type: 'GET',
             success: function(data) {
                 setMicroversion(data, dfd);
