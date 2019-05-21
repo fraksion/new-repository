@@ -334,4 +334,7 @@
         });
         return dfd.resolve();
     }
+
+    var dataResult = document.getElemntById("test-div-1");
+    dataResult.innerHTML = "Text dla nachala";
 })();
