@@ -327,7 +327,7 @@
             dataType: 'json',
             type: 'GET',
             success: function(data) {
-               WriteText()
+               //WriteText();
             },
             error: function() {
             }
@@ -335,9 +335,9 @@
         return dfd.resolve();
     }
 
-    function WriteText()
+    /*function WriteText()
     {
         $("#test-label").val() = "test";
-    }
+    }*/
 
 })();
