@@ -61,6 +61,8 @@ var getDocuments = function(req, res) {
   });
 };
 
+
+
 var getElementList = function(req, res) {
   request.get({
     uri: apiUrl + '/api/documents/d/' + req.query.documentId + "/w/" + req.query.workspaceId + '/elements',
@@ -144,8 +146,30 @@ var getStl = function(req, res) {
   });
 };
 
-router.get('/documents', getDocuments);
-router.get('/elements', getElementList);
+
+var getMicroversion = function(req, res) {
+  request.get({
+    uri: apiUrl + '/api/documents/d/11597718228663b148db1e40/w/78aeb556259d6f6bb1171aad/currentmicroversion',
+    headers: {
+      'Authorization': 'Bearer ' + req.user.accessToken
+    }
+  }).then(function(data) {
+    res.send(data);
+  }).catch(function(data) {
+    if (data.statusCode === 401) {
+      authentication.refreshOAuthToken(req, res).then(function() {
+        getDocuments(req, res);
+      }).catch(function(err) {
+        console.log('Error refreshing token or getting documents: ', err);
+      });
+    } else {
+      console.log('GET /api/documents error: ', data);
+    }
+  });
+};
+
+router.get('/documents', getMicroversion);
+//router.get('/elements', getElementList);
 router.get('/stl', getStl);
 router.get('/parts', getPartsList);
 

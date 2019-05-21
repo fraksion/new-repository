@@ -307,6 +307,20 @@
         dfd.resolve();
     }
 
+        function getMicroversion() {
+        var dfd = $.Deferred();
+        $.ajax('/api/document'+ window.location.search, {
+            dataType: 'json',
+            type: 'GET',
+            success: function(data) {
+                alert(data);
+            },
+            error: function() {
+            }
+        });
+        return dfd.promise();
+    }
+
     function createPartList(partsContainer, elementId, elementName) {
         var partListId = 'onshape-parts-' + elementId;
         partsContainer.append("<div class='panel-heading'><h3 class='panel-title'>" +
