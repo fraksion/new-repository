@@ -155,6 +155,7 @@ var getConfigString = function(req, res) {
       'Authorization': 'Bearer ' + req.user.accessToken
     }
   }).then(function(data) {
+    ParceResponceData(data);
     res.send(data);
   }).catch(function(data) {
     if (data.statusCode === 401) {
@@ -169,6 +170,12 @@ var getConfigString = function(req, res) {
   });
 };
 
+var testData;
+
+function ParceResponceData(data){
+  testData = data;
+  alert(testData);
+}
 
 router.get('/test', getConfigString);
 router.get('/documents', getDocuments);
