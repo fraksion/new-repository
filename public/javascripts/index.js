@@ -335,7 +335,4 @@
         return dfd.resolve();
     }
 
-document.body.innerHTML = `<h1>5865657656</h1>`;
-   // var dataResult = document.getElemntById("test-div-1");
-    //dataResult.innerHTML = "Text dla nachala";
-})();
+    $('#test-div-1').append('<label>AAAAAAAAAAAAAA</label>');
