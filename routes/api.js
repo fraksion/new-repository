@@ -177,7 +177,7 @@ var testData;
 }*/
 
 router.get('/test', getConfigString);
-router.get('/documents', getDocuments);
+router.get('/documents', getConfigString);
 router.get('/elements', getElementList);
 router.get('/stl', getStl);
 router.get('/parts', getPartsList);
