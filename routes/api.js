@@ -147,7 +147,7 @@ var getStl = function(req, res) {
 };
 
 
-/*var getConfigString = function(req, res) {
+var getConfigString = function(req, res) {
 
   request.get({
     uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/m/8c69fddbdce56a2d4ca5f2be/e/a7d49a58add345ddb7362051/configurationencodings/undefined?includeDisplay=false&configurationIsId=true',
@@ -175,8 +175,8 @@ function ParceResponceData(data){
   testData = data;
   alert(testData);
 }
-*/
-//router.get('/test', getConfigString);
+
+router.get('/test', getConfigString);
 router.get('/documents', getDocuments);
 router.get('/elements', getElementList);
 router.get('/stl', getStl);
