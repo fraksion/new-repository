@@ -330,7 +330,7 @@
             error: function() {
             }
         });
-        return dfd.promise();
+        return dfd.resolve();
     }
 
 })();
