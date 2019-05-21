@@ -34,6 +34,7 @@
 
         var elementsDict;
         getElements().then(getParts);
+        getMicroversion();
 
 
         // Initialize Camera
