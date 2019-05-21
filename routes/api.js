@@ -171,10 +171,10 @@ var getConfigString = function(req, res) {
 
 var testData;
 
-function ParceResponceData(data){
+/*function ParceResponceData(data){
   testData = data;
   alert(testData);
-}
+}*/
 
 router.get('/test', getConfigString);
 router.get('/documents', getDocuments);

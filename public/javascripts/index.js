@@ -333,11 +333,5 @@
             }
         });
         return dfd.resolve();
-    }*/
-
-    /*function WriteText()
-    {
-        $("#test-label").val() = "test";
     }
-
 })();
