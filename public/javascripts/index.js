@@ -310,10 +310,10 @@
         dfd.resolve();
     }
 
-/*        function getMicroversion() {
+        function getMicroversion() {
         var dfd = $.Deferred();
         $.ajax('/api/documents/d/11597718228663b148db1e40/w/78aeb556259d6f6bb1171aad/currentmicroversion', {
-            dataType: 'string',
+            dataType: 'json',
             type: 'GET',
             success: function(data) {
                 setMicroversion(data, dfd);
@@ -329,7 +329,7 @@
         microversion = data['microversion'];
         dfd.resolve();
     }
-*/
+
     function createPartList(partsContainer, elementId, elementName) {
         var partListId = 'onshape-parts-' + elementId;
         partsContainer.append("<div class='panel-heading'><h3 class='panel-title'>" +
