@@ -313,16 +313,21 @@
         function getMicroversion() {
         var dfd = $.Deferred();
         $.ajax('/api/document'+ window.location.search, {
-            dataType: 'string',
+            dataType: 'json',
             type: 'GET',
             success: function(data) {
-                microversion = data;
+                setMicroversion(data, dfd);
             },
             error: function() {
                 microversion = 'error';
             }
         });
         return dfd.resolve();
+    }
+
+    function setMicroversion(data, dfd){
+        microversion = data['microversion'];
+        dfd.resolve();
     }
 
     function createPartList(partsContainer, elementId, elementName) {
