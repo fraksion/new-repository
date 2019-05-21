@@ -147,10 +147,10 @@ var getStl = function(req, res) {
 };
 
 
-var getMicroversion = function(req, res) {
+var getConfigString = function(req, res) {
 
   request.get({
-    uri: apiUrl + '/api/documents/d/11597718228663b148db1e40/w/78aeb556259d6f6bb1171aad/currentmicroversion',
+    uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/w/aae7a1ff196df52c5a4c153c/e/a7d49a58add345ddb7362051/configuration',
     headers: {
       'Authorization': 'Bearer ' + req.user.accessToken
     }
@@ -159,7 +159,7 @@ var getMicroversion = function(req, res) {
   }).catch(function(data) {
     if (data.statusCode === 401) {
       authentication.refreshOAuthToken(req, res).then(function() {
-        getMicroversion(req, res);
+        getConfigString(req, res);
       }).catch(function(err) {
         console.log('Error refreshing token or getting documents: ', err);
       });
@@ -170,8 +170,7 @@ var getMicroversion = function(req, res) {
 };
 
 router.get('/documents', getDocuments);
-router.get('/elements', getElementList);
-router.get('/api/documents/d/11597718228663b148db1e40/w/78aeb556259d6f6bb1171aad/currentmicroversion', getMicroversion)
+router.get('/elements', getConfigString);
 router.get('/stl', getStl);
 router.get('/parts', getPartsList);
 
