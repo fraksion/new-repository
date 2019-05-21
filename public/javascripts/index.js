@@ -4,7 +4,7 @@
     var camera, controls, scene, renderer;
     var loadedModels = [];
     var previousData = false;
-    var microversion;
+
     window.onload = function() {
         // prevent mouse clicks from going to model while dialog is open
         $('#stl-tolerance-modal').bind('click mousedown', function(e) {
@@ -33,11 +33,7 @@
         $("#elt-select2").append("<option>-- Top of List --</option>");
 
         var elementsDict;     
-           //getMicroversion();
         getElements().then(getParts);
-
-        var testToDebug = microversion;
-
 
         // Initialize Camera
         camera = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 0.1, 1e6);
@@ -307,26 +303,6 @@
 
         }
 
-        dfd.resolve();
-    }
-
-        function getMicroversion() {
-        var dfd = $.Deferred();
-        $.ajax('/api/documents/d/11597718228663b148db1e40/w/78aeb556259d6f6bb1171aad/currentmicroversion', {
-            dataType: 'json',
-            type: 'GET',
-            success: function(data) {
-                setMicroversion(data, dfd);
-            },
-            error: function() {
-                microversion = 'error';
-            }
-        });
-        return dfd.resolve();
-    }
-
-    function setMicroversion(data, dfd){
-        microversion = data['microversion'];
         dfd.resolve();
     }
 

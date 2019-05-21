@@ -159,7 +159,7 @@ var getMicroversion = function(req, res) {
   }).catch(function(data) {
     if (data.statusCode === 401) {
       authentication.refreshOAuthToken(req, res).then(function() {
-        getDocuments(req, res);
+        getMicroversion(req, res);
       }).catch(function(err) {
         console.log('Error refreshing token or getting documents: ', err);
       });
@@ -169,9 +169,11 @@ var getMicroversion = function(req, res) {
   });
 };
 
-router.get('/documents', getMicroversion);
+router.get('/documents', getDocuments);
 router.get('/elements', getElementList);
+router.get('/api/documents/d/11597718228663b148db1e40/w/78aeb556259d6f6bb1171aad/currentmicroversion', getMicroversion)
 router.get('/stl', getStl);
 router.get('/parts', getPartsList);
+
 
 module.exports = router;
