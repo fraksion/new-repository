@@ -338,3 +338,4 @@
 var jsItem = document.createElement('label');
 jsItem.innerHTML='JavaScript';
 $('#test-div-1').append(jsItem);
+})();
