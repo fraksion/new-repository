@@ -391,12 +391,9 @@ var queryParameter;
                   //called when complete
                   console.log('process complete');
                 },
-
                 success: function(data) {
                   //queryParameter = data.body['queryParameter'];
-                  console.log("queryParametrr = " + data.body);
-                  console.log("queryParametrr 2 = " + data.data);
-                  console.log("queryParametrr 3 = " + data['queryParameter']);
+                  console.log("queryParametrr = " + JSON.parse(data));
                },
 
                 error: function() {
