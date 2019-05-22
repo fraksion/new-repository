@@ -190,7 +190,7 @@ var encodeConfigString = function(req, res) {
   }).catch(function(data) {
     if (data.statusCode === 401) {
       authentication.refreshOAuthToken(req, res).then(function() {
-        getConfigString(req, res);
+        encodeConfigString(req, res);
       }).catch(function(err) {
         console.log('Error refreshing token or getting documents: ', err);
       });
