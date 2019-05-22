@@ -20,8 +20,7 @@
         });
 
         $('#config-btn').click(function(){
-            //HTTPPostTest();
-            testFunk();
+            HTTPPostTest();
         })
 
         init();
