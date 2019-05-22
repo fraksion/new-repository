@@ -20,7 +20,7 @@
         });
 
         $('#config-btn').click(function(){
-            HTTPPostTest();
+            HTTPPoEncodeConfigStringstTest();
         })
 
         init();
@@ -379,7 +379,7 @@ function generateHTMLInput(data){
     }
 }
 var queryParameter;
-    function HTTPPostTest(){
+    function EncodeConfigString(){
         generateJSONResponse();
             var dfd = $.Deferred();
             $.ajax("/api/encodeString",{
@@ -392,12 +392,33 @@ var queryParameter;
                   console.log('process complete');
                 },
                 success: function(data) {
-                  //queryParameter = data.body['queryParameter'];
-                  console.log("queryParametrr = " + data.queryParam);
+                  queryParameter = data.queryParam;
+                  updateConfiguration();
                },
 
                 error: function() {
                   console.log('process error');
+                },
+              });
+              return dfd.resolve();
+    }
+
+    function updateConfiguration(){
+        var dfd = $.Deferred();
+            $.ajax("/api/updateConfig",{
+                type: "POST",
+                dataType: "string",
+                data:queryParameter,
+                complete: function() {
+                  //called when complete
+                  console.log('update complete');
+                },
+                success: function(data) {
+                    console.log('updating success');
+               },
+
+                error: function() {
+                  console.log('updating error');
                 },
               });
               return dfd.resolve();

@@ -199,8 +199,36 @@ var encodeConfigString = function(req, res) {
     }
   });
   };
+
+  var updateConfigString = function(req, res) {
+
+    console.log( apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/' + req.body);
+    /*request.post({
+      uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/' + req.body,
+      headers: {
+        'Authorization': 'Bearer ' + req.user.accessToken
+      },
+      body: ""
+    }).then(function(data){
+      console.log(data);
+      res.json(data);
+    }).catch(function(data) {
+      if (data.statusCode === 401) {
+        authentication.refreshOAuthToken(req, res).then(function() {
+          encodeConfigString(req, res);
+        }).catch(function(err) {
+          console.log('Error refreshing token or getting documents: ', err);
+        });
+      } else {
+        console.log('GET /api/documents error: ', data);
+      }
+    });*/
+    };
+
   const jsonParser = express.json();
 //-----/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/configurationencodings
+
+router.post('/updateConfig', updateConfigString);
 router.post('/encodeString',jsonParser, encodeConfigString);
 router.get('/getConfig', getConfigString);
 router.get('/documents', getDocuments);
