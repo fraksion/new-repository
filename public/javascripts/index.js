@@ -21,7 +21,6 @@
 
         init();
         loadStl(-1, -1);
-        generateHTMLInput(nameValuesArray);
         animate();
     }
 
@@ -351,6 +350,7 @@
             }
             nameValuesArray[i] = {parameterName : tempName, parameterValue : tempValue};
         }
+        generateHTMLInput(nameValuesArray);
        // console.log(nameValuesArray);
     }
 
