@@ -20,7 +20,7 @@
         });
 
         $('#config-btn').click(function(){
-            generateJSONResponse();
+            HTTPPostTest();
         })
 
         init();
@@ -380,6 +380,7 @@ function generateHTMLInput(data){
 }
 
     function HTTPPostTest(){
+        generateJSONResponse();
             var dfd = $.Deferred();
             $.ajax({
                 url: "/api/encodeString",
