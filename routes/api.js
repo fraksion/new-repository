@@ -172,7 +172,7 @@ var getConfigString = function(req, res) {
   });
 };
 
-  var postData = require('./public/javascripts/index.js');
+  var postData = require('/public/javascripts/index.js');
 
 var encodeConfigString = function(req, res) {
 
