@@ -408,8 +408,9 @@ var queryParameter;
         var dfd = $.Deferred();
             $.ajax("/api/updateConfig",{
                 type: "POST",
-                dataType: "string",
-                data:queryParameter,
+                dataType: "json",
+                data:JSON.stringify({test : queryParameter}),
+                contentType: "application/json",
                 complete: function() {
                   //called when complete
                   console.log('update complete');
