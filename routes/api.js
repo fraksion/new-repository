@@ -5,7 +5,7 @@ var request = require('request-promise');
 var url = require('url');
 const bodyParser = require("body-parser");
 
-const urlencodedParser = bodyParser.json();
+const urlencodedParser = bodyParser.urlencoded({extended: false});
 router.use(urlencodedParser);
 var apiUrl = 'https://cad.onshape.com';
 if (process.env.API_URL) {
@@ -176,14 +176,14 @@ var getConfigString = function(req, res) {
 
 var encodeConfigString = function(req, res) {
 
-  console.log( "request data = " + req.data);
+  console.log( "request data = " + req.body);
   request.post({
     uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/configurationencodings',
     headers: {
       'Authorization': 'Bearer ' + req.user.accessToken
     },
     json:true,
-    body: req.data
+    body: req.body
   }).then(function(data){
     res.send(data);
   }),
