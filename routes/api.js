@@ -193,9 +193,9 @@ var encodeConfigString = function(req, res) {
         
     }
   };
-
+  const jsonParser = express.json();
 //-----/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/configurationencodings
-router.post('/encodeString', encodeConfigString);
+router.post('/encodeString',jsonParser, encodeConfigString);
 router.get('/getConfig', getConfigString);
 router.get('/documents', getDocuments);
 router.get('/elements', getElementList);
