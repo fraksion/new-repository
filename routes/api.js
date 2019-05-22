@@ -203,7 +203,7 @@ var encodeConfigString = function(req, res) {
   var updateConfigString = function(req, res) {
     console.log("body " + req.body);
     //console.log( apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/' + req.body);
-    request.post({
+    /*request.post({
       uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/' + req.body,
       headers: {
         'Authorization': 'Bearer ' + req.user.accessToken
@@ -222,7 +222,7 @@ var encodeConfigString = function(req, res) {
       } else {
         console.log('GET /api/documents error: ', data);
       }
-    });
+    });*/
     };
 
   const jsonParser = express.json();

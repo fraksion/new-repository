@@ -21,6 +21,7 @@
 
         $('#config-btn').click(function(){
             EncodeConfigString();
+            updateConfiguration();
         })
 
         init();
@@ -393,7 +394,6 @@ var queryParameter;
                 },
                 success: function(data) {
                   queryParameter = data.queryParam;
-                  updateConfiguration();
                },
 
                 error: function() {
