@@ -325,7 +325,7 @@
 
     function getConfigTest() {
         var dfd = $.Deferred();
-        $.ajax('/api/test', {
+        $.ajax('/api/getConfig', {
             dataType: 'json',
             type: 'GET',
             success: function(data) {
@@ -355,12 +355,7 @@
             nameValuesArray[i] = {'parameterName' : tempName, 'parameterValue' : tempValue};
         }
         generateHTMLInput(nameValuesArray);
-       // console.log(nameValuesArray);
     }
-
-
-// <label for="angle-tolerance">Angle Tolerance</label>
-//<input type="number" value="0.01" step="0.01" class="form-control" id="angle-tolerance">
 
 function generateHTMLInput(data){
     var list = document.getElementById('inputs-ul');
