@@ -20,7 +20,7 @@
         });
 
         $('#config-btn').click(function(){
-            HTTPPoEncodeConfigStringstTest();
+            EncodeConfigString();
         })
 
         init();
