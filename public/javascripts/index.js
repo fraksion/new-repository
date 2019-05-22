@@ -378,7 +378,7 @@ function generateHTMLInput(data){
          $('</div>').appendTo(list);
     }
 }
-
+var queryParameter;
     function HTTPPostTest(){
         generateJSONResponse();
             var dfd = $.Deferred();
@@ -393,8 +393,8 @@ function generateHTMLInput(data){
                 },
 
                 success: function(data) {
-                  console.log(data);
-                  console.log('process success');
+                  queryParameter = data.body.queryParameter;
+                  CSSConditionRule.log("queryParametrr = " + queryParameter);
                },
 
                 error: function() {
@@ -403,17 +403,6 @@ function generateHTMLInput(data){
               });
               return dfd.resolve();
     }
-function testFunk(){
-    return fetch("/api/encodeString",{
-        method: 'post',
-        body : jsonData,
-        headers : {
-            'Accept' : 'application/json',
-            'Content-Type': 'application/json'
-        }
-        
-    }).then(function(data){console.log(data);});
-}
 
-
+    fun
 })();
