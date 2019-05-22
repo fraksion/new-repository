@@ -21,6 +21,7 @@
 
         init();
         loadStl(-1, -1);
+        generateHTMLInput(nameValuesArray);
         animate();
     }
 
@@ -325,7 +326,6 @@
             dataType: 'json',
             type: 'GET',
             success: function(data) {
-                console.log(data);
                GetNameAndValue(data);
             },
             error: function() {
@@ -353,5 +353,10 @@
         }
         console.log(nameValuesArray);
     }
+
+function generateHTMLInput(data){
+    var list = document.getElementById('test-div-1');
+$('<label> TEST </label>').appendTo(list);
+}
 
 })();
