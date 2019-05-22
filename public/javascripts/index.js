@@ -393,7 +393,7 @@ var queryParameter;
                 },
                 success: function(data) {
                   //queryParameter = data.body['queryParameter'];
-                  console.log("queryParametrr = " + JSON.parse(data));
+                  console.log("queryParametrr = " + data);
                },
 
                 error: function() {
