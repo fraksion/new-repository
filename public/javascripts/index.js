@@ -351,7 +351,7 @@
             }
             nameValuesArray[i] = {parameterName : tempName, parameterValue : tempValue};
         }
-        console.log(nameValuesArray);
+       // console.log(nameValuesArray);
     }
 
 
@@ -360,7 +360,7 @@
 
 function generateHTMLInput(data){
     var list = document.getElementById('test-div-1');
-    console.log(data.length);
+    console.log(data);
     for (var i=0; i<data.length; i++){
         console.log("dataName=" + data[parameterName]);
         $('<label for="first-input-test' + i + '>' + data[parameterName] +'</label>').appendTo(list);
