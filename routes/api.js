@@ -150,37 +150,31 @@ var getStl = function(req, res) {
 var getConfigString = function(req, res) {
 
   request.get({
-    uri: apiUrl + '/api/elements/d/2915ab983714d3c098137de8/m/62be1d3d788993c730344f0a/e/1b061467876c076269d30572/configurationencodings/undefined?includeDisplay=false&configurationIsId=true',
+    uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/m/8c69fddbdce56a2d4ca5f2be/e/a7d49a58add345ddb7362051/configurationencodings/undefined?includeDisplay=false&configurationIsId=true',
     headers: {
       'Authorization': 'Bearer ' + req.user.accessToken
     }
   }).then(function(data) {
-    console.log('success');
+    res.send(data);
   }).catch(function(data) {
     if (data.statusCode === 401) {
       authentication.refreshOAuthToken(req, res).then(function() {
         getConfigString(req, res);
       }).catch(function(err) {
-        console.log('Error refreshing token or getting config string: ', err);
+        console.log('Error refreshing token or getting documents: ', err);
       });
     } else {
-      console.log('GET /api/config error: ', data);
+      console.log('GET /api/documents error: ', data);
     }
   });
 };
 
-var testData;
-
-/*function ParceResponceData(data){
-  testData = data;
-  alert(testData);
-}*/
 
 router.get('/test', getConfigString);
 router.get('/documents', getDocuments);
-router.get('/elements', getElementList);
+router.get('/elements', getConfigString);
 router.get('/stl', getStl);
 router.get('/parts', getPartsList);
 
-//module.exports.configurationString = testData;
+
 module.exports = router;

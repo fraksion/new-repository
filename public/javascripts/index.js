@@ -5,8 +5,6 @@
     var loadedModels = [];
     var previousData = false;
 
-    //var testModule = requre('../routes/api.js');
-
     window.onload = function() {
         // prevent mouse clicks from going to model while dialog is open
         $('#stl-tolerance-modal').bind('click mousedown', function(e) {
@@ -332,7 +330,7 @@
             error: function() {
             }
         });
-        return dfd.resolve();
+        return dfd.promise();
     }
 
 })();
