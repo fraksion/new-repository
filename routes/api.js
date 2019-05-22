@@ -195,7 +195,7 @@ var encodeConfigString = function(req, res) {
   };
 
 //-----/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/configurationencodings
-router.get('/encodeString', encodeConfigString);
+router.post('/encodeString', encodeConfigString);
 router.get('/getConfig', getConfigString);
 router.get('/documents', getDocuments);
 router.get('/elements', getElementList);
