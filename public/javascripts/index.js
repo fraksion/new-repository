@@ -360,7 +360,7 @@
 
 function generateHTMLInput(data){
     var list = document.getElementById('test-div-1');
-    console.log(data);
+    console.log("data length=" + data.length);
     for (var i=0; i<data.length; i++){
         console.log("dataName=" + data[i][parameterName]);
         $('<label for="first-input-test' + i + '>' + data[i][parameterName] +'</label>').appendTo(list);
