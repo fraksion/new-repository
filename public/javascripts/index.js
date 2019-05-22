@@ -348,7 +348,7 @@
                     tempValue = data.parameters[i][key];
                 }
             }
-            nameValuesArray[i] = {parameterName : tempName, parameterValue : tempValue};
+            nameValuesArray[i] = {'parameterName' : tempName, 'parameterValue' : tempValue};
         }
         generateHTMLInput(nameValuesArray);
        // console.log(nameValuesArray);
@@ -360,11 +360,11 @@
 
 function generateHTMLInput(data){
     var list = document.getElementById('test-div-1');
-    console.log("data length=" + data.length);
+    console.log("data first=" + data[0]);
     for (var i=0; i<data.length; i++){
-        console.log("dataName=" + data[i][parameterName]);
-        $('<label for="first-input-test' + i + '>' + data[i][parameterName] +'</label>').appendTo(list);
-        $('<input type="text" value= ' + data[i][parameterValue] + 'id="first-input-test' + i + '>').appendTo(list);
+        console.log("dataName=" + data[i]['parameterName']);
+        $('<label for="first-input-test' + i + '>' + data[i]['parameterName'] +'</label>').appendTo(list);
+        $('<input type="text" value= ' + data[i]['parameterValue'] + 'id="first-input-test' + i + '>').appendTo(list);
     }
 
 }
