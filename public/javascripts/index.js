@@ -325,12 +325,32 @@
             dataType: 'json',
             type: 'GET',
             success: function(data) {
-               console.log(data);
+               GetNameAndValue(data);
             },
             error: function() {
             }
         });
         return dfd.promise();
+    }
+
+    var nameValuesArray = new Array();
+
+    function GetNameAndValue(data){
+        for (var i=0; i<data.length; i++)
+        {
+            var tempName;
+            var temtValue;
+            for (key in data[i]){
+                if (key === 'parameterName'){
+                    tempName = data[i][key];
+                }
+                else if (key === 'parameterValue'){
+                    tempValue = data[i][key];
+                }
+            }
+            nameValuesArray[i] = {parameterName : tempName, parameterValue : tempValue};
+        }
+        console.log(nameValuesArray);
     }
 
 })();
