@@ -379,4 +379,28 @@ function generateHTMLInput(data){
     }
 }
 
+    function HTTPPostTest(){
+            var dfd = $.Deferred();
+            $.ajax({
+                url: "/api/encodeString",
+                type: "POST",
+                dataType: "json",
+                data: jsonData,
+                contentType: "application/json",
+                complete: function() {
+                  //called when complete
+                  console.log('process complete');
+                },
+
+                success: function(data) {
+                  console.log(data);
+                  console.log('process sucess');
+               },
+
+                error: function() {
+                  console.log('process error');
+                },
+              });
+    }
+module.exports.jsonData = jsonData;
 })();

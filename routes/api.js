@@ -3,6 +3,9 @@ var router = express.Router();
 var authentication = require('../authentication');
 var request = require('request-promise');
 var url = require('url');
+const bodyParser = require("body-parser");
+
+const urlencodedParser = bodyParser.urlencoded({extended: false});
 
 var apiUrl = 'https://cad.onshape.com';
 if (process.env.API_URL) {
@@ -169,6 +172,50 @@ var getConfigString = function(req, res) {
   });
 };
 
+  var postData = require('./public/javascripts/index.js');
+
+var encodeConfigString = function(req, res) {
+
+ /* request.post({
+    uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/configurationencodings',
+    headers: {
+      'Authorization': 'Bearer ' + req.user.accessToken
+    }
+  }).then(function(data) {
+    res.send(data);
+  }).catch(function(data) {
+    if (data.statusCode === 401) {
+      authentication.refreshOAuthToken(req, res).then(function() {
+        getConfigString(req, res);
+      }).catch(function(err) {
+        console.log('Error refreshing token or getting documents: ', err);
+      });
+    } else {
+      console.log('GET /api/documents error: ', data);
+    }
+  });*/
+
+  console.log('post data = ' + postData.jsonData);
+  request.post({
+    uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/configurationencodings',
+    headers: {
+      'Authorization': 'Bearer ' + req.user.accessToken
+    },
+    body: postData.jsonData
+  }).then(function(data){
+    res.send(data);
+  }),
+    function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body)
+        }
+    }
+  };
+
+
+
+
+//-----/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/configurationencodings
 
 router.get('/getConfig', getConfigString);
 router.get('/documents', getDocuments);
