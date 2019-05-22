@@ -20,7 +20,8 @@
         });
 
         $('#config-btn').click(function(){
-            HTTPPostTest();
+            //HTTPPostTest();
+            testFunk();
         })
 
         init();
@@ -403,4 +404,16 @@ function generateHTMLInput(data){
               });
               return dfd.resolve();
     }
+function testFunk(){
+    return fetch("/api/encodeString",{
+        method: 'post',
+        body : jsonData,
+        headers : {
+            'Accept' : 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(console.log(AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA));
+}
+
+
 })();
