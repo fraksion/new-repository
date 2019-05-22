@@ -394,7 +394,7 @@ var queryParameter;
 
                 success: function(data) {
                   //queryParameter = data.body['queryParameter'];
-                  console.log("queryParametrr = " + data.body);
+                  console.log("queryParametrr = " + data);
                },
 
                 error: function() {
