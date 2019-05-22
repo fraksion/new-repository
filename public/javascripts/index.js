@@ -405,22 +405,24 @@ var queryParameter;
 
     function updateConfiguration(){
         console.log("Get Started^" + JSON.stringify({test : queryParameter}));
-        var dfd = $.Deferred();
-            $.ajax("/api/updateConfig",{
+        generateJSONResponse();
+            var dfd = $.Deferred();
+            $.ajax("/api/encodeString",{
                 type: "POST",
                 dataType: "json",
-                data:JSON.stringify({test : queryParameter}),
+                data: JSON.stringify(jsonData),
                 contentType: "application/json",
                 complete: function() {
                   //called when complete
-                  console.log('update complete');
+                  console.log('process complete');
                 },
                 success: function(data) {
-                    console.log('updating success');
+                  queryParameter = data.queryParam;
+                  updateConfiguration();
                },
 
                 error: function() {
-                  console.log('updating error');
+                  console.log('process error');
                 },
               });
               return dfd.resolve();
