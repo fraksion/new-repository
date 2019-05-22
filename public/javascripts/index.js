@@ -17,7 +17,7 @@
             deleteModels();
             var jsItem = document.createElement('label');
 jsItem.innerHTML='JavaScript';
-$('#stl-container').append(jsItem);
+$('#test-main-div-1').append(jsItem);
             var angleTolerance = $('#angle-tolerance').val();
             var chordTolerance = $('#chord-tolerance').val();
             loadStl(angleTolerance, chordTolerance);
