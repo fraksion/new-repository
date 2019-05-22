@@ -176,32 +176,14 @@ var getConfigString = function(req, res) {
 
 var encodeConfigString = function(req, res) {
 
- /* request.post({
-    uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/configurationencodings',
-    headers: {
-      'Authorization': 'Bearer ' + req.user.accessToken
-    }
-  }).then(function(data) {
-    res.send(data);
-  }).catch(function(data) {
-    if (data.statusCode === 401) {
-      authentication.refreshOAuthToken(req, res).then(function() {
-        getConfigString(req, res);
-      }).catch(function(err) {
-        console.log('Error refreshing token or getting documents: ', err);
-      });
-    } else {
-      console.log('GET /api/documents error: ', data);
-    }
-  });*/
-
-  console.log('post data = ');
+  console.log( "request data = " + req.data);
   request.post({
     uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/configurationencodings',
     headers: {
       'Authorization': 'Bearer ' + req.user.accessToken
     },
-    body: { 'name' : 'alex'}
+    json:true,
+    body: req.data
   }).then(function(data){
     res.send(data);
   }),
@@ -211,9 +193,6 @@ var encodeConfigString = function(req, res) {
         }
     }
   };
-
-
-
 
 //-----/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/configurationencodings
 router.get('/encodeString', encodeConfigString);
