@@ -382,8 +382,7 @@ function generateHTMLInput(data){
     function HTTPPostTest(){
         generateJSONResponse();
             var dfd = $.Deferred();
-            $.ajax({
-                url: "/api/encodeString",
+            $.ajax("/api/encodeString",{
                 type: "POST",
                 dataType: "json",
                 data: jsonData,
