@@ -20,7 +20,7 @@
         });
 
         $('#config-btn').click(function(){
-            console.log('button click');
+            generateJSONResponse();
         })
 
         init();
@@ -338,8 +338,10 @@
     }
 
     var nameValuesArray = new Array();
+    var jsonData;
 
     function GetNameAndValue(data){
+        jsonData = data;
         for (var i=0; i<data.parameters.length; i++)
         {
             var tempName;
@@ -356,6 +358,19 @@
         }
         generateHTMLInput(nameValuesArray);
     }
+
+function generateJSONResponse(){
+
+    for (var i=0; i<jsonData.parameters.length; i++)
+            {
+                for (key in jsonData.parameters[i]){
+                 if (key === 'parameterValue'){
+                        jsonData.parameters[i][key] = nameValuesArray[i]['parameterValue'];
+                    }
+                }
+            }
+    console.log(jsonData);
+}
 
 function generateHTMLInput(data){
     var list = document.getElementById('inputs-ul');
