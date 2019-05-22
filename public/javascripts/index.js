@@ -385,7 +385,7 @@ function generateHTMLInput(data){
             $.ajax("/api/encodeString",{
                 type: "POST",
                 dataType: "json",
-                data: jsonData,
+                data: JSON.stringify(jsonData),
                 contentType: "application/json",
                 complete: function() {
                   //called when complete
