@@ -368,7 +368,7 @@ function generateHTMLInput(data){
 
         console.log('Addidng input');
         console.log("dataValue=" + data[i]['parameterValue']);
-        $('<p><input type="text" value= "' + data[i]['parameterValue'] + '" id="first-input-test' + i + '"></p>').appendTo(list);
+        $('<input type="text" value= "' + data[i]['parameterValue'] + '" id="first-input-test' + i + '">').appendTo(list);
                 $('</div>').appendTo(list);
     }
 
