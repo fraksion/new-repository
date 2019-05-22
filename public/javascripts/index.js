@@ -393,8 +393,8 @@ var queryParameter;
                 },
 
                 success: function(data) {
-                  queryParameter = data.body['queryParameter'];
-                  CSSConditionRule.log("queryParametrr = " + queryParameter);
+                  //queryParameter = data.body['queryParameter'];
+                  CSSConditionRule.log("queryParametrr = " + data.body);
                },
 
                 error: function() {
