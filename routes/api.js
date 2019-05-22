@@ -5,8 +5,8 @@ var request = require('request-promise');
 var url = require('url');
 const bodyParser = require("body-parser");
 
-const urlencodedParser = bodyParser.urlencoded({extended: false});
-//router.use(express.bodyParser());
+const urlencodedParser = bodyParser.json();
+router.use(urlencodedParser);
 var apiUrl = 'https://cad.onshape.com';
 if (process.env.API_URL) {
   apiUrl = process.env.API_URL;

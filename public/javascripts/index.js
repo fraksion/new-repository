@@ -382,7 +382,6 @@ function generateHTMLInput(data){
     function HTTPPostTest(){
         generateJSONResponse();
             var dfd = $.Deferred();
-            console.log('dfd zashlo');
             $.ajax("/api/encodeString",{
                 type: "POST",
                 dataType: "json",
