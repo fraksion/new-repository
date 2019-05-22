@@ -403,6 +403,4 @@ var queryParameter;
               });
               return dfd.resolve();
     }
-
-    fun
 })();
