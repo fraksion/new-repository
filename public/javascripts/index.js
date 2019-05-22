@@ -354,9 +354,14 @@
         console.log(nameValuesArray);
     }
 
+
+// <label for="angle-tolerance">Angle Tolerance</label>
+//<input type="number" value="0.01" step="0.01" class="form-control" id="angle-tolerance">
+
 function generateHTMLInput(data){
     var list = document.getElementById('test-div-1');
-$('<label> TEST </label>').appendTo(list);
+$('<label for="first-input-test"> TEST </label>').appendTo(list);
+$('<input type="text" value="0.01" id="first-input-test">').appendTo(list);
 }
 
 })();
