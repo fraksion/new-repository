@@ -362,13 +362,7 @@
 function generateJSONResponse(){
 
     for (var i=0; i<jsonData.parameters.length; i++)
-            {
-                for (key in jsonData.parameters[i]){
-                 if (key === 'parameterValue'){
-                        jsonData.parameters[i][key] = nameValuesArray[i]['parameterValue'];
-                    }
-                }
-            }
+            jsonData.parameters[i]['parameterValue'] = nameValuesArray[i]['parameterValue'];
     console.log(jsonData);
 }
 
