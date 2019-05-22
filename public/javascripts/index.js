@@ -394,7 +394,7 @@ function generateHTMLInput(data){
 
                 success: function(data) {
                   console.log(data);
-                  console.log('process sucess');
+                  console.log('process success');
                },
 
                 error: function() {
