@@ -172,7 +172,7 @@ var getConfigString = function(req, res) {
 
 router.get('/getConfig', getConfigString);
 router.get('/documents', getDocuments);
-router.get('/elements', getConfigString);
+router.get('/elements', getElementList);
 router.get('/stl', getStl);
 router.get('/parts', getPartsList);
 
