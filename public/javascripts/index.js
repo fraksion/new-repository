@@ -334,7 +334,7 @@
             error: function() {
             }
         });
-        return dfd.promise();
+        return dfd.resolve();
     }
 
     var nameValuesArray = new Array();
@@ -402,5 +402,6 @@ function generateHTMLInput(data){
                   console.log('process error');
                 },
               });
+              return dfd.resolve();
     }
 })();
