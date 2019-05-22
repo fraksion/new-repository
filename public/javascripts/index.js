@@ -336,9 +336,10 @@
     var nameValuesArray = new Array();
 
     function GetNameAndValue(data){
-
+        console.log('data length = ');
         for (var i=0; i<data.length; i++)
         {
+            console.log(data[i]);
             var tempName;
             var temtValue;
             for (key in data[i]){
