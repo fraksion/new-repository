@@ -336,6 +336,7 @@
     var nameValuesArray = new Array();
 
     function GetNameAndValue(data){
+        
         for (var i=0; i<data.length; i++)
         {
             var tempName;
@@ -343,9 +344,11 @@
             for (key in data[i]){
                 if (key === 'parameterName'){
                     tempName = data[i][key];
+                    console.log(data[i][key]);
                 }
                 else if (key === 'parameterValue'){
                     tempValue = data[i][key];
+                    console.log(data[i][key]);
                 }
             }
             nameValuesArray[i] = {parameterName : tempName, parameterValue : tempValue};
