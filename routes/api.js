@@ -176,14 +176,14 @@ var getConfigString = function(req, res) {
 
 var encodeConfigString = function(req, res) {
 
-  console.log( "request data = " + req.body);
+  console.log( "request data = " + req.data);
   request.post({
     uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/configurationencodings',
     headers: {
       'Authorization': 'Bearer ' + req.user.accessToken
     },
     json:true,
-    body: req.body
+    body: req.data
   }).then(function(data){
     res.send(data);
   }),
