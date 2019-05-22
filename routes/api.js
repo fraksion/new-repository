@@ -172,7 +172,7 @@ var getConfigString = function(req, res) {
   });
 };
 
-  var postData = require('/public/javascripts/index.js');
+  //var postData = require('/public/javascripts/index.js');
 
 var encodeConfigString = function(req, res) {
 
@@ -195,13 +195,13 @@ var encodeConfigString = function(req, res) {
     }
   });*/
 
-  console.log('post data = ' + postData.jsonData);
+  console.log('post data = ');
   request.post({
     uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/configurationencodings',
     headers: {
       'Authorization': 'Bearer ' + req.user.accessToken
     },
-    body: postData.jsonData
+    body: { 'name' : 'alex'}
   }).then(function(data){
     res.send(data);
   }),
