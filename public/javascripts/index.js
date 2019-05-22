@@ -360,8 +360,13 @@
 
 function generateHTMLInput(data){
     var list = document.getElementById('test-div-1');
-$('<label for="first-input-test"> TEST </label>').appendTo(list);
-$('<input type="text" value="0.01" id="first-input-test">').appendTo(list);
+    console.log(data.length);
+    for (var i=0; i<data.length; i++){
+        console.log("dataName=" + data[parameterName]);
+        $('<label for="first-input-test' + i + '>' + data[parameterName] +'</label>').appendTo(list);
+        $('<input type="text" value= ' + data[parameterValue] + 'id="first-input-test' + i + '>').appendTo(list);
+    }
+
 }
 
 })();
