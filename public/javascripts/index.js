@@ -403,5 +403,4 @@ function generateHTMLInput(data){
                 },
               });
     }
-module.exports.jsonData = jsonData;
 })();
