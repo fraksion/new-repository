@@ -155,16 +155,16 @@ var getConfigString = function(req, res) {
       'Authorization': 'Bearer ' + req.user.accessToken
     }
   }).then(function(data) {
-    ParceResponceData(data);
+    console.log('success');
   }).catch(function(data) {
     if (data.statusCode === 401) {
       authentication.refreshOAuthToken(req, res).then(function() {
         getConfigString(req, res);
       }).catch(function(err) {
-        console.log('Error refreshing token or getting documents: ', err);
+        console.log('Error refreshing token or getting config string: ', err);
       });
     } else {
-      console.log('GET /api/documents error: ', data);
+      console.log('GET /api/config error: ', data);
     }
   });
 };
@@ -176,7 +176,7 @@ var testData;
   alert(testData);
 }*/
 
-router.get('/test', getPartsList);
+router.get('/test', getConfigString);
 router.get('/documents', getDocuments);
 router.get('/elements', getElementList);
 router.get('/stl', getStl);
