@@ -362,9 +362,13 @@ function generateHTMLInput(data){
     var list = document.getElementById('test-div-1');
     console.log("data first=" + data[0]);
     for (var i=0; i<data.length; i++){
+
+        console.log('Addidng input');
+        console.log("dataValue=" + data[i]['parameterName']);
+        $('<input type="text" value= "' + data[i]['parameterValue'] + '" id="first-input-test' + i + '>').appendTo(list);
+
         console.log("dataName=" + data[i]['parameterName']);
         $('<label for="first-input-test' + i + '">' + data[i]['parameterName'] +'</label>').appendTo(list);
-        $('<input type="text" value= "' + data[i]['parameterValue'] + '" id="first-input-test' + i + '>').appendTo(list);
     }
 
 }
