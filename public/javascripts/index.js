@@ -338,20 +338,20 @@
 
     function GetNameAndValue(data){
         console.log('data length = ' + data.parameters.length);
-        for (var i=0; i<data.length; i++)
+        for (var i=0; i<data.parameters.length; i++)
         {
             console.log(data[i]);
             var tempName;
             var temtValue;
-            for (key in data[i]){
-                console.log(data[i][key] + ' and ' + data[i]);
+            for (key in data.parameters[i]){
+                console.log(data.parameters[i][key] + ' and ' + data.parameters[i]);
                 if (key === 'parameterName'){
-                    tempName = data[i][key];
-                    console.log(data[i][key]);
+                    tempName = data.parameters[i][key];
+                    console.log(data.parameters[i][key]);
                 }
                 else if (key === 'parameterValue'){
-                    tempValue = data[i][key];
-                    console.log(data[i][key]);
+                    tempValue = data.parameters[i][key];
+                    console.log(data.parameters[i][key]);
                 }
             }
             nameValuesArray[i] = {parameterName : tempName, parameterValue : tempValue};
