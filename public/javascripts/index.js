@@ -19,6 +19,10 @@
             $('#stl-tolerance-modal').modal('hide');
         });
 
+        $('#config-btn').click(function(){
+            console.log('button click');
+        })
+
         init();
         loadStl(-1, -1);
         animate();
@@ -369,7 +373,6 @@ function generateHTMLInput(data){
         $('<p><input type="text" value= "' + data[i]['parameterValue'] + '" id="first-input-test' + i + '"></p>').appendTo(list);
          $('</div>').appendTo(list);
     }
-
 }
 
 })();
