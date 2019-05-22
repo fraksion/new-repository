@@ -336,12 +336,13 @@
     var nameValuesArray = new Array();
 
     function GetNameAndValue(data){
-        
+
         for (var i=0; i<data.length; i++)
         {
             var tempName;
             var temtValue;
             for (key in data[i]){
+                console.log(data[i][key] + ' and ' + data[i]);
                 if (key === 'parameterName'){
                     tempName = data[i][key];
                     console.log(data[i][key]);
