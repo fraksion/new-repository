@@ -362,7 +362,7 @@
 function generateJSONResponse(){
 
     for (var i=0; i<jsonData.parameters.length; i++)
-            jsonData.parameters[i]['parameterValue'] = nameValuesArray[i]['parameterValue'];
+            jsonData.parameters[i]['parameterValue'] = $('#first-input-test' + i + '');
     console.log(jsonData);
 }
 
