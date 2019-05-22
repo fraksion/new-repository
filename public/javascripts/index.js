@@ -337,7 +337,7 @@
     var nameValuesArray = new Array();
 
     function GetNameAndValue(data){
-        console.log('data length = ' data.length);
+        console.log('data length = ' + data.length);
         for (var i=0; i<data.length; i++)
         {
             console.log(data[i]);
