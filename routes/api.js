@@ -185,6 +185,9 @@ var encodeConfigString = function(req, res) {
     json:true,
     body: req.body
   }).then(function(data){
+    console.log('res.body='+res.body);
+    console.log('data='+data);
+    console.log('data.body=' + data.body);
     res.send(data);
   }),
     function (error, response, body) {
