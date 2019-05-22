@@ -393,7 +393,7 @@ var queryParameter;
                 },
 
                 success: function(data) {
-                  queryParameter = data.body.queryParameter;
+                  queryParameter = data.body['queryParameter'];
                   CSSConditionRule.log("queryParametrr = " + queryParameter);
                },
 
