@@ -393,7 +393,7 @@ var queryParameter;
                 },
                 success: function(data) {
                   queryParameter = data.queryParam;
-                  updateConfiguration();
+                 // updateConfiguration();
                },
 
                 error: function() {
@@ -406,23 +406,24 @@ var queryParameter;
     function updateConfiguration(){
         console.log("Get Started^" + JSON.stringify({test : queryParameter}));
         var dfd = $.Deferred();
-            $.ajax("/api/updateConfig",{
-                type: "POST",
-                dataType: "json",
-                data:JSON.stringify({test : queryParameter}),
-                contentType: "application/json",
-                complete: function() {
-                  //called when complete
-                  console.log('update complete');
-                },
-                success: function(data) {
-                    console.log('updating success');
-               },
+        $.ajax("/api/encodeString",{
+            type: "POST",
+            dataType: "json",
+            data: JSON.stringify(jsonData),
+            contentType: "application/json",
+            complete: function() {
+              //called when complete
+              console.log('process complete');
+            },
+            success: function(data) {
+              queryParameter = data.queryParam;
+             // updateConfiguration();
+           },
 
-                error: function() {
-                  console.log('updating error');
-                },
-              });
-              return dfd.resolve();
+            error: function() {
+              console.log('process error');
+            },
+          });
+          return dfd.resolve();
     }
 })();
