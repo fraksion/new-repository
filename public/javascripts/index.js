@@ -412,7 +412,8 @@ function testFunk(){
             'Accept' : 'application/json',
             'Content-Type': 'application/json'
         }
-    }).then(console.log(AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA));
+        
+    }).then(function(data){console.log(data);});
 }
 
 
