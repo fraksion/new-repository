@@ -404,7 +404,7 @@ var queryParameter;
     }
 
     function updateConfiguration(){
-        console.log("cad.onshape.com/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/"+ queryParameter);
+        console.log(queryParameter);
         var dfd = $.Deferred();
             $.ajax("/api/updateConfig",{
                 type: "POST",

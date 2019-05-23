@@ -205,7 +205,7 @@ var encodeConfigString = function(req, res) {
   var updateConfigString = function(req, res) {
     alert('test');
     request.post({
-      uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/' + req.body,
+      uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051//configuration?' + req.body,
       headers: {
         'Authorization': 'Bearer ' + req.user.accessToken,
       },
