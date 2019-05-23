@@ -34,6 +34,7 @@
 
         //var elementsDict;   
         getEncodedConfig();
+        getDecodedConfig();
  
         getElements().then(getParts);
 
@@ -320,13 +321,16 @@
         return string.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
 
+    var encodedConfigString;
+
     function getEncodedConfig() {
         var dfd = $.Deferred();
         $.ajax('/api/getEncodedConfig', {
             dataType: 'json',
             type: 'GET',
             success: function(data) {
-                getDecodedConfig();
+                encodedConfigString=JSON.parse(data);
+                console.log(encodedConfigString);
               console.log('getEncoded success');
             },
             error: function() {
