@@ -415,7 +415,7 @@
               return dfd.resolve();
     }*/
 
-    function updateConfiguration(){
+    /*function updateConfiguration(){
        // console.log(queryParameter);
         var dfd = $.Deferred();
             $.ajax("/api/updateConfig",{
@@ -436,5 +436,5 @@
                 },
               });
               return dfd.resolve();
-    }
+    }*/
 })();

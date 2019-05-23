@@ -249,8 +249,8 @@ var getEncodedConfigString = function(req, res) {
 */
   const jsonParser = express.json();
 
-router.post('/updateConfig',  updateConfigString);
-router.post('/encodeString',jsonParser, encodeConfigString);
+//router.post('/updateConfig',  updateConfigString);
+//router.post('/encodeString',jsonParser, encodeConfigString);
 router.get('/getEncodedConfig', getEncodedConfigString);
 router.get('/getDecodedConfig', getDecodedConfigString);
 router.get('/documents', getDocuments);
