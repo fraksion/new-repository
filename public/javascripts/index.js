@@ -32,8 +32,8 @@
         // Setup the drop list for models ...
         $("#elt-select2").append("<option>-- Top of List --</option>");
 
-        var elementsDict;   
-        getEncodedConfig();
+        //var elementsDict;   
+       // getEncodedConfig();
  
         getElements().then(getParts);
 
