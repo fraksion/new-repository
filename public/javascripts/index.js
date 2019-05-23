@@ -21,6 +21,7 @@
 
         $('#config-btn').click(function(){
             generateEncodedMessage();
+            updateConfiguration();
         })
 
         init();
@@ -412,38 +413,14 @@
             $('</div>').appendTo(list);
         }
     }
-/*var queryParameter;
-    function EncodeConfigString(){
-        generateJSONResponse();
-            var dfd = $.Deferred();
-            $.ajax("/api/encodeString",{
-                type: "POST",
-                dataType: "json",
-                data: JSON.stringify(jsonData),
-                contentType: "application/json",
-                complete: function() {
-                  //called when complete
-                  console.log('process complete');
-                },
-                success: function(data) {
-                  queryParameter = data.queryParam;
-                  updateConfiguration();
-               },
 
-                error: function() {
-                  console.log('process error');
-                },
-              });
-              return dfd.resolve();
-    }*/
-
-    /*function updateConfiguration(){
-       // console.log(queryParameter);
+    function updateConfiguration(){
+        console.log(encodedConfigString);
         var dfd = $.Deferred();
             $.ajax("/api/updateConfig",{
                 type: "POST",
                 dataType: "json",
-                data:queryParameter, //string
+                data:encodedConfigString, 
                 contentType: "application/json",
                 Accept:'application/vnd.onshape.v1+json',
                 complete: function() {
@@ -458,5 +435,5 @@
                 },
               });
               return dfd.resolve();
-    }*/
+    }
 })();

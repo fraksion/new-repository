@@ -223,14 +223,13 @@ var getEncodedConfigString = function(req, res) {
   });
 };
 */
-  /*var updateConfigString = function(req, res) {
-    alert('test');
+  var updateConfigString = function(req, res) {
     request.post({
-      uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051//configuration?' + req.body,
+      uri: apiUrl + '/elements/d/0d86c205100fae7001a39ea8/w/aae7a1ff196df52c5a4c153c/e/a7d49a58add345ddb7362051/configuration',
       headers: {
         'Authorization': 'Bearer ' + req.user.accessToken,
       },
-      body: "{'test': 'test'}"
+      body: req.body
     }).then(function(data){
       console.log(data);
       res.json(data);
@@ -246,10 +245,10 @@ var getEncodedConfigString = function(req, res) {
       }
     });
     };
-*/
+
   const jsonParser = express.json();
 
-//router.post('/updateConfig',  updateConfigString);
+router.post('/updateConfig', jsonParser, updateConfigString);
 //router.post('/encodeString',jsonParser, encodeConfigString);
 router.get('/getEncodedConfig', getEncodedConfigString);
 router.get('/getDecodedConfig', getDecodedConfigString);
