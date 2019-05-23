@@ -177,7 +177,7 @@ var getConfigString = function(req, res) {
   //var postData = require('/public/javascripts/index.js');
 
 var encodeConfigString = function(req, res) {
-
+  debugger;
   console.log( "request data = " + req.body);
   request.post({
     uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/configurationencodings',
@@ -203,6 +203,7 @@ var encodeConfigString = function(req, res) {
   };
 
   var updateConfigString = function(req, res) {
+    debugger;
     console.log('test');
     request.post({
       uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/' + JSON.parse(req.body).test,
