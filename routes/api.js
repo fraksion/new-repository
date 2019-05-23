@@ -208,7 +208,9 @@ var encodeConfigString = function(req, res) {
     request.post({
       uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/' + req.body,
       headers: {
-        'Authorization': 'Bearer ' + req.user.accessToken
+        'Authorization': 'Bearer ' + req.user.accessToken,
+        'Content-Type' : 'application/json',
+        'Accept':'application/vnd.onshape.v1+json'
       },
       body: "{'tet': 'tet'}"
     }).then(function(data){
