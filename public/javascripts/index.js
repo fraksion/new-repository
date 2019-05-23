@@ -37,7 +37,8 @@
         $("#elt-select2").append("<option>-- Top of List --</option>");
 
         var elementsDict;   
-        getConfigTest();  
+        getEncodedConfig();
+        getDecodedConfig();  
         getElements().then(getParts);
 
         // Initialize Camera
@@ -323,9 +324,23 @@
         return string.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
 
-    function getConfigTest() {
+    function getEncodedConfig() {
         var dfd = $.Deferred();
-        $.ajax('/api/getConfig', {
+        $.ajax('/api/getEncodedConfig', {
+            dataType: 'json',
+            type: 'GET',
+            success: function(data) {
+              console.log('getEncoded success');
+            },
+            error: function() {
+            }
+        });
+        return dfd.resolve();
+    }
+
+    function getDecodedConfig() {
+        var dfd = $.Deferred();
+        $.ajax('/api/getDecodedConfig', {
             dataType: 'json',
             type: 'GET',
             success: function(data) {
@@ -378,7 +393,7 @@ function generateHTMLInput(data){
          $('</div>').appendTo(list);
     }
 }
-var queryParameter;
+/*var queryParameter;
     function EncodeConfigString(){
         generateJSONResponse();
             var dfd = $.Deferred();
@@ -401,7 +416,7 @@ var queryParameter;
                 },
               });
               return dfd.resolve();
-    }
+    }*/
 
     function updateConfiguration(){
         console.log(queryParameter);

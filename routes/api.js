@@ -152,7 +152,7 @@ var getStl = function(req, res) {
 };
 
 
-var getConfigString = function(req, res) {
+var getDecodedConfigString = function(req, res) {
 
   request.get({
     uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/m/8c69fddbdce56a2d4ca5f2be/e/a7d49a58add345ddb7362051/configurationencodings/undefined?includeDisplay=false&configurationIsId=true',
@@ -174,9 +174,31 @@ var getConfigString = function(req, res) {
   });
 };
 
-  //var postData = require('/public/javascripts/index.js');
+var getEncodedConfigString = function(req, res) {
 
-var encodeConfigString = function(req, res) {
+  request.get({
+    uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/w/aae7a1ff196df52c5a4c153c/e/a7d49a58add345ddb7362051/configuration',
+    headers: {
+      'Authorization': 'Bearer ' + req.user.accessToken
+    }
+  }).then(function(data) {
+    res.send(data);
+  }).catch(function(data) {
+    if (data.statusCode === 401) {
+      authentication.refreshOAuthToken(req, res).then(function() {
+        getConfigString(req, res);
+      }).catch(function(err) {
+        console.log('Error refreshing token or getting documents: ', err);
+      });
+    } else {
+      console.log('GET /api/documents error: ', data);
+    }
+  });
+};
+
+
+
+/*var encodeConfigString = function(req, res) {
   debugger;
   console.log( "request data = " + req.body);
   request.post({
@@ -200,9 +222,9 @@ var encodeConfigString = function(req, res) {
       console.log('GET /api/documents error: ', data);
     }
   });
-  };
-
-  var updateConfigString = function(req, res) {
+};
+*/
+  /*var updateConfigString = function(req, res) {
     alert('test');
     request.post({
       uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051//configuration?' + req.body,
@@ -225,12 +247,13 @@ var encodeConfigString = function(req, res) {
       }
     });
     };
-
+*/
   const jsonParser = express.json();
 
 router.post('/updateConfig',  updateConfigString);
 router.post('/encodeString',jsonParser, encodeConfigString);
-router.get('/getConfig', getConfigString);
+router.get('/getEncodedConfig', getEncodedConfigString);
+router.get('/getDecodedConfig', getDecodedConfigString);
 router.get('/documents', getDocuments);
 router.get('/elements', getElementList);
 router.get('/stl', getStl);
