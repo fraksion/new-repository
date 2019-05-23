@@ -329,7 +329,7 @@
             dataType: 'json',
             type: 'GET',
             success: function(data) {
-                encodedConfigString=JSON.parse(data);
+                encodedConfigString=data.currentConfiguration;
                 console.log(encodedConfigString);
               console.log('getEncoded success');
             },
