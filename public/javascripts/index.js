@@ -420,7 +420,7 @@
             $.ajax("/api/updateConfig",{
                 type: "POST",
                 dataType: "json",
-                data:encodedConfigString, 
+                data:JSON.stringify(encodedConfigString), 
                 contentType: "application/json",
                 Accept:'application/vnd.onshape.v1+json',
                 complete: function() {
