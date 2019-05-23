@@ -210,7 +210,7 @@ var encodeConfigString = function(req, res) {
       headers: {
         'Authorization': 'Bearer ' + req.user.accessToken
       },
-      body: ""
+      body: "{'tet': 'tet'}"
     }).then(function(data){
       console.log(data);
       res.json(data);
