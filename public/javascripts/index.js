@@ -20,7 +20,7 @@
         });
 
         $('#config-btn').click(function(){
-            EncodeConfigString();
+            //EncodeConfigString();
         })
 
         init();
@@ -330,7 +330,7 @@
             dataType: 'json',
             type: 'GET',
             success: function(data) {
-                //getDecodedConfig();
+                getDecodedConfig();
               console.log('getEncoded success');
             },
             error: function() {
@@ -339,7 +339,7 @@
         return dfd.resolve();
     }
 
-   /* function getDecodedConfig() {
+    function getDecodedConfig() {
         var dfd = $.Deferred();
         $.ajax('/api/getDecodedConfig', {
             dataType: 'json',
@@ -351,7 +351,7 @@
             }
         });
         return dfd.resolve();
-    }*/
+    }
 
     var nameValuesArray = new Array();
     var jsonData;

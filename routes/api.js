@@ -152,7 +152,7 @@ var getStl = function(req, res) {
 };
 
 
-/*var getDecodedConfigString = function(req, res) {
+var getDecodedConfigString = function(req, res) {
   request.get({
     uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/m/8c69fddbdce56a2d4ca5f2be/e/a7d49a58add345ddb7362051/configurationencodings/undefined?includeDisplay=false&configurationIsId=true',
     headers: {
@@ -171,7 +171,7 @@ var getStl = function(req, res) {
       console.log('GET /api/documents error: ', data);
     }
   });
-};*/
+};
 
 var getEncodedConfigString = function(req, res) {
 
@@ -252,7 +252,7 @@ var getEncodedConfigString = function(req, res) {
 router.post('/updateConfig',  updateConfigString);
 router.post('/encodeString',jsonParser, encodeConfigString);
 router.get('/getEncodedConfig', getEncodedConfigString);
-//router.get('/getDecodedConfig', getDecodedConfigString);
+router.get('/getDecodedConfig', getDecodedConfigString);
 router.get('/documents', getDocuments);
 router.get('/elements', getElementList);
 router.get('/stl', getStl);
