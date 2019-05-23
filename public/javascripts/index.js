@@ -19,6 +19,10 @@
             $('#stl-tolerance-modal').modal('hide');
         });
 
+        $('#config-btn').click(function(){
+            generateJSONResponse();
+        })
+
         init();
         loadStl(-1, -1);
         animate();
@@ -329,7 +333,7 @@
             dataType: 'json',
             type: 'GET',
             success: function(data) {
-                encodedConfigString=data.currentConfiguration;
+                encodedConfigString=data;
                 console.log(encodedConfigString);
               console.log('getEncoded success');
             },
@@ -337,6 +341,14 @@
             }
         });
         return dfd.resolve();
+    }
+
+    function generateEncodedMessage()
+    {
+        for (var i=0; i<data.length; i++){
+            encodedConfigString.currentConfiguration[i].message.value = jsonData.parameters[i]['parameterValue'];
+                console.log(i + ' = ' + encodedConfigString.currentConfiguration[i].message);
+        }
     }
 
     function getDecodedConfig() {
