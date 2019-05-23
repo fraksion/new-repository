@@ -37,8 +37,8 @@
         $("#elt-select2").append("<option>-- Top of List --</option>");
 
         var elementsDict;   
-        getEncodedConfig();
-        getDecodedConfig();  
+        getEncodedConfig().then(getDecodedConfig);
+ 
         getElements().then(getParts);
 
         // Initialize Camera
@@ -330,6 +330,7 @@
             dataType: 'json',
             type: 'GET',
             success: function(data) {
+                //getDecodedConfig();
               console.log('getEncoded success');
             },
             error: function() {
