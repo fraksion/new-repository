@@ -348,8 +348,8 @@
         generateJSONResponse();
         for (var i=0; i<encodedConfigString.currentConfiguration.length; i++){
             encodedConfigString.currentConfiguration[i].message.expression = jsonData.parameters[i]['parameterDisplayValue'];
-            var expSmall = /[a-z]/;
-            var expLarge = /[A-Z]/;
+            var expSmall = /[a-z]{1,}/;
+            var expLarge = /[A-Z]{1,}/;
             var tempStringsArrayy = jsonData.parameters[i]['parameterDisplayValue'].replace(expSmall, "").replace(expLarge,"");
                 console.log(i + ' = ' + tempStringsArrayy);
         }
