@@ -404,14 +404,13 @@ var queryParameter;
     }
 
     function updateConfiguration(){
-        console.log("Get Started^" + JSON.stringify({test : queryParameter}));
-        console.log(JSON.parse(JSON.stringify({test : queryParameter})).test);
+        console.log("Get Started^"+ queryParameter);
         var dfd = $.Deferred();
             $.ajax("/api/updateConfig",{
                 type: "POST",
                 dataType: "json",
-                data:JSON.stringify({test : queryParameter}),
-                contentType: "application/json",
+                data:queryParameter, //string
+                contentType: "application/x-www-form-urlencoded",
                 complete: function() {
                   //called when complete
                   console.log('update complete');
@@ -419,7 +418,6 @@ var queryParameter;
                 success: function(data) {
                     console.log('updating success');
                },
-
                 error: function() {
                   console.log('updating error');
                 },
