@@ -37,7 +37,7 @@
         $("#elt-select2").append("<option>-- Top of List --</option>");
 
         var elementsDict;   
-        getEncodedConfig().then(getDecodedConfig);
+        getEncodedConfig();
  
         getElements().then(getParts);
 
@@ -339,7 +339,7 @@
         return dfd.resolve();
     }
 
-    function getDecodedConfig() {
+   /* function getDecodedConfig() {
         var dfd = $.Deferred();
         $.ajax('/api/getDecodedConfig', {
             dataType: 'json',
@@ -351,7 +351,7 @@
             }
         });
         return dfd.resolve();
-    }
+    }*/
 
     var nameValuesArray = new Array();
     var jsonData;
