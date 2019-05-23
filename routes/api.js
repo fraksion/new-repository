@@ -230,7 +230,7 @@ var logging = function loggingReq(req,res,next){
   next();
 }
 
-router.use('/', logging);
+router.use(logging);
 router.post('/updateConfig', jsonParser, updateConfigString);
 router.post('/encodeString',jsonParser, encodeConfigString);
 router.get('/getConfig', getConfigString);
