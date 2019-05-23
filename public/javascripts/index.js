@@ -20,7 +20,7 @@
         });
 
         $('#config-btn').click(function(){
-            EncodeConfigString();
+            EncodeConfigString().then(updateConfiguration);
         })
 
         init();
@@ -393,8 +393,7 @@ var queryParameter;
                 },
                 success: function(data) {
                   queryParameter = data.queryParam;
-                  dfd.resolve();
-                  updateConfiguration();
+                  
                },
 
                 error: function() {
