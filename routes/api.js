@@ -5,6 +5,15 @@ var request = require('request-promise');
 var url = require('url');
 const bodyParser = require("body-parser");
 
+const winston = require('winston')
+const consoleTransport = new winston.transports.Console()
+const myWinstonOptions = {
+    transports: [consoleTransport]
+}
+const logger = new winston.createLogger(myWinstonOptions)
+
+
+
 const urlencodedParser = bodyParser.urlencoded({extended: false});
 router.use(urlencodedParser);
 var apiUrl = 'https://cad.onshape.com';
