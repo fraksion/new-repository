@@ -349,6 +349,8 @@
         generateJSONResponse();
         for (var i=0; i<encodedConfigString.currentConfiguration.length; i++){
                     for (var j=0;  j<encodedConfigString.currentConfiguration.length; j++){
+                        console.log('jsonData.parameters[i][parameterId] =' + jsonData.parameters[i]['parameterId']);
+                        console.log('encodedConfigString.currentConfiguration[i].message.parameterId =' + encodedConfigString.currentConfiguration[i].message.parameterId);
                         if (jsonData.parameters[i]['parameterId'] === encodedConfigString.currentConfiguration[i].message.parameterId){
                             encodedConfigString.currentConfiguration[i].message.expression = jsonData.parameters[i]['parameterDisplayValue'];
                             var expSmall = /[a-z]{1,}/;
