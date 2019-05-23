@@ -350,9 +350,12 @@
             encodedConfigString.currentConfiguration[i].message.expression = jsonData.parameters[i]['parameterDisplayValue'];
             var expSmall = /[a-z]{1,}/;
             var expLarge = /[A-Z]{1,}/;
-            var tempStringsArrayy = jsonData.parameters[i]['parameterDisplayValue'].replace(expSmall, "").replace(expLarge,"");
-                console.log(i + ' = ' + tempStringsArrayy);
+            var tempStringsArray = jsonData.parameters[i]['parameterDisplayValue'].replace(expSmall, "").replace(expLarge,"");
+            encodedConfigString.currentConfiguration[i].message.value = tempStringsArray;
+                console.log(i + ' = ' + tempStringsArray);
         }
+        console.log("JSON");
+        console.log(encodedConfigString);
     }
 
     function getDecodedConfig() {
