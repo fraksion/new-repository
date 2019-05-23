@@ -5,13 +5,6 @@ var request = require('request-promise');
 var url = require('url');
 const bodyParser = require("body-parser");
 
-const winston = require('winston')
-const consoleTransport = new winston.transports.Console()
-const myWinstonOptions = {
-    transports: [consoleTransport]
-}
-const logger = new winston.createLogger(myWinstonOptions)
-
 
 
 const urlencodedParser = bodyParser.urlencoded({extended: false});
@@ -210,6 +203,7 @@ var encodeConfigString = function(req, res) {
   };
 
   var updateConfigString = function(req, res) {
+    console.log('test');
     request.post({
       uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/' + JSON.parse(req.body).test,
       headers: {
@@ -234,12 +228,6 @@ var encodeConfigString = function(req, res) {
 
   const jsonParser = express.json();
 
-var logging = function loggingReq(req,res,next){
-  console.log('TEST');
-  next();
-}
-
-router.use(logging);
 router.post('/updateConfig', jsonParser, updateConfigString);
 router.post('/encodeString',jsonParser, encodeConfigString);
 router.get('/getConfig', getConfigString);
