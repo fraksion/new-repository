@@ -352,10 +352,10 @@
                         console.log('jsonData.parameters[i][parameterId] =' + jsonData.parameters[j]['parameterId']);
                         console.log('encodedConfigString.currentConfiguration[i].message.parameterId =' + encodedConfigString.currentConfiguration[i].message.parameterId);
                         if (jsonData.parameters[j]['parameterId'] === encodedConfigString.currentConfiguration[i].message.parameterId){
-                            encodedConfigString.currentConfiguration[i].message.expression = jsonData.parameters[i]['parameterDisplayValue'];
+                            encodedConfigString.currentConfiguration[i].message.expression = jsonData.parameters[j]['parameterDisplayValue'];
                             var expSmall = /[a-z]{1,}/;
                             var expLarge = /[A-Z]{1,}/;
-                            var tempStringsArray = jsonData.parameters[i]['parameterDisplayValue'].replace(expSmall, "").replace(expLarge,"");
+                            var tempStringsArray = jsonData.parameters[j]['parameterDisplayValue'].replace(expSmall, "").replace(expLarge,"");
                             encodedConfigString.currentConfiguration[i].message.value = tempStringsArray;
                         }
             }
