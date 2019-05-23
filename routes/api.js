@@ -203,16 +203,13 @@ var encodeConfigString = function(req, res) {
   };
 
   var updateConfigString = function(req, res) {
-    debugger;
     alert('test');
     request.post({
       uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/' + req.body,
       headers: {
         'Authorization': 'Bearer ' + req.user.accessToken,
-        'Content-Type' : 'application/json',
-        'Accept':'application/vnd.onshape.v1+json'
       },
-      body: "{'tet': 'tet'}"
+      body: "{'test': 'test'}"
     }).then(function(data){
       console.log(data);
       res.json(data);
@@ -231,7 +228,7 @@ var encodeConfigString = function(req, res) {
 
   const jsonParser = express.json();
 
-router.post('/updateConfig', jsonParser, updateConfigString);
+router.post('/updateConfig',  updateConfigString);
 router.post('/encodeString',jsonParser, encodeConfigString);
 router.get('/getConfig', getConfigString);
 router.get('/documents', getDocuments);
