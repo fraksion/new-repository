@@ -83,9 +83,9 @@ app.use('/oauthSignin', storeExtraParams,
 var StateMap = {};
 
 function storeExtraParams(req, res) {
-    var docId = '0d86c205100fae7001a39ea8';
-    var workId = 'aae7a1ff196df52c5a4c153c';
-    var elId = 'a7d49a58add345ddb7362051';
+    var docId = '11597718228663b148db1e40';
+    var workId = '78aeb556259d6f6bb1171aad';
+    var elId = '9f517214392ad982bc6f0350';
 
      var state = {
         documentId : docId,
@@ -119,7 +119,7 @@ app.use('/oauthRedirect',
           // reply is null when the key is missing
           if (reply != null) {
               var newParams = JSON.parse(reply);
-              var url = '/?' + 'documentId=' + '0d86c205100fae7001a39ea8' + '&workspaceId=' + 'aae7a1ff196df52c5a4c153c' + '&elementId=' + 'a7d49a58add345ddb7362051';
+              var url = '/?' + 'documentId=' + '11597718228663b148db1e40' + '&workspaceId=' + '78aeb556259d6f6bb1171aad' + '&elementId=' + '9f517214392ad982bc6f0350';
               res.redirect(url);
           }
       });
