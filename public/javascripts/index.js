@@ -20,7 +20,7 @@
         });
 
         $('#config-btn').click(function(){
-            generateJSONResponse();
+            generateEncodedMessage();
         })
 
         init();
