@@ -410,7 +410,8 @@ var queryParameter;
                 type: "POST",
                 dataType: "json",
                 data:queryParameter, //string
-                contentType: "application/x-www-form-urlencoded",
+                contentType: "application/json",
+                Accept:'application/vnd.onshape.v1+json',
                 complete: function() {
                   //called when complete
                   console.log('update complete');
