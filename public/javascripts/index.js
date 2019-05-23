@@ -19,10 +19,6 @@
             $('#stl-tolerance-modal').modal('hide');
         });
 
-        $('#config-btn').click(function(){
-            //EncodeConfigString();
-        })
-
         init();
         loadStl(-1, -1);
         animate();
