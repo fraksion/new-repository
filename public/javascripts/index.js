@@ -345,7 +345,7 @@
 
     function generateEncodedMessage()
     {
-        for (var i=0; i<data.length; i++){
+        for (var i=0; i<encodedConfigString.currentConfiguration.length; i++){
             encodedConfigString.currentConfiguration[i].message.value = jsonData.parameters[i]['parameterValue'];
                 console.log(i + ' = ' + encodedConfigString.currentConfiguration[i].message);
         }
