@@ -348,7 +348,7 @@
         generateJSONResponse();
         for (var i=0; i<encodedConfigString.currentConfiguration.length; i++){
             encodedConfigString.currentConfiguration[i].message.expression = jsonData.parameters[i]['parameterDisplayValue'];
-                console.log(i + ' = ' + encodedConfigString.currentConfiguration[i].message.value);
+                console.log(i + ' = ' + encodedConfigString.currentConfiguration[i].message.expression);
         }
     }
 
