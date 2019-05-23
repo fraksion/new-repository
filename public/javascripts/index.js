@@ -348,7 +348,7 @@
     {
         generateJSONResponse();
         for (var i=0; i<encodedConfigString.currentConfiguration.length; i++){
-                    for (var j=0;  j<encodedConfigString.currentConfiguration.length; j++){
+                    for (var j=0;  j<jsonData.parameters.length; j++){
                         if (jsonData.parameters[j]['parameterId'] === encodedConfigString.currentConfiguration[i].message.parameterId){
                             encodedConfigString.currentConfiguration[i].message.expression = jsonData.parameters[j]['parameterDisplayValue'];
                             var expSmall = /[a-z]{1,}/;
