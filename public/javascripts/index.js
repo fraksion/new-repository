@@ -347,7 +347,7 @@
     {
         generateJSONResponse();
         for (var i=0; i<encodedConfigString.currentConfiguration.length; i++){
-            encodedConfigString.currentConfiguration[i].message.value = jsonData.parameters[i]['parameterDisplayValue'];
+            encodedConfigString.currentConfiguration[i].message.expression = jsonData.parameters[i]['parameterDisplayValue'];
                 console.log(i + ' = ' + encodedConfigString.currentConfiguration[i].message.value);
         }
     }
@@ -384,7 +384,6 @@
                 }
             }
             nameValuesArray[i] = {'parameterName' : tempName, 'parameterDisplayValue' : tempValue};
-            console.log(nameValuesArray[i]);
         }
         generateHTMLInput(nameValuesArray);
     }
@@ -393,7 +392,6 @@
 
         for (var i=0; i<jsonData.parameters.length; i++)
                 jsonData.parameters[i]['parameterDisplayValue'] = $('#first-input-test' + i + '').val();
-        console.log(jsonData);
     }
 
     function generateHTMLInput(data){
