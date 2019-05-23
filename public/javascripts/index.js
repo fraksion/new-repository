@@ -348,11 +348,15 @@
     {
         generateJSONResponse();
         for (var i=0; i<encodedConfigString.currentConfiguration.length; i++){
-            encodedConfigString.currentConfiguration[i].message.expression = jsonData.parameters[i]['parameterDisplayValue'];
-            var expSmall = /[a-z]{1,}/;
-            var expLarge = /[A-Z]{1,}/;
-            var tempStringsArray = jsonData.parameters[i]['parameterDisplayValue'].replace(expSmall, "").replace(expLarge,"");
-            encodedConfigString.currentConfiguration[i].message.value = tempStringsArray;
+                    for (var j=0;  j<encodedConfigString.currentConfiguration.length; j++){
+                        if (jsonData.parameters[i]['parameterId'] === encodedConfigString.currentConfiguration[i].message.parameterId){
+                            encodedConfigString.currentConfiguration[i].message.expression = jsonData.parameters[i]['parameterDisplayValue'];
+                            var expSmall = /[a-z]{1,}/;
+                            var expLarge = /[A-Z]{1,}/;
+                            var tempStringsArray = jsonData.parameters[i]['parameterDisplayValue'].replace(expSmall, "").replace(expLarge,"");
+                            encodedConfigString.currentConfiguration[i].message.value = tempStringsArray;
+                        }
+            }
                 console.log(i + ' = ' + tempStringsArray);
         }
         console.log("JSON");
@@ -382,6 +386,7 @@
         {
             var tempName;
             var temtValue;
+            var tempId;
             for (key in data.parameters[i]){
                 if (key === 'parameterName'){
                     tempName = data.parameters[i][key];
@@ -389,8 +394,11 @@
                 else if (key === 'parameterDisplayValue'){
                     tempValue = data.parameters[i][key];
                 }
+                else if (key === 'parameterId'){
+                    tempId = data.parameters[i][key];
+                }
             }
-            nameValuesArray[i] = {'parameterName' : tempName, 'parameterDisplayValue' : tempValue};
+            nameValuesArray[i] = {'parameterName' : tempName, 'parameterDisplayValue' : tempValue, 'parameterId' : tempId};
         }
         generateHTMLInput(nameValuesArray);
     }
