@@ -346,7 +346,7 @@
     function generateEncodedMessage()
     {
         for (var i=0; i<encodedConfigString.currentConfiguration.length; i++){
-            encodedConfigString.currentConfiguration[i].message.value = jsonData.parameters[i]['parameterValue'];
+            encodedConfigString.currentConfiguration[i].message.value = jsonData.parameters[i]['parameterDisplayValue'];
                 console.log(i + ' = ' + encodedConfigString.currentConfiguration[i].message.value);
         }
     }
@@ -378,11 +378,11 @@
                 if (key === 'parameterName'){
                     tempName = data.parameters[i][key];
                 }
-                else if (key === 'parameterValue'){
+                else if (key === 'parameterDisplayValue'){
                     tempValue = data.parameters[i][key];
                 }
             }
-            nameValuesArray[i] = {'parameterName' : tempName, 'parameterValue' : tempValue};
+            nameValuesArray[i] = {'parameterName' : tempName, 'parameterDisplayValue' : tempValue};
         }
         generateHTMLInput(nameValuesArray);
     }
@@ -390,7 +390,7 @@
     function generateJSONResponse(){
 
         for (var i=0; i<jsonData.parameters.length; i++)
-                jsonData.parameters[i]['parameterValue'] = $('#first-input-test' + i + '').val();
+                jsonData.parameters[i]['parameterDisplayValue'] = $('#first-input-test' + i + '').val();
         console.log(jsonData);
     }
 
