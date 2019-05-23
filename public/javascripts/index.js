@@ -20,7 +20,7 @@
         });
 
         $('#config-btn').click(function(){
-            EncodeConfigString();
+            EncodeConfigString().then(updateConfiguration);
         })
 
         init();
@@ -389,7 +389,6 @@ var queryParameter;
                 contentType: "application/json",
                 complete: function() {
                   //called when complete
-                  updateConfiguration();
                   console.log('process complete');
                 },
                 success: function(data) {
