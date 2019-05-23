@@ -229,9 +229,9 @@ var getEncodedConfigString = function(req, res) {
       headers: {
         'Authorization': 'Bearer ' + req.user.accessToken,
       },
+      json:true,
       body: req.body
     }).then(function(data){
-      console.log(data);
       res.json(data);
     }).catch(function(data) {
       if (data.statusCode === 401) {
