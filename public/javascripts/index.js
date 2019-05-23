@@ -32,8 +32,9 @@
         // Setup the drop list for models ...
         $("#elt-select2").append("<option>-- Top of List --</option>");
 
-        var elementsDict;   
-        getConfigTest();  
+        //var elementsDict;   
+        getEncodedConfig();
+ 
         getElements().then(getParts);
 
         // Initialize Camera
@@ -319,18 +320,121 @@
         return string.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
 
-    function getConfigTest() {
+    function getEncodedConfig() {
         var dfd = $.Deferred();
-        $.ajax('/api/test', {
+        $.ajax('/api/getEncodedConfig', {
             dataType: 'json',
             type: 'GET',
             success: function(data) {
-               console.log('success');
+                getDecodedConfig();
+              console.log('getEncoded success');
             },
             error: function() {
             }
         });
-        return dfd.promise();
+        return dfd.resolve();
     }
 
+    function getDecodedConfig() {
+        var dfd = $.Deferred();
+        $.ajax('/api/getDecodedConfig', {
+            dataType: 'json',
+            type: 'GET',
+            success: function(data) {
+               GetNameAndValue(data);
+            },
+            error: function() {
+            }
+        });
+        return dfd.resolve();
+    }
+
+    var nameValuesArray = new Array();
+    var jsonData;
+
+    function GetNameAndValue(data){
+        jsonData = data;
+        for (var i=0; i<data.parameters.length; i++)
+        {
+            var tempName;
+            var temtValue;
+            for (key in data.parameters[i]){
+                if (key === 'parameterName'){
+                    tempName = data.parameters[i][key];
+                }
+                else if (key === 'parameterValue'){
+                    tempValue = data.parameters[i][key];
+                }
+            }
+            nameValuesArray[i] = {'parameterName' : tempName, 'parameterValue' : tempValue};
+        }
+        generateHTMLInput(nameValuesArray);
+    }
+
+    function generateJSONResponse(){
+
+        for (var i=0; i<jsonData.parameters.length; i++)
+                jsonData.parameters[i]['parameterValue'] = $('#first-input-test' + i + '').val();
+        console.log(jsonData);
+    }
+
+    function generateHTMLInput(data){
+        var list = document.getElementById('inputs-ul');
+
+        for (var i=0; i<data.length; i++){
+
+            $('<div>').appendTo(list);
+            $('<label for="first-input-test' + i + '">' + data[i]['parameterName'] +'</label>').appendTo(list);
+
+            $('<p><input type="text" value= "' + data[i]['parameterValue'] + '" id="first-input-test' + i + '"></p>').appendTo(list);
+            $('</div>').appendTo(list);
+        }
+    }
+/*var queryParameter;
+    function EncodeConfigString(){
+        generateJSONResponse();
+            var dfd = $.Deferred();
+            $.ajax("/api/encodeString",{
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify(jsonData),
+                contentType: "application/json",
+                complete: function() {
+                  //called when complete
+                  console.log('process complete');
+                },
+                success: function(data) {
+                  queryParameter = data.queryParam;
+                  updateConfiguration();
+               },
+
+                error: function() {
+                  console.log('process error');
+                },
+              });
+              return dfd.resolve();
+    }*/
+
+    function updateConfiguration(){
+       // console.log(queryParameter);
+        var dfd = $.Deferred();
+            $.ajax("/api/updateConfig",{
+                type: "POST",
+                dataType: "json",
+                data:queryParameter, //string
+                contentType: "application/json",
+                Accept:'application/vnd.onshape.v1+json',
+                complete: function() {
+                  //called when complete
+                  console.log('update complete');
+                },
+                success: function(data) {
+                    console.log('updating success');
+               },
+                error: function() {
+                  console.log('updating error');
+                },
+              });
+              return dfd.resolve();
+    }
 })();

@@ -3,7 +3,12 @@ var router = express.Router();
 var authentication = require('../authentication');
 var request = require('request-promise');
 var url = require('url');
+const bodyParser = require("body-parser");
 
+
+
+const urlencodedParser = bodyParser.urlencoded({extended: false});
+router.use(urlencodedParser);
 var apiUrl = 'https://cad.onshape.com';
 if (process.env.API_URL) {
   apiUrl = process.env.API_URL;
@@ -147,8 +152,7 @@ var getStl = function(req, res) {
 };
 
 
-var getConfigString = function(req, res) {
-
+var getDecodedConfigString = function(req, res) {
   request.get({
     uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/m/8c69fddbdce56a2d4ca5f2be/e/a7d49a58add345ddb7362051/configurationencodings/undefined?includeDisplay=false&configurationIsId=true',
     headers: {
@@ -169,10 +173,88 @@ var getConfigString = function(req, res) {
   });
 };
 
+var getEncodedConfigString = function(req, res) {
 
-router.get('/test', getConfigString);
+  request.get({
+    uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/w/aae7a1ff196df52c5a4c153c/e/a7d49a58add345ddb7362051/configuration',
+    headers: {
+      'Authorization': 'Bearer ' + req.user.accessToken
+    }
+  }).then(function(data) {
+    res.send(data);
+  }).catch(function(data) {
+    if (data.statusCode === 401) {
+      authentication.refreshOAuthToken(req, res).then(function() {
+        getConfigString(req, res);
+      }).catch(function(err) {
+        console.log('Error refreshing token or getting documents: ', err);
+      });
+    } else {
+      console.log('GET /api/documents error: ', data);
+    }
+  });
+};
+
+
+
+/*var encodeConfigString = function(req, res) {
+  debugger;
+  console.log( "request data = " + req.body);
+  request.post({
+    uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/configurationencodings',
+    headers: {
+      'Authorization': 'Bearer ' + req.user.accessToken
+    },
+    json:true,
+    body: req.body
+  }).then(function(data){
+    console.log(data);
+    res.json(data);
+  }).catch(function(data) {
+    if (data.statusCode === 401) {
+      authentication.refreshOAuthToken(req, res).then(function() {
+        encodeConfigString(req, res);
+      }).catch(function(err) {
+        console.log('Error refreshing token or getting documents: ', err);
+      });
+    } else {
+      console.log('GET /api/documents error: ', data);
+    }
+  });
+};
+*/
+  /*var updateConfigString = function(req, res) {
+    alert('test');
+    request.post({
+      uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051//configuration?' + req.body,
+      headers: {
+        'Authorization': 'Bearer ' + req.user.accessToken,
+      },
+      body: "{'test': 'test'}"
+    }).then(function(data){
+      console.log(data);
+      res.json(data);
+    }).catch(function(data) {
+      if (data.statusCode === 401) {
+        authentication.refreshOAuthToken(req, res).then(function() {
+          encodeConfigString(req, res);
+        }).catch(function(err) {
+          console.log('Error refreshing token or getting documents: ', err);
+        });
+      } else {
+        console.log('GET /api/documents error: ', data);
+      }
+    });
+    };
+*/
+  const jsonParser = express.json();
+
+router.post('/updateConfig',  updateConfigString);
+router.post('/encodeString',jsonParser, encodeConfigString);
+router.get('/getEncodedConfig', getEncodedConfigString);
+router.get('/getDecodedConfig', getDecodedConfigString);
 router.get('/documents', getDocuments);
-router.get('/elements', getConfigString);
+router.get('/elements', getElementList);
 router.get('/stl', getStl);
 router.get('/parts', getPartsList);
 
