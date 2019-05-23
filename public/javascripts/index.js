@@ -349,8 +349,6 @@
         generateJSONResponse();
         for (var i=0; i<encodedConfigString.currentConfiguration.length; i++){
                     for (var j=0;  j<encodedConfigString.currentConfiguration.length; j++){
-                        console.log('jsonData.parameters[i][parameterId] =' + jsonData.parameters[j]['parameterId']);
-                        console.log('encodedConfigString.currentConfiguration[i].message.parameterId =' + encodedConfigString.currentConfiguration[i].message.parameterId);
                         if (jsonData.parameters[j]['parameterId'] === encodedConfigString.currentConfiguration[i].message.parameterId){
                             encodedConfigString.currentConfiguration[i].message.expression = jsonData.parameters[j]['parameterDisplayValue'];
                             var expSmall = /[a-z]{1,}/;
@@ -359,10 +357,7 @@
                             encodedConfigString.currentConfiguration[i].message.value = tempStringsArray;
                         }
             }
-                console.log(i + ' = ' + tempStringsArray);
         }
-        console.log("JSON");
-        console.log(encodedConfigString);
     }
 
     function getDecodedConfig() {
