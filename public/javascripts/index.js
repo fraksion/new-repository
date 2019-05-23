@@ -404,6 +404,7 @@ var queryParameter;
 
     function updateConfiguration(){
         console.log("Get Started^" + JSON.stringify({test : queryParameter}));
+        console.log(JSON.parse(JSON.stringify({test : queryParameter})).test);
         var dfd = $.Deferred();
             $.ajax("/api/updateConfig",{
                 type: "POST",
