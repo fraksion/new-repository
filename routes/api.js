@@ -227,10 +227,9 @@ var encodeConfigString = function(req, res) {
 
 var logging = function loggingReq(req,res,next){
   console.log('TEST');
-  next();
 }
 
-router.use('/', logging);
+router.use('/updateConfig', logging);
 router.post('/updateConfig', jsonParser, updateConfigString);
 router.post('/encodeString',jsonParser, encodeConfigString);
 router.get('/getConfig', getConfigString);
