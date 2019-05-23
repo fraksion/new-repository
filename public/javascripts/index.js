@@ -345,6 +345,7 @@
 
     function generateEncodedMessage()
     {
+        generateJSONResponse();
         for (var i=0; i<encodedConfigString.currentConfiguration.length; i++){
             encodedConfigString.currentConfiguration[i].message.value = jsonData.parameters[i]['parameterDisplayValue'];
                 console.log(i + ' = ' + encodedConfigString.currentConfiguration[i].message.value);
@@ -383,6 +384,7 @@
                 }
             }
             nameValuesArray[i] = {'parameterName' : tempName, 'parameterDisplayValue' : tempValue};
+            console.log(nameValuesArray[i]);
         }
         generateHTMLInput(nameValuesArray);
     }
