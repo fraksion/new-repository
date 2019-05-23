@@ -393,7 +393,6 @@ var queryParameter;
                 },
                 success: function(data) {
                   queryParameter = data.queryParam;
-                  
                },
 
                 error: function() {
