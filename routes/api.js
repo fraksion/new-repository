@@ -5,6 +5,10 @@ var request = require('request-promise');
 var url = require('url');
 const bodyParser = require("body-parser");
 
+var globalDocId = '0d86c205100fae7001a39ea8'	;
+var globalWSId= 'aae7a1ff196df52c5a4c153c'	;
+var globalEId= 'a7d49a58add345ddb7362051'	;
+var globalMId= '8c69fddbdce56a2d4ca5f2be'	;
 
 
 const urlencodedParser = bodyParser.urlencoded({extended: false});
@@ -65,8 +69,6 @@ var getDocuments = function(req, res) {
     }
   });
 };
-
-
 
 var getElementList = function(req, res) {
   request.get({
@@ -154,7 +156,10 @@ var getStl = function(req, res) {
 
 var getDecodedConfigString = function(req, res) {
   request.get({
-    uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/m/8c69fddbdce56a2d4ca5f2be/e/a7d49a58add345ddb7362051/configurationencodings/undefined?includeDisplay=false&configurationIsId=true',
+    uri: apiUrl + '/api/elements/d/' + globalDocId + 
+	'/m/' + globalMId + 
+	'/e/' + globalEId + 
+	'/configurationencodings/undefined?includeDisplay=false&configurationIsId=true',
     headers: {
       'Authorization': 'Bearer ' + req.user.accessToken
     }
@@ -176,7 +181,11 @@ var getDecodedConfigString = function(req, res) {
 var getEncodedConfigString = function(req, res) {
 
   request.get({
-    uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/w/aae7a1ff196df52c5a4c153c/e/a7d49a58add345ddb7362051/configuration',
+//    uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/w/aae7a1ff196df52c5a4c153c/e/a7d49a58add345ddb7362051/configuration',
+    uri: apiUrl + '/api/elements/d/' + globalDocId + 
+	'/w/' + globalWSId + 
+	'/e/' + globalEId + 
+	'/configuration',
     headers: {
       'Authorization': 'Bearer ' + req.user.accessToken
     }
@@ -195,9 +204,41 @@ var getEncodedConfigString = function(req, res) {
   });
 };
 
+
+
+/*var encodeConfigString = function(req, res) {
+  debugger;
+  console.log( "request data = " + req.body);
+  request.post({
+    uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/e/a7d49a58add345ddb7362051/configurationencodings',
+    headers: {
+      'Authorization': 'Bearer ' + req.user.accessToken
+    },
+    json:true,
+    body: req.body
+  }).then(function(data){
+    console.log(data);
+    res.json(data);
+  }).catch(function(data) {
+    if (data.statusCode === 401) {
+      authentication.refreshOAuthToken(req, res).then(function() {
+        encodeConfigString(req, res);
+      }).catch(function(err) {
+        console.log('Error refreshing token or getting documents: ', err);
+      });
+    } else {
+      console.log('GET /api/documents error: ', data);
+    }
+  });
+};
+*/
   var updateConfigString = function(req, res) {
     request.post({
-      uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/w/aae7a1ff196df52c5a4c153c/e/a7d49a58add345ddb7362051/configuration',
+//      uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/w/aae7a1ff196df52c5a4c153c/e/a7d49a58add345ddb7362051/configuration',
+    uri: apiUrl + '/api/elements/d/' + globalDocId + 
+	'/w/' + globalWSId + 
+	'/e/' + globalEId + 
+	'/configuration',
       headers: {
         'Authorization': 'Bearer ' + req.user.accessToken,
       },
