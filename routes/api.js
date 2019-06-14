@@ -72,7 +72,7 @@ var getDocuments = function(req, res) {
 
 var getElementList = function(req, res) {
   request.get({
-    uri: apiUrl + '/api/documents/d/' + req.query.documentId + "/w/" + req.query.workspaceId + '/elements',
+    uri: apiUrl + '/api/documents/d/0d86c205100fae7001a39ea8/w/aae7a1ff196df52c5a4c153c/elements',
     headers: {
       'Authorization': 'Bearer ' + req.user.accessToken
     }
