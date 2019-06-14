@@ -229,16 +229,17 @@
     // Functions to support loading list of models to view ...
     function getElements() {
         var dfd = $.Deferred();
-        $.ajax('/api/elements'+ window.location.search, {
+        $.ajax('/api/elements', {
             dataType: 'json',
             type: 'GET',
             success: function(data) {
                 addElements(data, dfd);
             },
             error: function() {
+                console.log("error");
             }
         });
-        return dfd.promise();
+        return dfd.resolve();
     }
 
     function getParts() {
@@ -250,6 +251,7 @@
                 addParts(data, dfd, elementsDict);
             },
             error: function() {
+
             }
         });
         return dfd.promise();
