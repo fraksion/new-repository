@@ -101,7 +101,7 @@
      * in the URL query string.
      */
     function loadStl(angleTolerance, chordTolerance) {
-        var url = '/api/stl' + window.location.search;
+        var url = '/api/stl' +"?documentId=0d86c205100fae7001a39ea8&workspaceId=aae7a1ff196df52c5a4c153c&elementId=a7d49a58add345ddb7362051&stlElementId=a7d49a58add345ddb7362051&partId=JUD&stlElementId=a7d49a58add345ddb7362051&partId=JUD";
 
         // Parse the search string to make sure we have the last piece to load
         var local = window.location.search;
