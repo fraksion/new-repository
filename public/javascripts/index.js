@@ -236,7 +236,6 @@
                 addElements(data, dfd);
             },
             error: function() {
-                console.log("error");
             }
         });
         return dfd.promise();

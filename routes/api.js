@@ -122,8 +122,8 @@ var getStl = function(req, res) {
     console.log("** STL for partId " + req.query.partId);
   }
   else {
-    url = apiUrl + '/api/partstudios/d/' + req.query.documentId +
-    '/w/' + req.query.workspaceId + '/e/' + req.query.stlElementId + '/stl/' +
+    url = apiUrl + '/api/partstudios/d/' + globalDocId +
+    '/w/' + globalWSId + '/e/' + globalEId + '/stl/' +
     '?mode=' + 'text'  +
     '&scale=1&units=inch';
     console.log("** STL for partId " + req.query.partId);
