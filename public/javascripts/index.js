@@ -302,7 +302,7 @@
         for (var i = 0; i < data.length; ++i) {
             var elementId = data[i]["elementId"];
             var partId = data[i]["partId"];
-            var href = "/" + "documentId=0d86c205100fae7001a39ea8&workspaceId=aae7a1ff196df52c5a4c153c&elementId=a7d49a58add345ddb7362051&stlElementId=a7d49a58add345ddb7362051&partId=JUD" + "&stlElementId=" +
+            var href = "/" + "documentId=0d86c205100fae7001a39ea8&workspaceId=aae7a1ff196df52c5a4c153c&elementId=a7d49a58add345ddb7362051" + "&stlElementId=" +
                 elementId + "&partId=" + partId;
             $("#elt-select2")
                 .append(
