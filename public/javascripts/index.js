@@ -263,7 +263,7 @@
             if (data[i].elementType === "PARTSTUDIO") {
                 // URL must contain query string!
                 // (Query string contains document and workspace information)
-                var href = "/" + window.location.search + "&stlElementId=" + data[i].id;
+                var href = "/" + "documentId=0d86c205100fae7001a39ea8&workspaceId=aae7a1ff196df52c5a4c153c&elementId=a7d49a58add345ddb7362051&stlElementId=a7d49a58add345ddb7362051&partId=JUD" + "&stlElementId=" + data[i].id;
                 $("#elt-select2")
                     .append(
                     "<option href='" + href + "'>" + "Element - " + data[i].name + "</option>"

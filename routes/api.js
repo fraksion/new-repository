@@ -115,15 +115,15 @@ var getPartsList = function(req, res) {
 var getStl = function(req, res) {
   var url;
   if (req.query.partId != null) {
-    url = apiUrl + '/api/parts/d/' + globalDocId +
-    '/w/' + globalWSId + '/e/' + globalEId +'/partid/'+ req.query.partId + '/stl/' +
+    url = apiUrl + '/api/parts/d/' + req.query.documentId +
+    '/w/' + req.query.workspaceId + '/e/' + req.query.stlElementId +'/partid/'+ req.query.partId + '/stl/' +
     '?mode=' + 'text'  +
     '&scale=1&units=inch';
     console.log("** STL for partId " + req.query.partId);
   }
   else {
-    url = apiUrl + '/api/partstudios/d/' + globalDocId +
-    '/w/' + globalWSId + '/e/' + globalEId + '/stl/' +
+    url = apiUrl + '/api/partstudios/d/' + req.query.documentId +
+    '/w/' + req.query.workspaceId + '/e/' + req.query.stlElementId + '/stl/' +
     '?mode=' + 'text'  +
     '&scale=1&units=inch';
     console.log("** STL for partId " + req.query.partId);
