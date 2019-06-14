@@ -72,7 +72,7 @@ var getDocuments = function(req, res) {
 
 var getElementList = function(req, res) {
   request.get({
-    uri: apiUrl + '/api/documents/d/0d86c205100fae7001a39ea8/w/aae7a1ff196df52c5a4c153c/elements',
+    uri: apiUrl + '/api/documents/d/' + globalDocId + "/w/" + globalWSId + '/elements',
     headers: {
       'Authorization': 'Bearer ' + req.user.accessToken
     }
@@ -93,7 +93,7 @@ var getElementList = function(req, res) {
 
 var getPartsList = function(req, res) {
   request.get({
-    uri: apiUrl + '/api/parts/d/' + req.query.documentId + "/w/" + req.query.workspaceId,
+    uri: apiUrl + '/api/parts/d/' + globalDocId + "/w/" + globalWSId,
     headers: {
       'Authorization': 'Bearer ' + req.user.accessToken
     }
