@@ -24,6 +24,14 @@
             updateConfiguration();
         })
 
+        $('#test-btn').click(function(){
+            deleteModels();
+            var angleTolerance = $('#angle-tolerance').val();
+            var chordTolerance = $('#chord-tolerance').val();
+            loadStl(angleTolerance, chordTolerance);
+            $('#stl-tolerance-modal').modal('hide');
+        })
+
         init();
         loadStl(-1, -1);
         animate();
@@ -99,9 +107,11 @@
     /*
      * Grab STL data from server. Information about which STL to grab is located
      * in the URL query string.
+     * 
+     *  window.location.search == "?documentId=0d86c205100fae7001a39ea8&workspaceId=aae7a1ff196df52c5a4c153c&elementId=a7d49a58add345ddb7362051&stlElementId=a7d49a58add345ddb7362051&partId=JUD"
      */
     function loadStl(angleTolerance, chordTolerance) {
-        var url = '/api/stl' +"?documentId=0d86c205100fae7001a39ea8&workspaceId=aae7a1ff196df52c5a4c153c&elementId=a7d49a58add345ddb7362051&stlElementId=a7d49a58add345ddb7362051&partId=JUD&stlElementId=a7d49a58add345ddb7362051&partId=JUD";
+        var url = '/api/stl' + "?documentId=0d86c205100fae7001a39ea8&workspaceId=aae7a1ff196df52c5a4c153c&elementId=a7d49a58add345ddb7362051&stlElementId=a7d49a58add345ddb7362051&partId=JUD";
 
         // Parse the search string to make sure we have the last piece to load
         var local = window.location.search;
@@ -302,7 +312,7 @@
         for (var i = 0; i < data.length; ++i) {
             var elementId = data[i]["elementId"];
             var partId = data[i]["partId"];
-            var href = "/" + "documentId=0d86c205100fae7001a39ea8&workspaceId=aae7a1ff196df52c5a4c153c&elementId=a7d49a58add345ddb7362051" + "&stlElementId=" +
+            var href = "/" + window.location.search + "&stlElementId=" +
                 elementId + "&partId=" + partId;
             $("#elt-select2")
                 .append(
