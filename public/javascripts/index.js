@@ -33,8 +33,8 @@
         })
 
         $('#doc-select').change(function(){
-            var test = $("#myselect option:selected").text();
-            console.log(test); 
+            var selectedDocID = $("#doc-select").val();
+            getWorkplaces(selectedDocID);
         })
 
         init();
@@ -258,6 +258,34 @@
         return dfd.promise();
     }
 
+    function getWorkplaces(docId){
+        var dfd = $.Deferred();
+        console.log("geting workplaces");
+        $.ajax('/api/workplaces?documentId=' + docId, {
+            dataType: 'json',
+            type: 'GET',
+            success: function(data) {
+                addWorkplaces(data, dfd);
+            },
+            error: function() {
+            }
+        });
+        return dfd.promise();
+    }
+
+    function addWorkplaces(data, dfd){
+        console.log("workplaces =" + data );
+        var onshapeElements = $("#onshape-elements");
+        onshapeElements.empty();
+        for (var i = 0; i < data.length; ++i) {
+                $("#wp-select")
+                    .append(
+                    "<option value='" + data[i].id + "'>" + " " + data[i].name + "</option>"
+                )
+        }
+        dfd.resolve();
+    }
+
     function getDocuments() {
         var dfd = $.Deferred();
         $.ajax('/api/documents'+ window.location.search, {
@@ -273,12 +301,9 @@
     }
 
     function addDocuments(data, dfd) {
-        console.log("data  = " + data.items.length);
         var onshapeElements = $("#onshape-elements");
         onshapeElements.empty();
         for (var i = 0; i < data.items.length; ++i) {
-            console.log(data.items[i].name);
-            console.log(data.items[i].id);
                 $("#doc-select")
                     .append(
                     "<option value='" + data.items[i].id + "'>" + " " + data.items[i].name + "</option>"

@@ -70,6 +70,27 @@ var getDocuments = function(req, res) {
   });
 };
 
+var getWorkPlaces = function(req, res) {
+  request.get({
+    uri: apiUrl + '/api/documents/d/' + req.query.documentId + '/workspaces',
+    headers: {
+      'Authorization': 'Bearer ' + req.user.accessToken
+    }
+  }).then(function(data) {
+    res.send(data);
+  }).catch(function(data) {
+    if (data.statusCode === 401) {
+      authentication.refreshOAuthToken(req, res).then(function() {
+        getDocuments(req, res);
+      }).catch(function(err) {
+        console.log('Error refreshing token or getting documents: ', err);
+      });
+    } else {
+      console.log('GET /api/documents error: ', data);
+    }
+  });
+};
+
 var getElementList = function(req, res) {
   request.get({
     uri: apiUrl + '/api/documents/d/' + globalDocId + "/w/" + globalWSId + '/elements',
@@ -269,6 +290,7 @@ router.get('/documents', getDocuments);
 router.get('/elements', getElementList);
 router.get('/stl', getStl);
 router.get('/parts', getPartsList);
+router.get('/workplaces', getWorkPlaces);
 
 
 module.exports = router;
