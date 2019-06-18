@@ -11,6 +11,14 @@
             e.stopImmediatePropagation();
         });
 
+        $('#elt-select2').change(function(){
+            deleteModels();
+            var angleTolerance = $('#angle-tolerance').val();
+            var chordTolerance = $('#chord-tolerance').val();
+            loadStl(angleTolerance, chordTolerance);
+            $('#stl-tolerance-modal').modal('hide');
+        })
+
         $('#stl-tolerance-submit').click(function() {
             deleteModels();
             var angleTolerance = $('#angle-tolerance').val();
@@ -36,7 +44,7 @@
         })
 
         init();
-        loadStl(-1, -1);
+        //loadStl(-1, -1);
         animate();
     }
 
@@ -111,7 +119,7 @@
      *  window.location.search == "?documentId=0d86c205100fae7001a39ea8&workspaceId=aae7a1ff196df52c5a4c153c&elementId=a7d49a58add345ddb7362051&stlElementId=a7d49a58add345ddb7362051&partId=JUD"
      */
     function loadStl(angleTolerance, chordTolerance) {
-        var url = '/api/stl' + "?documentId=0d86c205100fae7001a39ea8&workspaceId=aae7a1ff196df52c5a4c153c&elementId=a7d49a58add345ddb7362051&stlElementId=a7d49a58add345ddb7362051&partId=JUD";
+        var url = '/api/stl' +  $("#elt-select2").val();
 
         // Parse the search string to make sure we have the last piece to load
         var local = window.location.search;
@@ -331,10 +339,13 @@
             if (data[i].elementType === "PARTSTUDIO") {
                 // URL must contain query string!
                 // (Query string contains document and workspace information)
-                var href = "/" + window.location.search + "&stlElementId=" + data[i].id;
+                var docId = $("#doc-select").val();
+                var wpId = $("#wp-select").val();
+                var baseHref = "?documentId=" + docId + "&workspaceId="+wpId +"&elementId=" + data[i].id;
+                var href = "/" + baseHref + "&stlElementId=" + data[i].id;
                 $("#elt-select2")
                     .append(
-                    "<option href='" + href + "'>" + "Element - " + data[i].name + "</option>"
+                    "<option value='" + href + "'>" + "Element - " + data[i].name + "</option>"
                 )
 
             }
@@ -370,15 +381,16 @@
         for (var i = 0; i < data.length; ++i) {
             var elementId = data[i]["elementId"];
             var partId = data[i]["partId"];
-            var href = "/" + window.location.search + "&stlElementId=" +
+            var docId = $("#doc-select").val();
+            var wpId = $("#wp-select").val();
+            var baseHref = "?documentId=" + docId + "&workspaceId="+wpId +"&elementId=" + elementId;
+            var href = "/" + baseHref + "&stlElementId=" +
                 elementId + "&partId=" + partId;
             $("#elt-select2")
                 .append(
-                "<option href='" + href + "'>" + "Part -" + data[i].name + "</option>"
+                "<option value='" + href + "'>" + "Part -" + data[i].name + "</option>"
             )
-
         }
-
         dfd.resolve();
     }
 
@@ -446,26 +458,29 @@
     var jsonData;
 
     function GetNameAndValue(data){
-        jsonData = data;
-        for (var i=0; i<data.parameters.length; i++)
+        if (data.parameters != undefined && data.parameters.length>0)
         {
-            var tempName;
-            var temtValue;
-            var tempId;
-            for (key in data.parameters[i]){
-                if (key === 'parameterName'){
-                    tempName = data.parameters[i][key];
+            jsonData = data;
+            for (var i=0; i<data.parameters.length; i++)
+            {
+                var tempName;
+                var temtValue;
+                var tempId;
+                for (key in data.parameters[i]){
+                    if (key === 'parameterName'){
+                        tempName = data.parameters[i][key];
+                    }
+                    else if (key === 'parameterDisplayValue'){
+                        tempValue = data.parameters[i][key];
+                    }
+                    else if (key === 'parameterId'){
+                        tempId = data.parameters[i][key];
+                    }
                 }
-                else if (key === 'parameterDisplayValue'){
-                    tempValue = data.parameters[i][key];
-                }
-                else if (key === 'parameterId'){
-                    tempId = data.parameters[i][key];
-                }
+                nameValuesArray[i] = {'parameterName' : tempName, 'parameterDisplayValue' : tempValue, 'parameterId' : tempId};
             }
-            nameValuesArray[i] = {'parameterName' : tempName, 'parameterDisplayValue' : tempValue, 'parameterId' : tempId};
+            generateHTMLInput(nameValuesArray);
         }
-        generateHTMLInput(nameValuesArray);
     }
 
     function generateJSONResponse(){
@@ -475,6 +490,7 @@
     }
 
     function generateHTMLInput(data){
+        $('#inputs-ul').empty();
         var list = document.getElementById('inputs-ul');
 
         for (var i=0; i<data.length; i++){
