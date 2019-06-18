@@ -342,7 +342,7 @@
                 var docId = $("#doc-select").val();
                 var wpId = $("#wp-select").val();
                 var baseHref = "?documentId=" + docId + "&workspaceId="+wpId +"&elementId=" + data[i].id;
-                var href = "/" + baseHref + "&stlElementId=" + data[i].id;
+                var href = baseHref + "&stlElementId=" + data[i].id;
                 $("#elt-select2")
                     .append(
                     "<option value='" + href + "'>" + "Element - " + data[i].name + "</option>"
@@ -384,7 +384,7 @@
             var docId = $("#doc-select").val();
             var wpId = $("#wp-select").val();
             var baseHref = "?documentId=" + docId + "&workspaceId="+wpId +"&elementId=" + elementId;
-            var href = "/" + baseHref + "&stlElementId=" +
+            var href = baseHref + "&stlElementId=" +
                 elementId + "&partId=" + partId;
             $("#elt-select2")
                 .append(
