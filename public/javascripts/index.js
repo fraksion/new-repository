@@ -251,7 +251,9 @@
     // Functions to support loading list of models to view ...
     function getElements() {
         var dfd = $.Deferred();
-        $.ajax('/api/elements'+ window.location.search, {
+        var documentId = $("#doc-select").val();
+        var wpId = $("#wp-select").val();
+        $.ajax('/api/elements?documentId = ' + documentId + "&workspaceId=" + wpId, {
             dataType: 'json',
             type: 'GET',
             success: function(data) {
@@ -319,7 +321,9 @@
 
     function getParts() {
         var dfd = $.Deferred();
-        $.ajax('/api/parts' + window.location.search, {
+        var documentId = $("#doc-select").val();
+        var wpId = $("#wp-select").val();
+        $.ajax('/api/parts?documentId = ' + documentId + "&workspaceId=" + wpId, {
             dataType: 'json',
             type: 'GET',
             success: function(data) {
