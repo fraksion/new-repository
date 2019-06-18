@@ -272,8 +272,8 @@
         var onshapeElements = $("#onshape-elements");
         onshapeElements.empty();
         for (var i = 0; i < data.items.length; ++i) {
-            console.log(data[i].name);
-            console.log(data[i].id);
+            console.log(data.items[i].name);
+            console.log(data.items[i].id);
                 $("#doc-select")
                     .append(
                     "<option value='" + data[i].id + "'>" + "Element - " + data[i].name + "</option>"
