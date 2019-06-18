@@ -44,7 +44,9 @@
 
         // Setup the drop list for models ...
         $("#elt-select2").append("<option>-- Top of List --</option>");
-
+        $("#doc-select").append("<option>-- Top of List --</option>");
+        $("#wp-select").append("<option>-- Top of List --</option>");
+        getDocuments();
         //var elementsDict;   
         getEncodedConfig();
         getDecodedConfig();
@@ -249,6 +251,30 @@
             }
         });
         return dfd.promise();
+    }
+
+    function getDocuments() {
+        var dfd = $.Deferred();
+        $.ajax('/api/documents'+ window.location.search, {
+            dataType: 'json',
+            type: 'GET',
+            success: function(data) {
+                addDocuments(data, dfd);
+            },
+            error: function() {
+            }
+        });
+        return dfd.promise();
+    }
+
+    function addDocuments(data, dfd) {
+        for (var i = 0; i < data.length; ++i) {
+                $("#doc-select")
+                    .append(
+                    "<option value='" + data[i].id + "'>" + "Element - " + data[i].name + "</option>"
+                )
+        }
+        dfd.resolve();
     }
 
     function getParts() {
