@@ -280,6 +280,8 @@
     function addWorkplaces(data, dfd){
         var onshapeElements = $("#onshape-elements");
         onshapeElements.empty();
+        $("#wp-select").empty();
+        $("#wp-select").append("<option>-- Top of List --</option>");
         for (var i = 0; i < data.length; ++i) {
                 $("#wp-select")
                     .append(
