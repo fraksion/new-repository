@@ -276,7 +276,7 @@
             console.log(data.items[i].id);
                 $("#doc-select")
                     .append(
-                    "<option value='" + data.items[i].id + "'>" + "Element - " + data.items[i].name + "</option>"
+                    "<option value='" + data.items[i].id + "'>" + " " + data.items[i].name + "</option>"
                 )
         }
         dfd.resolve();
