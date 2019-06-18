@@ -12,11 +12,11 @@
         });
 
         $('#elt-select2').change(function(){
-            deleteModels();
-            var angleTolerance = $('#angle-tolerance').val();
-            var chordTolerance = $('#chord-tolerance').val();
-            loadStl(angleTolerance, chordTolerance);
-            $('#stl-tolerance-modal').modal('hide');
+           // deleteModels();
+           // var angleTolerance = $('#angle-tolerance').val();
+           // var chordTolerance = $('#chord-tolerance').val();
+            loadStl(-1, -1);
+           // $('#stl-tolerance-modal').modal('hide');
         });
 
         $('#stl-tolerance-submit').click(function() {
@@ -41,13 +41,6 @@
             getElements().then(getParts);
             getEncodedConfig();
             getDecodedConfig();
-        });
-        $('#testbut').click(function(){
-            deleteModels();
-            var angleTolerance = $('#angle-tolerance').val();
-            var chordTolerance = $('#chord-tolerance').val();
-            loadStl2(angleTolerance, chordTolerance);
-            $('#stl-tolerance-modal').modal('hide');
         });
         init();
         //loadStl(-1, -1);
