@@ -16,6 +16,8 @@
             //var angleTolerance = $('#angle-tolerance').val();
             //var chordTolerance = $('#chord-tolerance').val();
             loadStl(-1, -1);
+            getEncodedConfig();
+            getDecodedConfig();
             $('#stl-tolerance-modal').modal('hide');
         });
 
@@ -39,8 +41,6 @@
 
         $('#wp-select').change(function(){
             getElements().then(getParts);
-            getEncodedConfig();
-            getDecodedConfig();
         });
         init();
         //loadStl(-1, -1);
@@ -340,7 +340,7 @@
                 // (Query string contains document and workspace information)
                 var docId = $("#doc-select").val();
                 var wpId = $("#wp-select").val();
-                var baseHref = "?documentId=" + docId + "&workspaceId="+wpId;
+                var baseHref = "?documentId=" + docId + "&workspaceId="+wpId + "&elementId" + data[i].id;
                 var href = baseHref + "&stlElementId=" + data[i].id;
                 $("#elt-select2")
                     .append(
@@ -382,7 +382,7 @@
             var partId = data[i]["partId"];
             var docId = $("#doc-select").val();
             var wpId = $("#wp-select").val();
-            var baseHref = "?documentId=" + docId + "&workspaceId="+wpId;
+            var baseHref = "?documentId=" + docId + "&workspaceId="+wpId +"&elementId" + elementId;
             var href = baseHref + "&stlElementId=" +
                 elementId + "&partId=" + partId;
             $("#elt-select2")
@@ -409,7 +409,7 @@
 
     function getEncodedConfig() {
         var dfd = $.Deferred();
-        $.ajax('/api/getEncodedConfig', {
+        $.ajax('/api/getEncodedConfig' + $('#elt-select2').val(), {
             dataType: 'json',
             type: 'GET',
             success: function(data) {
@@ -441,7 +441,7 @@
 
     function getDecodedConfig() {
         var dfd = $.Deferred();
-        $.ajax('/api/getDecodedConfig', {
+        $.ajax('/api/getDecodedConfig' + $('#elt-select2').val(), {
             dataType: 'json',
             type: 'GET',
             success: function(data) {
@@ -505,7 +505,7 @@
     function updateConfiguration(){
         console.log(encodedConfigString);
         var dfd = $.Deferred();
-            $.ajax("/api/updateConfig",{
+            $.ajax("/api/updateConfig" + $('#elt-select2').val(),{
                 type: "POST",
                 dataType: "json",
                 data:JSON.stringify(encodedConfigString), 

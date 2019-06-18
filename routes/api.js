@@ -177,9 +177,9 @@ var getStl = function(req, res) {
 
 var getDecodedConfigString = function(req, res) {
   request.get({
-    uri: apiUrl + '/api/elements/d/' + globalDocId + 
-	'/m/' + globalMId + 
-	'/e/' + globalEId + 
+    uri: apiUrl + '/api/elements/d/' + req.query.documentId + 
+	'/m/' + req.query.workspaceId + 
+	'/e/' + req.query.elementId + 
 	'/configurationencodings/undefined?includeDisplay=false&configurationIsId=true',
     headers: {
       'Authorization': 'Bearer ' + req.user.accessToken
@@ -203,9 +203,9 @@ var getEncodedConfigString = function(req, res) {
 
   request.get({
 //    uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/w/aae7a1ff196df52c5a4c153c/e/a7d49a58add345ddb7362051/configuration',
-    uri: apiUrl + '/api/elements/d/' + globalDocId + 
-	'/w/' + globalWSId + 
-	'/e/' + globalEId + 
+    uri: apiUrl + '/api/elements/d/' + req.query.documentId + 
+	'/w/' + req.query.workspaceId + 
+	'/e/' + req.query.elementId + 
 	'/configuration',
     headers: {
       'Authorization': 'Bearer ' + req.user.accessToken
@@ -227,9 +227,9 @@ var getEncodedConfigString = function(req, res) {
 
   var updateConfigString = function(req, res) {
     request.post({
-    uri: apiUrl + '/api/elements/d/' + globalDocId + 
-	'/w/' + globalWSId + 
-	'/e/' + globalEId + 
+    uri: apiUrl + '/api/elements/d/' + req.query.documentId + 
+	'/w/' + req.query.workspaceId + 
+	'/e/' + req.query.elementId + 
 	'/configuration',
       headers: {
         'Authorization': 'Bearer ' + req.user.accessToken,
