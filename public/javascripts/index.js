@@ -268,7 +268,7 @@
     }
 
     function addDocuments(data, dfd) {
-        console.log("data length = " + data.length)
+        console.log("data  = " + data)
         for (var i = 0; i < data.length; ++i) {
             console.log(data[i].name);
             console.log(data[i].id);
