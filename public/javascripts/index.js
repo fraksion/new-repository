@@ -268,7 +268,7 @@
     }
 
     function addDocuments(data, dfd) {
-        console.log("data  = " + data[0]);
+        console.log("data  = " + JSON.stringify(data));
         var onshapeElements = $("#onshape-elements");
         onshapeElements.empty();
         for (var i = 0; i < data.length; ++i) {
