@@ -268,7 +268,10 @@
     }
 
     function addDocuments(data, dfd) {
+        console.log("data length = " + data.length)
         for (var i = 0; i < data.length; ++i) {
+            console.log(data[i].name);
+            console.log(data[i].id);
                 $("#doc-select")
                     .append(
                     "<option value='" + data[i].id + "'>" + "Element - " + data[i].name + "</option>"
