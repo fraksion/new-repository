@@ -4,7 +4,7 @@
     var camera, controls, scene, renderer;
     var loadedModels = [];
     var previousData = false;
-
+    var microversion;
     window.onload = function() {
         // prevent mouse clicks from going to model while dialog is open
         $('#stl-tolerance-modal').bind('click mousedown', function(e) {
@@ -274,6 +274,22 @@
         return dfd.promise();
     }
 
+    function getCurrentMicroversion() {
+        var dfd = $.Deferred();
+        var documentId = $("#doc-select").val();
+        var wpId = $("#wp-select").val();
+        $.ajax('/api/microversion?documentId=' + documentId + "&workspaceId=" + wpId, {
+            dataType: 'json',
+            type: 'GET',
+            success: function(data) {
+                microversion = data.microversion;
+            },
+            error: function() {
+            }
+        });
+        return dfd.promise();
+    }
+
     function addWorkplaces(data, dfd){
         var onshapeElements = $("#onshape-elements");
         onshapeElements.empty();
@@ -340,7 +356,7 @@
                 // (Query string contains document and workspace information)
                 var docId = $("#doc-select").val();
                 var wpId = $("#wp-select").val();
-                var baseHref = "?documentId=" + docId + "&workspaceId="+wpId + "&elementId=" + data[i].id;
+                var baseHref = "?documentId=" + docId + "&workspaceId="+wpId + "&elementId=" + data[i].id + "&microversion=" + microversion;
                 var href = baseHref + "&stlElementId=" + data[i].id;
                 $("#elt-select2")
                     .append(
@@ -382,7 +398,7 @@
             var partId = data[i]["partId"];
             var docId = $("#doc-select").val();
             var wpId = $("#wp-select").val();
-            var baseHref = "?documentId=" + docId + "&workspaceId="+wpId +"&elementId=" + elementId;
+            var baseHref = "?documentId=" + docId + "&workspaceId="+wpId +"&elementId=" + elementId  + "&microversion=" + microversion;
             var href = baseHref + "&stlElementId=" +
                 elementId + "&partId=" + partId;
             $("#elt-select2")

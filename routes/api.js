@@ -91,6 +91,27 @@ var getWorkPlaces = function(req, res) {
   });
 };
 
+var getMicroversion = function(req, res) {
+  request.get({
+    uri: apiUrl + '/api/documents/d/'+req.query.documentId +'/w/' + req.query.workspaceId +'/currentmicroversion',
+    headers: {
+      'Authorization': 'Bearer ' + req.user.accessToken
+    }
+  }).then(function(data) {
+    res.send(data);
+  }).catch(function(data) {
+    if (data.statusCode === 401) {
+      authentication.refreshOAuthToken(req, res).then(function() {
+        getDocuments(req, res);
+      }).catch(function(err) {
+        console.log('Error refreshing token or getting documents: ', err);
+      });
+    } else {
+      console.log('GET /api/documents error: ', data);
+    }
+  });
+};
+
 var getElementList = function(req, res) {
   request.get({
     uri: apiUrl + '/api/documents/d/' + req.query.documentId + "/w/" + req.query.workspaceId + '/elements',
@@ -178,7 +199,7 @@ var getStl = function(req, res) {
 var getDecodedConfigString = function(req, res) {
   request.get({
     uri: apiUrl + '/api/elements/d/' + req.query.documentId + 
-	'/m/' + req.query.workspaceId + 
+	'/m/' + req.query.microversion + 
 	'/e/' + req.query.elementId + 
 	'/configurationencodings/undefined?includeDisplay=false&configurationIsId=true',
     headers: {
@@ -202,11 +223,11 @@ var getDecodedConfigString = function(req, res) {
 var getEncodedConfigString = function(req, res) {
 
   request.get({
-   uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/w/aae7a1ff196df52c5a4c153c/e/a7d49a58add345ddb7362051/configuration',
-    /*uri: apiUrl + '/api/elements/d/' + req.query.documentId + 
+//    uri: apiUrl + '/api/elements/d/0d86c205100fae7001a39ea8/w/aae7a1ff196df52c5a4c153c/e/a7d49a58add345ddb7362051/configuration',
+    uri: apiUrl + '/api/elements/d/' + req.query.documentId + 
 	'/w/' + req.query.workspaceId + 
 	'/e/' + req.query.elementId + 
-	'/configuration',*/
+	'/configuration',
     headers: {
       'Authorization': 'Bearer ' + req.user.accessToken
     }
@@ -261,6 +282,6 @@ router.get('/elements', getElementList);
 router.get('/stl', getStl);
 router.get('/parts', getPartsList);
 router.get('/workplaces', getWorkPlaces);
-
+router.get('/microversion', getMicroversion);
 
 module.exports = router;
