@@ -32,6 +32,11 @@
             $('#stl-tolerance-modal').modal('hide');
         })
 
+        $('#doc-select').change(function(){
+            var test = $("#doc-select").val();
+            console.log(test); 
+        })
+
         init();
         loadStl(-1, -1);
         animate();
