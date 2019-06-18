@@ -12,11 +12,11 @@
         });
 
         $('#elt-select2').change(function(){
-           // deleteModels();
+            deleteModels();
             //var angleTolerance = $('#angle-tolerance').val();
             //var chordTolerance = $('#chord-tolerance').val();
             loadStl(-1, -1);
-           // $('#stl-tolerance-modal').modal('hide');
+            $('#stl-tolerance-modal').modal('hide');
         });
 
         $('#stl-tolerance-submit').click(function() {
