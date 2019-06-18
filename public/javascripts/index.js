@@ -33,7 +33,7 @@
         })
 
         $('#doc-select').change(function(){
-            var test = $("#doc-select").val();
+            var test = $("#myselect option:selected").text();
             console.log(test); 
         })
 
