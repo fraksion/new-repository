@@ -37,6 +37,11 @@
             getWorkplaces(selectedDocID);
         })
 
+        $('#wp-select').change(function(){
+            var selectedWpID = $("#wp-select").val();
+            console.log(selectedWpID);
+        })
+
         init();
         loadStl(-1, -1);
         animate();
@@ -260,7 +265,6 @@
 
     function getWorkplaces(docId){
         var dfd = $.Deferred();
-        console.log("geting workplaces");
         $.ajax('/api/workplaces?documentId=' + docId, {
             dataType: 'json',
             type: 'GET',
@@ -274,7 +278,6 @@
     }
 
     function addWorkplaces(data, dfd){
-        console.log("workplaces =" + data );
         var onshapeElements = $("#onshape-elements");
         onshapeElements.empty();
         for (var i = 0; i < data.length; ++i) {
