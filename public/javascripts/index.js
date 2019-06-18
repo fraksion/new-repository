@@ -41,6 +41,7 @@
 
         $('#wp-select').change(function(){
             getElements().then(getParts);
+            getCurrentMicroversion();
         });
         init();
         //loadStl(-1, -1);
