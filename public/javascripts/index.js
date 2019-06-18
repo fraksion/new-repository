@@ -144,7 +144,7 @@
         }
 
         $('#stl-progress-bar').removeClass('hidden');
-
+        console.log(url);
         $.ajax(url, {
             type: 'GET',
             data: {
