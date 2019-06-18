@@ -13,6 +13,7 @@
 
         $('#elt-select2').change(function(){
             deleteModels();
+            $("#inputs-ul").empty();
             //var angleTolerance = $('#angle-tolerance').val();
             //var chordTolerance = $('#chord-tolerance').val();
             loadStl(-1, -1);
@@ -36,10 +37,18 @@
 
         $('#doc-select').change(function(){
             var selectedDocID = $("#doc-select").val();
+            $("#wp-select").empty();
+            $("#elt-select2").empty();
+            $("#inputs-ul").empty();
+            $("#elt-select2").append("<option>-- Top of List --</option>");
+            $("#wp-select").append("<option>-- Top of List --</option>");
             getWorkplaces(selectedDocID);
         });
 
         $('#wp-select').change(function(){
+            $("#elt-select2").empty();
+            $("#inputs-ul").empty();
+            $("#elt-select2").append("<option>-- Top of List --</option>");
             getElements().then(getParts);
             getCurrentMicroversion();
         });
