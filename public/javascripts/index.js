@@ -268,10 +268,10 @@
     }
 
     function addDocuments(data, dfd) {
-        console.log("data  = " + JSON.stringify(data));
+        console.log("data  = " + data.items);
         var onshapeElements = $("#onshape-elements");
         onshapeElements.empty();
-        for (var i = 0; i < data.length; ++i) {
+        for (var i = 0; i < data.items.length; ++i) {
             console.log(data[i].name);
             console.log(data[i].id);
                 $("#doc-select")
