@@ -13,9 +13,9 @@
 
         $('#elt-select2').change(function(){
            // deleteModels();
-            var angleTolerance = $('#angle-tolerance').val();
-            var chordTolerance = $('#chord-tolerance').val();
-            loadStl(angleTolerance, chordTolerance);
+            //var angleTolerance = $('#angle-tolerance').val();
+            //var chordTolerance = $('#chord-tolerance').val();
+            loadStl(-1, -1);
            // $('#stl-tolerance-modal').modal('hide');
         });
 
