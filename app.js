@@ -67,7 +67,8 @@ app.use('/api', api);
 
 app.get('/', index.renderPage);
 app.get('/grantDenied', grantDenied.renderPage);
-app.get('/oauthSignin', passport.authenticate());
+console.log("oauthSignin");
+app.get('/oauthSignin');
 // GET /oauthSignin
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  The first step in Onshape authentication will involve redirecting
