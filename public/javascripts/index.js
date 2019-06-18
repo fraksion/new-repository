@@ -24,22 +24,15 @@
             updateConfiguration();
         })
 
-        $('#test-btn').click(function(){
-            deleteModels();
-            var angleTolerance = $('#angle-tolerance').val();
-            var chordTolerance = $('#chord-tolerance').val();
-            loadStl(angleTolerance, chordTolerance);
-            $('#stl-tolerance-modal').modal('hide');
-        })
-
         $('#doc-select').change(function(){
             var selectedDocID = $("#doc-select").val();
             getWorkplaces(selectedDocID);
         })
 
         $('#wp-select').change(function(){
-            var selectedWpID = $("#wp-select").val();
-            console.log(selectedWpID);
+            getElements().then(getParts);
+            getEncodedConfig();
+            getDecodedConfig();
         })
 
         init();
@@ -60,8 +53,6 @@
         //var elementsDict;   
         getEncodedConfig();
         getDecodedConfig();
- 
-        getElements().then(getParts);
 
         // Initialize Camera
         camera = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 0.1, 1e6);
