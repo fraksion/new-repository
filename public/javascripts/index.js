@@ -16,8 +16,8 @@
             //var angleTolerance = $('#angle-tolerance').val();
             //var chordTolerance = $('#chord-tolerance').val();
             loadStl(-1, -1);
-            getEncodedConfig();
-            getDecodedConfig();
+            getEncodedConfig().then(getDecodedConfig);
+            
             $('#stl-tolerance-modal').modal('hide');
         });
 
