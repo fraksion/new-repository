@@ -143,7 +143,7 @@ var getStl = function(req, res) {
     console.log("** STL for partId " + req.query.partId);
   }
   else {
-    url = apiUrl + '/api/partstudios/d/' + req.query.documentId +
+    url = apiUrl + '/api/partstudio/d/' + req.query.documentId +
     '/w/' + req.query.workspaceId + '/e/' + req.query.stlElementId + '/stl/' +
     '?mode=' + 'text'  +
     '&scale=1&units=inch';
