@@ -11,13 +11,7 @@
             e.stopImmediatePropagation();
         });
 
-        $('#elt-select2').change(function(){
-            deleteModels();
-            var angleTolerance = $('#angle-tolerance').val();
-            var chordTolerance = $('#chord-tolerance').val();
-            loadStl(angleTolerance, chordTolerance);
-            $('#stl-tolerance-modal').modal('hide');
-        });
+
 
         $('#stl-tolerance-submit').click(function() {
             deleteModels();
@@ -394,13 +388,10 @@
             if (data[i].elementType === "PARTSTUDIO") {
                 // URL must contain query string!
                 // (Query string contains document and workspace information)
-                var docId = $("#doc-select").val();
-                var wpId = $("#wp-select").val();
-                var baseHref = "?documentId=" + docId + "&workspaceId="+wpId;
-                var href = baseHref + "&stlElementId=" + data[i].id;
+                var href = "/" + window.location.search + "&stlElementId=" + data[i].id;
                 $("#elt-select2")
                     .append(
-                    "<option value='" + href + "'>" + "Element - " + data[i].name + "</option>"
+                    "<option href='" + href + "'>" + "Element - " + data[i].name + "</option>"
                 )
 
             }
@@ -436,16 +427,15 @@
         for (var i = 0; i < data.length; ++i) {
             var elementId = data[i]["elementId"];
             var partId = data[i]["partId"];
-            var docId = $("#doc-select").val();
-            var wpId = $("#wp-select").val();
-            var baseHref = "?documentId=" + docId + "&workspaceId="+wpId;
-            var href = baseHref + "&stlElementId=" +
+            var href = "/" + window.location.search + "&stlElementId=" +
                 elementId + "&partId=" + partId;
             $("#elt-select2")
                 .append(
-                "<option value='" + href + "'>" + "Part -" + data[i].name + "</option>"
+                "<option href='" + href + "'>" + "Part -" + data[i].name + "</option>"
             )
+
         }
+
         dfd.resolve();
     }
 
