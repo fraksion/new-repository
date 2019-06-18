@@ -42,7 +42,13 @@
             getEncodedConfig();
             getDecodedConfig();
         })
-
+        $('#testbut').click(function(){
+            deleteModels();
+            var angleTolerance = $('#angle-tolerance').val();
+            var chordTolerance = $('#chord-tolerance').val();
+            loadStl2(angleTolerance, chordTolerance);
+            $('#stl-tolerance-modal').modal('hide');
+        })
         init();
         //loadStl(-1, -1);
         animate();
@@ -120,6 +126,56 @@
      */
     function loadStl(angleTolerance, chordTolerance) {
         var url = '/api/stl' +  $("#elt-select2").val();
+
+        // Parse the search string to make sure we have the last piece to load
+        var local = window.location.search;
+        var index = local.indexOf("&stl");
+        if (index > -1) {
+            // Find the last stl segment and keep just that part
+            var lastIndex = local.lastIndexOf("&stl");
+            if (index != lastIndex) {
+                var baseLocal = local.substring(0, index);
+                var lastLocal = local.substring(lastIndex);
+                var newLocal = baseLocal + lastLocal;
+
+                url = '/api/stl' + newLocal;
+            }
+        }
+
+        var binary = false;
+
+        if (angleTolerance && chordTolerance) {
+            url += '&angleTolerance=' + angleTolerance;
+            url += '&chordTolerance=' + chordTolerance;
+        }
+
+        $('#stl-progress-bar').removeClass('hidden');
+        console.log(url);
+        $.ajax(url, {
+            type: 'GET',
+            data: {
+                binary: binary
+            },
+            success: function(data) {
+                if (binary) {
+                    // Convert base64 encoded string to Uint8Array
+                    var u8 = new Uint8Array(atob(data).split('').map(function(c) {
+                        return c.charCodeAt(0);
+                    }));
+                    // Load stl data from buffer of Uint8Array
+                    loadStlData(u8.buffer);
+                } else {
+                    // ASCII
+                    loadStlData(data);
+                }
+                $('#stl-progress-bar').addClass('hidden')
+            }
+        });
+    }
+
+    function loadStl2(angleTolerance, chordTolerance) {
+        var url = '/api/stl' +  "?documentId=0d86c205100fae7001a39ea8&workspaceId=aae7a1ff196df52c5a4c153c&elementId=a7d49a58add345ddb7362051&stlElementId=a7d49a58add345ddb7362051&partId=JUD";
+
 
         // Parse the search string to make sure we have the last piece to load
         var local = window.location.search;
