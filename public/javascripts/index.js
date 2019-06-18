@@ -50,9 +50,6 @@
         $("#doc-select").append("<option>-- Top of List --</option>");
         $("#wp-select").append("<option>-- Top of List --</option>");
         getDocuments();
-        //var elementsDict;   
-        getEncodedConfig();
-        getDecodedConfig();
 
         // Initialize Camera
         camera = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 0.1, 1e6);
@@ -244,7 +241,7 @@
         var dfd = $.Deferred();
         var documentId = $("#doc-select").val();
         var wpId = $("#wp-select").val();
-        $.ajax('/api/elements?documentId = ' + documentId + "&workspaceId=" + wpId, {
+        $.ajax('/api/elements?documentId=' + documentId + "&workspaceId=" + wpId, {
             dataType: 'json',
             type: 'GET',
             success: function(data) {
@@ -314,7 +311,7 @@
         var dfd = $.Deferred();
         var documentId = $("#doc-select").val();
         var wpId = $("#wp-select").val();
-        $.ajax('/api/parts?documentId = ' + documentId + "&workspaceId=" + wpId, {
+        $.ajax('/api/parts?documentId=' + documentId + "&workspaceId=" + wpId, {
             dataType: 'json',
             type: 'GET',
             success: function(data) {
