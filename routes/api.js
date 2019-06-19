@@ -172,8 +172,8 @@ var getStl = function(req, res) {
   }
 
   if (req.query.angleTolerance !== '' && req.query.chordTolerance !== '') {
-    url += '&angleTolerance=' + req.query.angleTolerance +'&chordTolerance=' + req.query.chordTolerance + '&configuration=DIAMETER%3D0.0019160000000000002%2Bmeter%3BFLUTE_LENGTH%3D0.005%2Bmeter%3BFLUTE_PITCH%3D0.65%3BSHANK_LENGTH%3D0.001%2Bmeter';
-  }
+    url += '&angleTolerance=' + req.query.angleTolerance +'&chordTolerance=' + req.query.chordTolerance + '&configuration=DIAMETER%3D0.0010160000000000002+meter%3BFLUTE_LENGTH%3D0.0+meter%3BFLUTE_PITCH%3D0.55%3BSHANK_LENGTH%3D0.0+meter';
+  }                                                                                                        
 
  /* if (req.query.configuration != null)
   {
