@@ -157,13 +157,11 @@
             url += '&angleTolerance=' + angleTolerance;
             url += '&chordTolerance=' + chordTolerance;
         }
-        console.log('configurationString');
-        console.log(configurationString);
         if (configurationString != undefined)
         {
             url += '&' + configurationString;
         }
-
+        console.log(url);
         $('#stl-progress-bar').removeClass('hidden');
         $.ajax(url, {
             type: 'GET',
