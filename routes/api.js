@@ -172,7 +172,7 @@ var getStl = function(req, res) {
   }
 
   if (req.query.angleTolerance !== '' && req.query.chordTolerance !== '') {
-    url += '&angleTolerance=' + req.query.angleTolerance +'&chordTolerance=' + req.query.chordTolerance + '&configuration=DIAMETER%3D0.0019160000000000002%2Bmeter%3BFLUTE_LENGTH%3D0.005%2Bmeter%3BFLUTE_PITCH%3D0.65%3BSHANK_LENGTH%3D0.001%2Bmeter';
+    url += '&angleTolerance=' + req.query.angleTolerance +'&chordTolerance=' + req.query.chordTolerance;// + '&configuration=DIAMETER%3D0.0019160000000000002%2Bmeter%3BFLUTE_LENGTH%3D0.005%2Bmeter%3BFLUTE_PITCH%3D0.65%3BSHANK_LENGTH%3D0.001%2Bmeter';
   }
 
   request.get({
@@ -272,9 +272,36 @@ var getEncodedConfigString = function(req, res) {
     });
     };
 
+    var encodeConfigString = function(req, res) {
+      request.post({
+      uri: apiUrl + '/api/elements/d/' + req.query.documentId + 
+    '/e/' + req.query.elementId + 
+    '/configurationencodings',
+        headers: {
+          'Authorization': 'Bearer ' + req.user.accessToken,
+        },
+        json:true,
+        body: req.body
+      }).then(function(data){
+        res.json(data);
+      }).catch(function(data) {
+        if (data.statusCode === 401) {
+          authentication.refreshOAuthToken(req, res).then(function() {
+            encodeConfigString(req, res);
+          }).catch(function(err) {
+            console.log('Error refreshing token or getting documents: ', err);
+          });
+        } else {
+          console.log('GET /api/documents error: ', data);
+        }
+      });
+      };
+
+
   const jsonParser = express.json();
 
 router.post('/updateConfig', jsonParser, updateConfigString);
+router.post('/encodeConfig', jsonParser, encodeConfigString);
 router.get('/getEncodedConfig', getEncodedConfigString);
 router.get('/getDecodedConfig', getDecodedConfigString);
 router.get('/documents', getDocuments);

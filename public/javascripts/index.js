@@ -467,9 +467,11 @@
                             var expLarge = /[A-Z]{1,}/;
                             var tempStringsArray = jsonData.parameters[j]['parameterDisplayValue'].replace(expSmall, "").replace(expLarge,"");
                             encodedConfigString.currentConfiguration[i].message.value = tempStringsArray;
+                            
                         }
             }
         }
+        console.log(encodedConfigString);
     }
 
     function getDecodedConfig() {
