@@ -74,7 +74,7 @@ app.get('/oauthSignin');
 //   request.  The first step in Onshape authentication will involve redirecting
 //   the user to onshape.com.  After authorization, Onshape will redirect the user
 //   back to this application at /oauthRedirect
-app.use('/oauthSignin', storeExtraParams,
+app.use('/oauthSignin', 
   function(req, res){
     // The request will be redirected to Onshape for authentication, so this
     // function will not be called.
