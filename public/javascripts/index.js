@@ -28,7 +28,8 @@
             deleteModels();
             var angleTolerance = $('#angle-tolerance').val();
             var chordTolerance = $('#chord-tolerance').val();
-            loadStl(angleTolerance, chordTolerance);
+            getEncodedConfigurationString(angleTolerance, chordTolerance);
+            //loadStl(angleTolerance, chordTolerance);
             $('#stl-tolerance-modal').modal('hide');
         });
 
@@ -563,7 +564,7 @@
               return dfd.resolve();
     }
 
-    function getEncodedConfigurationString(){
+    function getEncodedConfigurationString(angleTolerance=-1, chordTolerance=-1){
         var dfd = $.Deferred();
         console.log(jsonData);
         generateJSONResponse()
@@ -579,7 +580,7 @@
                   console.log('getEncodedConfigurationString complete');
                 },
                 success: function(data) {
-                    loadStl(-1, -1, data['queryParam']);
+                    loadStl(angleTolerance, chordTolerance, data['queryParam']);
                },
                 error: function() {
                   console.log('getEncodedConfigurationString error');
