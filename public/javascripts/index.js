@@ -579,7 +579,7 @@
                 },
                 success: function(data) {
                     configString = data;
-                    console.log(data);
+                    console.log(configString);
                     console.log('getEncodedConfigurationString success');
                },
                 error: function() {
