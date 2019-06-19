@@ -125,7 +125,7 @@ app.use('/oauthRedirect',
               res.redirect(url);
           }*/
       });
-    });
+    
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
