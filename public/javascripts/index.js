@@ -577,7 +577,7 @@
                 success: function(data) {
                     var angleTolerance = $('#angle-tolerance').val();
                     var chordTolerance = $('#chord-tolerance').val();
-                    loadStl(angleTolerance, chordTolerance, data.queryParam);
+                    loadStl(angleTolerance, chordTolerance, data['queryParam']);
                },
                 error: function() {
                   console.log('updating error');
