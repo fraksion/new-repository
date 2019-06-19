@@ -36,13 +36,9 @@
             deleteModels();
             getCurrentMicroversion();
             generateEncodedMessage();
-            
+            getEncodedConfigurationString();
             updateConfiguration();
-            var angleTolerance = $('#angle-tolerance').val();
-            var chordTolerance = $('#chord-tolerance').val();
-            console.log(configString);
-            getEncodedConfigurationString().then(loadStl(angleTolerance, chordTolerance, configString));
-            
+
             $('#stl-tolerance-modal').modal('hide');
         });
 
@@ -579,9 +575,9 @@
                   console.log('update complete');
                 },
                 success: function(data) {
-                    configString = data;
-                    console.log(configString);
-                    console.log('getEncodedConfigurationString success');
+                    var angleTolerance = $('#angle-tolerance').val();
+                    var chordTolerance = $('#chord-tolerance').val();
+                    loadStl(angleTolerance, chordTolerance, data.queryParam);
                },
                 error: function() {
                   console.log('updating error');
