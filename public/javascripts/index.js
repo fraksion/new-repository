@@ -31,8 +31,13 @@
         });
 
         $('#config-btn').click(function(){
+            deleteModels();
             generateEncodedMessage();
             updateConfiguration();
+            var angleTolerance = $('#angle-tolerance').val();
+            var chordTolerance = $('#chord-tolerance').val();
+            loadStl(angleTolerance, chordTolerance);
+            $('#stl-tolerance-modal').modal('hide');
         });
 
         $('#doc-select').change(function(){
