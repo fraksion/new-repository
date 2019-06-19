@@ -293,9 +293,7 @@
     function getCurrentMicroversion() {
         var dfd = $.Deferred();
         var documentId = $("#doc-select").val();
-        console.log('documentId = ' + documentId);
         var wpId = $("#wp-select").val();
-        console.log('wpId = ' + wpId);
         $.ajax('/api/microversion?documentId=' + documentId + "&workspaceId=" + wpId, {
             dataType: 'json',
             type: 'GET',
