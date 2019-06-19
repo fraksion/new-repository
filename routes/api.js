@@ -172,13 +172,13 @@ var getStl = function(req, res) {
   }
 
   if (req.query.angleTolerance !== '' && req.query.chordTolerance !== '') {
-    url += '&angleTolerance=' + req.query.angleTolerance +'&chordTolerance=' + req.query.chordTolerance + '&configuration=DIAMETER%3D0.04+inch%3BFLUTE_LENGTH%3D0.2+inch%3BFLUTE_PITCH%3D0.55%3BSHANK_LENGTH%3D0.1+inch';
+    url += '&angleTolerance=' + req.query.angleTolerance +'&chordTolerance=' + req.query.chordTolerance;// + '&configuration=DIAMETER%3D0.0010160000000000002+meter%3BFLUTE_LENGTH%3D0.0+meter%3BFLUTE_PITCH%3D0.55%3BSHANK_LENGTH%3D0.0+meter';
   }                                                                                                        
 
-  /*if (req.query.configuration != null)
+  if (req.query.configuration != null)
   {
     url += '&configuration=' + req.query.configuration;
-  }*/
+  }
 
   request.get({
     uri: url,

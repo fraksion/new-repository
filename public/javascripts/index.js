@@ -474,14 +474,6 @@
         }
     }
 
-    function fromDisplayedToParamValue(value){
-        if (value.indexOf(" ") > 0)
-        {
-            var strArr = value.split(" ");
-                
-        }
-    }
-
     function getDecodedConfig() {
         var dfd = $.Deferred();
         $.ajax('/api/getDecodedConfig' + $('#elt-select2').val(), {
@@ -530,7 +522,7 @@
         for (var i=0; i<jsonData.parameters.length; i++)
         {
             jsonData.parameters[i]['parameterDisplayValue'] = $('#first-input-test' + i + '').val();
-            jsonData.parameters[i]['parameterDisplayValue'] = $('#first-input-test' + i + '').val();
+            jsonData.parameters[i]['parameterValue'] = $('#first-input-test' + i + '').val();
         }
                 
     }
