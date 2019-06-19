@@ -172,7 +172,7 @@ var getStl = function(req, res) {
   }
 
   if (req.query.angleTolerance !== '' && req.query.chordTolerance !== '') {
-    url += '&angleTolerance=' + req.query.angleTolerance +'&chordTolerance=' + req.query.chordTolerance;
+    url += '&angleTolerance=' + req.query.angleTolerance +'&chordTolerance=' + req.query.chordTolerance + '&configuration=DIAMETER%3D0.0010160000000000002%2Bmeter%3BFLUTE_LENGTH%3D0.0005%2Bmeter%3BFLUTE_PITCH%3D0.65%3BSHANK_LENGTH%3D0.0%2Bmeter';
   }
 
   request.get({
@@ -198,7 +198,7 @@ var getStl = function(req, res) {
 
 var getDecodedConfigString = function(req, res) {
   request.get({
-    uri: apiUrl + '/api/partstudios/d/' + req.query.documentId + 
+    uri: apiUrl + '/api/elements/d/' + req.query.documentId + 
 	'/m/' + req.query.microversion + 
 	'/e/' + req.query.elementId + 
 	'/configurationencodings/undefined?includeDisplay=false&configurationIsId=true',
