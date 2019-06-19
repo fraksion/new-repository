@@ -569,15 +569,13 @@
                 Accept:'application/vnd.onshape.v1+json',
                 complete: function() {
                   //called when complete
-                  console.log('update complete');
+                  console.log('getEncodedConfigurationString complete');
                 },
                 success: function(data) {
-                    var angleTolerance = $('#angle-tolerance').val();
-                    var chordTolerance = $('#chord-tolerance').val();
-                    loadStl(angleTolerance, chordTolerance, data['queryParam']);
+                    loadStl(-1, -1, data['queryParam']);
                },
                 error: function() {
-                  console.log('updating error');
+                  console.log('getEncodedConfigurationString error');
                 },
               });
               return dfd.resolve();
