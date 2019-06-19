@@ -447,7 +447,6 @@
             type: 'GET',
             success: function(data) {
                 encodedConfigString=data;
-                console.log(encodedConfigString);
               console.log('getEncoded success');
             },
             error: function() {
@@ -471,7 +470,6 @@
                         }
             }
         }
-        console.log(encodedConfigString);
     }
 
     function getDecodedConfig() {
@@ -521,6 +519,9 @@
 
         for (var i=0; i<jsonData.parameters.length; i++)
                 jsonData.parameters[i]['parameterDisplayValue'] = $('#first-input-test' + i + '').val();
+
+                console.log('result json decoded' );
+                console.log(jsonData);
     }
 
     function generateHTMLInput(data){
