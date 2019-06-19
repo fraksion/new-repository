@@ -13,6 +13,7 @@
 
         $('#elt-select2').change(function(){
             deleteModels();
+            getCurrentMicroversion();
             $("#inputs-ul").empty();
             //var angleTolerance = $('#angle-tolerance').val();
             //var chordTolerance = $('#chord-tolerance').val();
