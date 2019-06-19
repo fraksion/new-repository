@@ -198,7 +198,7 @@ var getStl = function(req, res) {
 
 var getDecodedConfigString = function(req, res) {
   request.get({
-    uri: apiUrl + '/api/elements/d/' + req.query.documentId + 
+    uri: apiUrl + '/api/partstudios/d/' + req.query.documentId + 
 	'/m/' + req.query.microversion + 
 	'/e/' + req.query.elementId + 
 	'/configurationencodings/undefined?includeDisplay=false&configurationIsId=true',

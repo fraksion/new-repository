@@ -33,6 +33,7 @@
 
         $('#config-btn').click(function(){
             deleteModels();
+            getCurrentMicroversion();
             generateEncodedMessage();
             updateConfiguration();
             var angleTolerance = $('#angle-tolerance').val();
