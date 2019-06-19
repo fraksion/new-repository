@@ -161,7 +161,7 @@
         console.log(configurationString);
         if (configurationString != undefined)
         {
-            url += '&' + configurationString.queryParam;
+            url += '&' + configurationString;
         }
 
         $('#stl-progress-bar').removeClass('hidden');
