@@ -38,7 +38,6 @@
             generateEncodedMessage();
             getEncodedConfigurationString();
             updateConfiguration();
-
             $('#stl-tolerance-modal').modal('hide');
         });
 
@@ -165,7 +164,6 @@
         }
 
         $('#stl-progress-bar').removeClass('hidden');
-        console.log(url);
         $.ajax(url, {
             type: 'GET',
             data: {
@@ -575,6 +573,10 @@
                   console.log('update complete');
                 },
                 success: function(data) {
+                    console.log('data:');
+                    console.log( data['queryParam']);
+                    console.log( data);
+                    console.log( data.queryParam);
                     var angleTolerance = $('#angle-tolerance').val();
                     var chordTolerance = $('#chord-tolerance').val();
                     loadStl(angleTolerance, chordTolerance, data['queryParam']);
