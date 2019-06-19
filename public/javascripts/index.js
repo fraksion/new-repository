@@ -37,7 +37,7 @@
             getCurrentMicroversion();
             generateEncodedMessage();
             getEncodedConfigurationString();
-          //  updateConfiguration();
+            updateConfiguration();
             $('#stl-tolerance-modal').modal('hide');
         });
 
