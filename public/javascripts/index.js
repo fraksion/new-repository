@@ -5,6 +5,7 @@
     var loadedModels = [];
     var previousData = false;
     var microversion;
+    var configString;
     window.onload = function() {
         // prevent mouse clicks from going to model while dialog is open
         $('#stl-tolerance-modal').bind('click mousedown', function(e) {
@@ -35,10 +36,11 @@
             deleteModels();
             getCurrentMicroversion();
             generateEncodedMessage();
+            getEncodedConfigurationString();
             updateConfiguration();
             var angleTolerance = $('#angle-tolerance').val();
             var chordTolerance = $('#chord-tolerance').val();
-            loadStl(angleTolerance, chordTolerance);
+            loadStl(angleTolerance, chordTolerance, configString);
             $('#stl-tolerance-modal').modal('hide');
         });
 
@@ -134,7 +136,7 @@
      * 
      *  window.location.search == "?documentId=0d86c205100fae7001a39ea8&workspaceId=aae7a1ff196df52c5a4c153c&elementId=a7d49a58add345ddb7362051&stlElementId=a7d49a58add345ddb7362051&partId=JUD"
      */
-    function loadStl(angleTolerance, chordTolerance) {
+    function loadStl(angleTolerance, chordTolerance, configurationString) {
         var url = '/api/stl' +  $("#elt-select2").val();
 
         // Parse the search string to make sure we have the last piece to load
@@ -157,6 +159,11 @@
         if (angleTolerance && chordTolerance) {
             url += '&angleTolerance=' + angleTolerance;
             url += '&chordTolerance=' + chordTolerance;
+        }
+
+        if (configurationString != undefined)
+        {
+            url += '&' + configurationString;
         }
 
         $('#stl-progress-bar').removeClass('hidden');
@@ -519,9 +526,6 @@
 
         for (var i=0; i<jsonData.parameters.length; i++)
                 jsonData.parameters[i]['parameterDisplayValue'] = $('#first-input-test' + i + '').val();
-
-                console.log('result json decoded' );
-                console.log(jsonData);
     }
 
     function generateHTMLInput(data){
@@ -539,7 +543,6 @@
     }
 
     function updateConfiguration(){
-        console.log(encodedConfigString);
         var dfd = $.Deferred();
             $.ajax("/api/updateConfig" + $('#elt-select2').val(),{
                 type: "POST",
@@ -553,6 +556,29 @@
                 },
                 success: function(data) {
                     console.log('updating success');
+               },
+                error: function() {
+                  console.log('updating error');
+                },
+              });
+              return dfd.resolve();
+    }
+
+    function getEncodedConfigurationString(){
+        var dfd = $.Deferred();
+            $.ajax("/api/encodeConfig" + $('#elt-select2').val(),{
+                type: "POST",
+                dataType: "json",
+                data:JSON.stringify(jsonData), 
+                contentType: "application/json",
+                Accept:'application/vnd.onshape.v1+json',
+                complete: function() {
+                  //called when complete
+                  console.log('update complete');
+                },
+                success: function(data) {
+                    configString = data;
+                    console.log('getEncodedConfigurationString success');
                },
                 error: function() {
                   console.log('updating error');
