@@ -36,12 +36,13 @@
             deleteModels();
             getCurrentMicroversion();
             generateEncodedMessage();
-            getEncodedConfigurationString();
+            
             updateConfiguration();
             var angleTolerance = $('#angle-tolerance').val();
             var chordTolerance = $('#chord-tolerance').val();
             console.log(configString);
-            loadStl(angleTolerance, chordTolerance, configString);
+            getEncodedConfigurationString().then(loadStl(angleTolerance, chordTolerance, configString));
+            
             $('#stl-tolerance-modal').modal('hide');
         });
 
