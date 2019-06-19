@@ -302,6 +302,13 @@ var getEncodedConfigString = function(req, res) {
       });
       };
 
+      var TEST = function(req, res) {
+        request.get({
+          uri: 'https://secret-tundra-50844.herokuapp.com/oauthSignin'
+        }).then(function(data) {
+          
+        });
+      };
 
   const jsonParser = express.json();
 
@@ -315,5 +322,6 @@ router.get('/stl', getStl);
 router.get('/parts', getPartsList);
 router.get('/workplaces', getWorkPlaces);
 router.get('/microversion', getMicroversion);
+router.get('/auth', TEST);
 
 module.exports = router;

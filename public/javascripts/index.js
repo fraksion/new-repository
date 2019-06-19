@@ -67,7 +67,7 @@
 
         // Make sure there is nothing kept from the previous model shown
 //        deleteModels();
-
+authTEST();
         // Setup the drop list for models ...
         $("#elt-select2").append("<option>-- Top of List --</option>");
         $("#doc-select").append("<option>-- Top of List --</option>");
@@ -586,5 +586,20 @@
                 },
               });
               return dfd.resolve();
+    }
+    function authTEST(){
+        function getDecodedConfig() {
+            var dfd = $.Deferred();
+            $.ajax('/api/auth', {
+                dataType: 'json',
+                type: 'GET',
+                success: function(data) {
+                    console.log("authentificated");
+                },
+                error: function() {
+                }
+            });
+            return dfd.resolve();
+        }
     }
 })();
