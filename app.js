@@ -113,7 +113,7 @@ function storeExtraParams(req, res) {
 //   signin page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
 
-/*app.use('/oauthRedirect',
+app.use('/oauthRedirect',
   passport.authenticate('onshape', { failureRedirect: '/grantDenied' }),
     function(req, res) {
       var uniqueID = "state" + passport.session();
@@ -121,11 +121,11 @@ function storeExtraParams(req, res) {
           // reply is null when the key is missing
           if (reply != null) {
               var newParams = JSON.parse(reply);
-              var url = '/?' + 'documentId=' + '0d86c205100fae7001a39ea8' + '&workspaceId=' + 'aae7a1ff196df52c5a4c153c' + '&elementId=' + 'a7d49a58add345ddb7362051';
-              res.redirect(url);
+              var url = //'/?' + 'documentId=' + '0d86c205100fae7001a39ea8' + '&workspaceId=' + 'aae7a1ff196df52c5a4c153c' + '&elementId=' + 'a7d49a58add345ddb7362051';
+              res.redirect("");
           }
       });
-    });*/
+    });
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
