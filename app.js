@@ -74,7 +74,7 @@ app.get('/oauthSignin');
 //   request.  The first step in Onshape authentication will involve redirecting
 //   the user to onshape.com.  After authorization, Onshape will redirect the user
 //   back to this application at /oauthRedirect
-app.use('/oauthSignin', 
+app.use('/oauthSignin', storeExtraParams,
   function(req, res){
     // The request will be redirected to Onshape for authentication, so this
     // function will not be called.
@@ -112,7 +112,8 @@ function storeExtraParams(req, res) {
 //   request.  If authentication fails, the user will be redirected back to the
 //   signin page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-app.use('/oauthRedirect',
+
+/*app.use('/oauthRedirect',
   passport.authenticate('onshape', { failureRedirect: '/grantDenied' }),
     function(req, res) {
       var uniqueID = "state" + passport.session();
@@ -124,7 +125,7 @@ app.use('/oauthRedirect',
               res.redirect(url);
           }
       });
-    });
+    });*/
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
