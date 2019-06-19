@@ -157,7 +157,8 @@
             url += '&angleTolerance=' + angleTolerance;
             url += '&chordTolerance=' + chordTolerance;
         }
-
+        console.log('configurationString');
+        console.log(configurationString);
         if (configurationString != undefined)
         {
             url += '&' + configurationString.queryParam;
@@ -573,10 +574,6 @@
                   console.log('update complete');
                 },
                 success: function(data) {
-                    console.log('data:');
-                    console.log( data['queryParam']);
-                    console.log( data);
-                    console.log( data.queryParam);
                     var angleTolerance = $('#angle-tolerance').val();
                     var chordTolerance = $('#chord-tolerance').val();
                     loadStl(angleTolerance, chordTolerance, data['queryParam']);
