@@ -163,7 +163,7 @@
 
         if (configurationString != undefined)
         {
-            url += '&' + configurationString;
+            url += '&' + configurationString.queryParam;
         }
 
         $('#stl-progress-bar').removeClass('hidden');
