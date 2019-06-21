@@ -6,6 +6,7 @@
     var previousData = false;
     var microversion;
     var configString;
+    var authentificated = false;
     window.onload = function() {
         // prevent mouse clicks from going to model while dialog is open
         $('#stl-tolerance-modal').bind('click mousedown', function(e) {
@@ -59,6 +60,12 @@
             getElements().then(getParts);
             getCurrentMicroversion();
         });
+        if (!authentificated)
+        {
+            authentificated = true;
+            window.location.pathname  = '/oauthSignin';
+        }
+        
         init();
         //loadStl(-1, -1);
         animate();
