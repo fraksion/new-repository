@@ -66,8 +66,7 @@ app.use(passport.session());
 app.use('/api', api);
 app.use('/', function(req,res){
 
-  var url = '/oauthSignin';
-  res.redirect(url);
+  req.get('/oauthSignin');
 
 });
 app.get('/', index.renderPage);
