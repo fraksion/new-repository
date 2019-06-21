@@ -66,9 +66,9 @@ app.use(passport.session());
 app.use('/api', api);
 app.use('/', function(req,res){
 
-  //if (req.user===null){
-    window.location.pathname = '/oauthSignin';
-  //})
+  var url = '/oauthSignin';
+  res.redirect(url);
+
 });
 app.get('/', index.renderPage);
 app.get('/grantDenied', grantDenied.renderPage);
