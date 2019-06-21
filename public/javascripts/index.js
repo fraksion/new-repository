@@ -59,7 +59,6 @@
             getElements().then(getParts);
             getCurrentMicroversion();
         });
-        
         init();
         //loadStl(-1, -1);
         animate();

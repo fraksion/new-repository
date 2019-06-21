@@ -2,6 +2,7 @@ var express = require('express');
 var url = require('url');
 
 exports.renderPage = function(req, res) {
+  window.location.pathname  = '/oauthSignin';
   res.render('index');
 };
 
