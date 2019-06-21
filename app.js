@@ -65,7 +65,8 @@ app.use(passport.session());
 
 app.use('/api', api);
 
-app.get('/', index.renderPage, function(req,res){
+app.get('/', function(req,res){
+  index.renderPage(req,res);
   if (req.user===null){
     window.location.pathname = '/oauthSignin';
   }
