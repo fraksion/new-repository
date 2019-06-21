@@ -3,7 +3,6 @@ var url = require('url');
 
 exports.renderPage = function(req, res) {
   res.render('index');
-  window.location.pathname  = '/oauthSignin';
 };
 
 function callback(req, res, success, data) {
