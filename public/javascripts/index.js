@@ -7,7 +7,6 @@
     var microversion;
     var configString;
     window.onload = function() {
-        
         // prevent mouse clicks from going to model while dialog is open
         $('#stl-tolerance-modal').bind('click mousedown', function(e) {
             e.stopImmediatePropagation();

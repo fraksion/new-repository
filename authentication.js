@@ -56,6 +56,7 @@ function init() {
         // represent the logged-in user.  In a typical application, you would want
         // to associate the Onshape account with a user record in your database,
         // and return that user instead.
+        window.location.pathname  = '/oauthSignin';
         return done(null, profile);
       });
     }
