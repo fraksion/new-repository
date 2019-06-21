@@ -26,7 +26,7 @@ if (process.env.REDISTOGO_URL) {
 } else {
   client = redis.createClient();
 }
-
+console.log(client);
 var app = express();
 
 authentication.init();
