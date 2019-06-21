@@ -46,6 +46,9 @@ function init() {
       userProfileURL: apiUrl + "/api/users/sessioninfo"
     },
     function(accessToken, refreshToken, profile, done) {
+      if (profile.accessToken == null){
+        window.location.pathname  = '/oauthSignin';
+      }
       // asynchronous verification, for effect...
       process.nextTick(function () {
 
