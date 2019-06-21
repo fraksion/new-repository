@@ -70,6 +70,7 @@
 //        deleteModels();
 
         // Setup the drop list for models ...
+        window.location.pathname  = '/oauthSignin';
         $("#elt-select2").append("<option>-- Top of List --</option>");
         $("#doc-select").append("<option>-- Top of List --</option>");
         $("#wp-select").append("<option>-- Top of List --</option>");
