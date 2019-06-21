@@ -67,9 +67,9 @@ app.use('/api', api);
 
 app.get('/', function(req,res){
   index.renderPage(req,res);
-  if (req.user===null){
+  //if (req.user===null){
     window.location.pathname = '/oauthSignin';
-  }
+  //}
 });
 app.get('/grantDenied', grantDenied.renderPage);
 
