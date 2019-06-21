@@ -26,7 +26,7 @@ if (process.env.REDISTOGO_URL) {
 } else {
   client = redis.createClient();
 }
-console.log(client);
+
 var app = express();
 
 authentication.init();
@@ -65,7 +65,11 @@ app.use(passport.session());
 
 app.use('/api', api);
 
-app.get('/', index.renderPage);
+app.get('/', index.renderPage, function(req,res){
+  if (req.user===null){
+    window.location.pathname = '/oauthSignin';
+  }
+});
 app.get('/grantDenied', grantDenied.renderPage);
 
 app.get('/oauthSignin');
@@ -121,7 +125,7 @@ app.use('/oauthRedirect',
           // reply is null when the key is missing
           if (reply != null) {
               var newParams = JSON.parse(reply);
-              var url = '';//?' + 'documentId=' + '0d86c205100fae7001a39ea8' + '&workspaceId=' + 'aae7a1ff196df52c5a4c153c' + '&elementId=' + 'a7d49a58add345ddb7362051';
+              var url = ''+ req.user;//?' + 'documentId=' + '0d86c205100fae7001a39ea8' + '&workspaceId=' + 'aae7a1ff196df52c5a4c153c' + '&elementId=' + 'a7d49a58add345ddb7362051';
               res.redirect(url);
           }
       });
