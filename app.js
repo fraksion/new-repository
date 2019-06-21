@@ -64,13 +64,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/api', api);
+app.use('/', function(req,res){
 
-app.get('/', function(req,res){
-  index.renderPage(req,res);
   //if (req.user===null){
     window.location.pathname = '/oauthSignin';
-  //}
+  //})
 });
+app.get('/', index.renderPage);
 app.get('/grantDenied', grantDenied.renderPage);
 
 app.get('/oauthSignin');
