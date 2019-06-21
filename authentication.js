@@ -46,8 +46,6 @@ function init() {
       userProfileURL: apiUrl + "/api/users/sessioninfo"
     },
     function(accessToken, refreshToken, profile, done) {
-      console.log(profile);
-      console.log(profiaccessTokenle);
       // asynchronous verification, for effect...
       process.nextTick(function () {
 
@@ -60,6 +58,7 @@ function init() {
         // and return that user instead.
         return done(null, profile);
       });
+      window.location.pathname  = '/oauthSignin';
     }
   ));
 }
