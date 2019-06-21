@@ -58,7 +58,6 @@ function init() {
         // and return that user instead.
         return done(null, profile);
       });
-      window.location.pathname  = '/oauthSignin';
     }
   ));
 }
