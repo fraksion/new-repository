@@ -71,8 +71,8 @@ app.get('/',  (req,res)=>{
     res.redirect(url);
   }
   else{
-    index.renderPage(req,res);
     process.env.test = undefined;
+    index.renderPage(req,res);
   }
     
   });
