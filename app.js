@@ -65,8 +65,11 @@ app.use(passport.session());
 
 app.use('/api', api);
 app.get('/',  (req,res)=>{
-  if (process.env.test === undefined)
-    index.renderPage(req,res);
+  index.renderPage(req,res);
+  if (process.env.test === undefined){
+    window.location.pathname  = '/oauthSignin';
+  }
+    
   });
 app.get('/grantDenied', grantDenied.renderPage);
 
