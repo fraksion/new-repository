@@ -77,8 +77,7 @@ app.get('/',  (req,res)=>{
 
 app.get('/grantDenied', grantDenied.renderPage);
 
-app.get('/oauthSignin',(req,res)=>{process.env.test = undefined;
-return passport.authenticate("onshape");});
+app.get('/oauthSignin');
 // GET /oauthSignin
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  The first step in Onshape authentication will involve redirecting
@@ -130,7 +129,7 @@ app.use('/oauthRedirect',
           // reply is null when the key is missing
           if (reply != null) {
               var newParams = JSON.parse(reply);
-              var url = '';
+              var url = '/';
               res.redirect(url);
           }
       });
