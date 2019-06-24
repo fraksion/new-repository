@@ -64,10 +64,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/api', api);
-app.get('/', index.renderPage,  function(req, res){
-  var url = '/oauthSignin';//?' + 'documentId=' + '0d86c205100fae7001a39ea8' + '&workspaceId=' + 'aae7a1ff196df52c5a4c153c' + '&elementId=' + 'a7d49a58add345ddb7362051';
-  res.redirect(url);
-});
+app.get('/', index.renderPage);
 app.get('/grantDenied', grantDenied.renderPage);
 
 app.get('/oauthSignin');
