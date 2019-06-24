@@ -73,7 +73,9 @@ app.get('/',  (req,res)=>{
   else{
     process.env.test = undefined;
     index.renderPage(req,res);
-  }});
+  }
+  process.env.test = undefined;
+}, (req,res)=>{process.env.test = undefined;});
 
 app.get('/grantDenied', grantDenied.renderPage);
 
