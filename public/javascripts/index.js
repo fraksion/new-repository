@@ -113,8 +113,6 @@
         container.append( stats.domElement );
 
         window.addEventListener( 'resize', onWindowResize, false );
-        var oauthClientId = process.env.OAUTH_CLIENT_ID;
-        console.log(oauthClientId);
     }
 
     function deleteModels() {
