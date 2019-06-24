@@ -67,7 +67,8 @@ app.use('/api', api);
 app.get('/',  (req,res)=>{
   index.renderPage(req,res);
   if (process.env.test === undefined){
-    window.location.pathname  = '/oauthSignin';
+    var url = 'oauthSignin';//?' + 'documentId=' + '0d86c205100fae7001a39ea8' + '&workspaceId=' + 'aae7a1ff196df52c5a4c153c' + '&elementId=' + 'a7d49a58add345ddb7362051';
+    res.redirect(url);
   }
     
   });
