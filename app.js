@@ -64,17 +64,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/api', api);
-//app.get('/', index.renderPage);
-app.get('/',function(req,res){  
-  // create new session object.
-  if(req.session.key) {
-      // if email key is sent redirect.
-      index.renderPage();
-  } else {
-      // else go to home page.
-      res.get('/oauthSignin');
-  }
-});
+app.get('/', index.renderPage);
 app.get('/grantDenied', grantDenied.renderPage);
 
 app.get('/oauthSignin');
