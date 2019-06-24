@@ -91,7 +91,6 @@ function storeExtraParams(req, res) {
         workspaceId : workId,
         elementId : elId
     };
-    console.log('Login started');
     var stateString = JSON.stringify(state);
     var uniqueID = "state" + passport.session();
 
@@ -119,7 +118,6 @@ app.use('/oauthRedirect',
           // reply is null when the key is missing
           if (reply != null) {
               var newParams = JSON.parse(reply);
-              console.log(req.user);
               var url = '';//?' + 'documentId=' + '0d86c205100fae7001a39ea8' + '&workspaceId=' + 'aae7a1ff196df52c5a4c153c' + '&elementId=' + 'a7d49a58add345ddb7362051';
               res.redirect(url);
           }
