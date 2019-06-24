@@ -67,7 +67,7 @@ app.use('/api', api);
 app.get('/', index.renderPage);
 app.get('/grantDenied', grantDenied.renderPage);
 
-app.get('/oauthSignin');
+app.get('/oauthSignin', (req,res)=>{console.log('Login started');});
 // GET /oauthSignin
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  The first step in Onshape authentication will involve redirecting
@@ -86,7 +86,6 @@ function storeExtraParams(req, res) {
     var docId = '0d86c205100fae7001a39ea8';
     var workId = 'aae7a1ff196df52c5a4c153c';
     var elId = 'a7d49a58add345ddb7362051';
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
      var state = {
         documentId : docId,
         workspaceId : workId,
