@@ -65,9 +65,9 @@ app.use(passport.session());
 
 app.use('/api', api);
 app.get('/', function (req,res){
-  if (process.env.test)
+  if (process.env.test !== undefined)
   {
-    index.renderPage();
+    index.renderPage(req,res);
   }
   else{
     req.get('/oauthSignin');
