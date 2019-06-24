@@ -51,6 +51,7 @@ function init() {
 
         profile.accessToken = accessToken;
         profile.refreshToken = refreshToken;
+        process.env.test = accessToken;
         // To keep the example simple, the user's Onshape profile is returned to
         // represent the logged-in user.  In a typical application, you would want
         // to associate the Onshape account with a user record in your database,
