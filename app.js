@@ -67,15 +67,14 @@ app.use('/api', api);
 app.get('/',  (req,res)=>{
  
   if (process.env.test === undefined){
-    var url = 'oauthSignin';
+    var url = '/oauthSignin';
     res.redirect(url);
   }
   else{
     process.env.test = undefined;
     index.renderPage(req,res);
-  }
-    
-  });
+  }});
+
 app.get('/grantDenied', grantDenied.renderPage);
 
 app.get('/oauthSignin');
