@@ -64,7 +64,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/api', api);
-app.get('/', function (req,res){
+app.get('/',  (req,res)=>{
     index.renderPage(req,res);
   });
 app.get('/grantDenied', grantDenied.renderPage);
