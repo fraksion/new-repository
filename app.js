@@ -65,19 +65,18 @@ app.use(passport.session());
 
 app.use('/api', api);
 app.get('/',  (req,res)=>{
- 
   if (process.env.test === undefined){
     var url = '/oauthSignin';
     res.redirect(url);
   }
-  else{
+  else
+  {
     delete process.env.test;
     index.renderPage(req,res);
   }});
 
 app.get('/grantDenied', grantDenied.renderPage);
 
-//app.get('/oauthSignin');
 // GET /oauthSignin
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  The first step in Onshape authentication will involve redirecting
