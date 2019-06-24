@@ -72,6 +72,7 @@ app.get('/',  (req,res)=>{
   }
   else{
     index.renderPage(req,res);
+    process.env.test = undefined;
   }
     
   });
