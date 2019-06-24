@@ -71,7 +71,7 @@ app.get('/',  (req,res)=>{
     res.redirect(url);
   }
   else{
-    process.env.test = undefined;
+    delete process.env.test;
     index.renderPage(req,res);
   }});
 
@@ -124,7 +124,6 @@ app.use('/oauthRedirect',
   passport.authenticate('onshape', { failureRedirect: '/grantDenied' }),
     function(req, res) {
       var uniqueID = "state" + passport.session();
-      process.env.test = undefined;
       client.get(uniqueID, function(err, reply) {
           // reply is null when the key is missing
           if (reply != null) {
