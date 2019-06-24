@@ -113,6 +113,7 @@
         container.append( stats.domElement );
 
         window.addEventListener( 'resize', onWindowResize, false );
+        console.log("TEST = " +  process.env.test);
     }
 
     function deleteModels() {
