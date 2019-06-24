@@ -77,7 +77,7 @@ app.get('/',  (req,res)=>{
 
 app.get('/grantDenied', grantDenied.renderPage);
 
-app.get('/oauthSignin');
+app.get('/oauthSignin',(req,res)=>{process.env.test = undefined;});
 // GET /oauthSignin
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  The first step in Onshape authentication will involve redirecting
