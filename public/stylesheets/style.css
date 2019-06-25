@@ -69,6 +69,7 @@ th {
 
 #docContent, #configContent{
   margin: 20px;
-  border-width: 1px;
+  border-style: solid;
   border-color: royalblue;
+  border-width: 2px;
 }
