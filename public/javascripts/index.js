@@ -531,8 +531,15 @@
 
     function generateHTMLInput(data){
         $('#inputs-ul').empty();
-        var list = document.getElementById('inputs-ul');
 
+        var list = document.getElementById('inputs-ul');
+        if (data.length>0)
+        {
+            $('#configDiv').prop({display: block});
+        }
+        else{
+            $('#configDiv').prop({display: none});
+        }
         for (var i=0; i<data.length; i++){
 
             $('<div>').appendTo(list);
