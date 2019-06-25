@@ -44,15 +44,8 @@ th {
   width: 80%;
 }
 
-#docHeader{
-  padding: 10px 0px 0px 10px;
-  background-color: royalblue;
-  color: white;
-  font-weight: bold;
-}
-
-#configHeader{
-  padding: 10px 0px 0px 10px;
+#docHeader, #configHeader{
+  padding: 10px 0px 2px 10px;
   background-color: royalblue;
   color: white;
   font-weight: bold;
