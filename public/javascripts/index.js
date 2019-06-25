@@ -470,6 +470,7 @@
             minAndMaxValues[i]['min'] = data.message.rangeAndDefault.message.minValue;
             minAndMaxValues[i]['max'] = data.message.rangeAndDefault.message.maxValue;
         }
+        console.log('test');
         console.log(minAndMaxValues[0]);
     }
 
