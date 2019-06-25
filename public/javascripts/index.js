@@ -527,8 +527,8 @@
 
         for (var i=0; i<jsonData.parameters.length; i++)
         {
-            jsonData.parameters[i]['parameterDisplayValue'] = $('#first-input-test' + i + '').val();
-            jsonData.parameters[i]['parameterValue'] = $('#first-input-test' + i + '').val();
+            jsonData.parameters[i]['parameterDisplayValue'] = $('#first-input-test' + i + '').val() +  $('#first-input-label' + i + '').val();
+            jsonData.parameters[i]['parameterValue'] = jsonData.parameters[i]['parameterDisplayValue'];
         }
                 
     }
@@ -555,7 +555,7 @@
             $('<div>').appendTo(list);
             $('<label for="first-input-test' + i + '">' + data[i]['parameterName'] +'</label>').appendTo(list);
 
-            $('<p><input class="inputValues" type="text" value= "' + valueArray[0] + '" id="first-input-test' + i + '"> <label>'+ valueArray[1] + '</label> </p>').appendTo(list);
+            $('<p><input class="inputValues" type="text" value= "' + valueArray[0] + '" id="first-input-test' + i + '"> <label id="first-input-label' + i + '">'+ valueArray[1] + '</label> </p>').appendTo(list);
             
             $('</div>').appendTo(list);
         }
