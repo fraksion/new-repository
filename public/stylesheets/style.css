@@ -24,7 +24,6 @@ th {
   width: 25%;
   height: 100%;
   min-height:100%;
-  overflow: scroll;
 }
 
 #stl-viewport {
@@ -44,7 +43,15 @@ th {
   width: 80%;
 }
 
-#docHeader, #configHeader{
+#docHeader{
+  padding: 10px 0px 2px 10px;
+  background-color: royalblue;
+  color: white;
+  font-weight: bold;
+}
+
+#configHeader{
+  overflow: scroll;
   padding: 10px 0px 2px 10px;
   background-color: royalblue;
   color: white;
