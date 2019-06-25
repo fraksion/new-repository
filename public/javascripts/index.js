@@ -455,12 +455,22 @@
             type: 'GET',
             success: function(data) {
                 encodedConfigString=data;
+                getMinMaxValues(data);
               console.log('getEncoded success');
             },
             error: function() {
             }
         });
         return dfd.resolve();
+    }
+
+    var minAndMaxValues;
+    function getMinMaxValues(data){
+        for (var i=0; i<data.length; i++){
+            minAndMaxValues[i]['min'] = data.message.rangeAndDefault.message.minValue;
+            minAndMaxValues[i]['max'] = data.message.rangeAndDefault.message.maxValue;
+        }
+        console.log(minAndMaxValues[0]);
     }
 
     function generateEncodedMessage()
