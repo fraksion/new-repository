@@ -468,8 +468,8 @@
     function getMinMaxValues(data){
         console.log(data);
         for (var i=0; i<data.length; i++){
-            minAndMaxValues[i]['min'] = data.message.rangeAndDefault.message.minValue;
-            minAndMaxValues[i]['max'] = data.message.rangeAndDefault.message.maxValue;
+            minAndMaxValues[i]['min'] = data.configurationParameters.message.rangeAndDefault.message.minValue;
+            minAndMaxValues[i]['max'] = data.configurationParameters.message.rangeAndDefault.message.maxValue;
         }
         console.log('test');
         console.log(minAndMaxValues[0]);
