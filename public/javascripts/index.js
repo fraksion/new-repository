@@ -186,7 +186,7 @@
                     // ASCII
                     loadStlData(data);
                 }
-                $('#stl-progress-bar').css("display","block");
+                $('#stl-progress-bar').css("display","none");
             }
         });
     }
