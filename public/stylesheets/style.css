@@ -46,7 +46,8 @@ th {
 }
 
 #docHeader{
-  margin: 20px;
+  margin: -20px 0px 10px 0px;
+  padding: 20px;
   background-color: dodgerblue;
   color: white;
 }
