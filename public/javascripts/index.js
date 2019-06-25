@@ -537,7 +537,7 @@
         $('#inputs-ul').empty();
 
         var list = document.getElementById('inputs-ul');
-        if (data.length>0)
+        if (data.length > 0)
         {
             $('#config-btn').css("display","block");
             $('#configDiv').css("display", "block");
@@ -548,10 +548,12 @@
         }
         for (var i=0; i<data.length; i++){
 
+            let valueArray = data[i]['parameterDisplayValue'].split(' ');
             $('<div>').appendTo(list);
             $('<label for="first-input-test' + i + '">' + data[i]['parameterName'] +'</label>').appendTo(list);
 
-            $('<p><input class="inputValues" type="text" value= "' + data[i]['parameterDisplayValue'] + '" id="first-input-test' + i + '"></p>').appendTo(list);
+            $('<p><input class="inputValues" type="text" value= "' + valueArray[0] + '" id="first-input-test' + i + '"> '+ valueArray[1] + ' </p>').appendTo(list);
+            
             $('</div>').appendTo(list);
         }
     }
