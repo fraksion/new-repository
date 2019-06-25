@@ -55,7 +55,7 @@ th {
 }
 
 #configContent{
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 #config-btn, #stl-tolerance-btn{
@@ -71,6 +71,6 @@ th {
 
 .inputValues{
   text-align: right; 
-  width: 50%;
+  width: 25%;
 }
 
