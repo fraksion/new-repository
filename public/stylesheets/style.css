@@ -64,8 +64,10 @@ th {
   margin-bottom: 20px;
   float: left;
 }
-
-#docContent, #configContent, #buttons{
+#buttons{
+  margin-left: 20px;
+}
+#docContent, #configContent{
   margin: 20px;
 }
 
