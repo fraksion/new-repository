@@ -469,8 +469,8 @@
         console.log(data);
         console.log(data.configurationParameters.length);
         for (var i=0; i<data.configurationParameters.length; i++){
-            minAndMaxValues[i]['min'] = data.configurationParameters.message.rangeAndDefault.message.minValue;
-            minAndMaxValues[i]['max'] = data.configurationParameters.message.rangeAndDefault.message.maxValue;
+            minAndMaxValues[i]['min'] = data.configurationParameters[i].message.rangeAndDefault.message.minValue;
+            minAndMaxValues[i]['max'] = data.configurationParameters[i].message.rangeAndDefault.message.maxValue;
         }
         console.log('test');
         console.log(minAndMaxValues);
