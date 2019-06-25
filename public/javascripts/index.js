@@ -421,6 +421,7 @@
         for (var i = 0; i < data.length; ++i) {
             var elementId = data[i]["elementId"];
             var partId = data[i]["partId"];
+            console.log(partId);
             var docId = $("#doc-select").val();
             var wpId = $("#wp-select").val();
             var baseHref = "?documentId=" + docId + "&workspaceId="+wpId +"&elementId=" + elementId  + "&microversion=" + microversion;
