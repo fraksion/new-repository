@@ -535,10 +535,10 @@
         var list = document.getElementById('inputs-ul');
         if (data.length>0)
         {
-            $('#configDiv').prop({display: block});
+            $('#configDiv').css("display", "block");
         }
         else{
-            $('#configDiv').prop({display: none});
+            $('#configDiv').css("display","none");
         }
         for (var i=0; i<data.length; i++){
 
