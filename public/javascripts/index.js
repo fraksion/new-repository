@@ -20,7 +20,7 @@
             //var chordTolerance = $('#chord-tolerance').val();
             loadStl(-1, -1);
             getEncodedConfig().then(getDecodedConfig);
-            
+            $('#stl-tolerance-btn').css("display","block");
             $('#stl-tolerance-modal').modal('hide');
         });
 
@@ -46,8 +46,8 @@
             var selectedDocID = $("#doc-select").val();
             $("#wp-select").empty();
             $('#configDiv').css("display","none");
+            $('#config-btn').css("display","none");
             $("#elt-select2").empty();
-            //$("#inputs-ul").empty();
             $("#elt-select2").append("<option>-- Top of List --</option>");
             $("#wp-select").append("<option>-- Top of List --</option>");
             getWorkplaces(selectedDocID);
@@ -55,8 +55,8 @@
 
         $('#wp-select').change(function(){
             $('#configDiv').css("display","none");
+            $('#config-btn').css("display","none");
             $("#elt-select2").empty();
-            //$("#inputs-ul").empty();
             $("#elt-select2").append("<option>-- Top of List --</option>");
             getElements().then(getParts);
             getCurrentMicroversion();
@@ -537,9 +537,11 @@
         var list = document.getElementById('inputs-ul');
         if (data.length>0)
         {
+            $('#config-btn').css("display","block");
             $('#configDiv').css("display", "block");
         }
         else{
+            $('#config-btn').css("display","none");
             $('#configDiv').css("display","none");
         }
         for (var i=0; i<data.length; i++){
