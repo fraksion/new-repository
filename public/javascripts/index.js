@@ -168,7 +168,7 @@
             url += '&' + configurationString;
         }
         console.log(url);
-        $('#stl-progress-bar').removeClass('hidden');
+        $('#stl-progress-bar').css("display","block");
         $.ajax(url, {
             type: 'GET',
             data: {
@@ -186,7 +186,7 @@
                     // ASCII
                     loadStlData(data);
                 }
-                $('#stl-progress-bar').addClass('hidden')
+                $('#stl-progress-bar').css("display","block");
             }
         });
     }
