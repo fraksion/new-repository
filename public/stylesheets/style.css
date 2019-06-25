@@ -42,6 +42,7 @@ th {
 }
 
 #stl-progress-bar {
+  padding-top: 50px;
   margin: 30% 30% 30% 30%;
   width:200px;
   height:200px;
