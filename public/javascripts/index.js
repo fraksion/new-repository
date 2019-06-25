@@ -464,15 +464,16 @@
         return dfd.resolve();
     }
 
-    var minAndMaxValues;
+    var minAndMaxValues = new Array();
     function getMinMaxValues(data){
         console.log(data);
+        console.log(data.configurationParameters.length);
         for (var i=0; i<data.configurationParameters.length; i++){
             minAndMaxValues[i]['min'] = data.configurationParameters.message.rangeAndDefault.message.minValue;
             minAndMaxValues[i]['max'] = data.configurationParameters.message.rangeAndDefault.message.maxValue;
         }
         console.log('test');
-        console.log(minAndMaxValues[0]);
+        console.log(minAndMaxValues);
     }
 
     function generateEncodedMessage()
