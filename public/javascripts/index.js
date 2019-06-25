@@ -528,7 +528,7 @@
         for (var i=0; i<jsonData.parameters.length; i++)
         {
             jsonData.parameters[i]['parameterDisplayValue'] = $('#first-input-test' + i + '').val() +  $('#first-input-label' + i + '').val();
-            console.log(jsonData.parameters[i]['parameterDisplayValue']);
+            console.log($('#first-input-label' + i + '').val());
             jsonData.parameters[i]['parameterValue'] = jsonData.parameters[i]['parameterDisplayValue'];
         }
                 
