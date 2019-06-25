@@ -24,6 +24,10 @@ th {
   width: 25%;
   height: 100%;
   min-height:100%;
+  border-style: solid;
+  border-color: royalblue;
+  border-width: 2px;
+
 }
 
 #stl-viewport {
@@ -69,7 +73,5 @@ th {
 
 #docContent, #configContent{
   margin: 20px;
-  border-style: solid;
-  border-color: royalblue;
-  border-width: 2px;
 }
+
