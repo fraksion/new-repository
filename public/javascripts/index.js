@@ -549,7 +549,7 @@
             $('<div>').appendTo(list);
             $('<label for="first-input-test' + i + '">' + data[i]['parameterName'] +'</label>').appendTo(list);
 
-            $('<p><input type="text" value= "' + data[i]['parameterDisplayValue'] + '" id="first-input-test' + i + '"></p>').appendTo(list);
+            $('<p><input class="inputValues" type="text" value= "' + data[i]['parameterDisplayValue'] + '" id="first-input-test' + i + '"></p>').appendTo(list);
             $('</div>').appendTo(list);
         }
     }
