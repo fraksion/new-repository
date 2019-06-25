@@ -55,7 +55,7 @@ th {
 }
 
 #configContent{
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 #config-btn, #stl-tolerance-btn{
