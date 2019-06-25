@@ -28,7 +28,7 @@ th {
 }
 
 #stl-viewport {
-  top: 20;
+  top: 0;
   position:absolute;
   right:0;
   width: 75%;
