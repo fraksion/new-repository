@@ -561,7 +561,7 @@
             $('<div>').appendTo(list);
             $('<label for="first-input-test' + i + '">' + data[i]['parameterName'] +'</label>').appendTo(list);
 
-            $('<p><input class="inputValues" type="text" value= "' + valueArray[0] + '" id="first-input-test' + i + '"> <label id="first-input-label' + i + '">'+ valueArray[1] + '</label> </p>').appendTo(list);
+            $('<p><input class="inputValues" type="number" step="0.01" min="0.000001" value= "' + valueArray[0] + '" id="first-input-test' + i + '"> <label id="first-input-label' + i + '">'+ valueArray[1] + '</label> </p>').appendTo(list);
             
             $('</div>').appendTo(list);
         }
