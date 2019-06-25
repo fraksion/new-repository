@@ -43,9 +43,10 @@ th {
 
 #stl-progress-bar {
   position: fixed;
-  top: 50%;
-  width: 80%;
-  height: 400px;
+  top: 35%;
+  width: 50%;
+  height: 100px;
+  background-color: white;
 }
 
 #docHeader, #configHeader{
