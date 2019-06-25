@@ -51,11 +51,19 @@ th {
   font-weight: bold;
 }
 
-#buttons{
+#config-btn{
   margin-top: 20px;
   margin-left: 15%;
   margin-right: 15%; 
   margin-bottom: 20px;
+  float: right;
+}
+#stl-tolerance-btn{
+  margin-top: 20px;
+  margin-left: 15%;
+  margin-right: 15%; 
+  margin-bottom: 20px;
+  float: left;
 }
 
 #docContent, #configContent{
