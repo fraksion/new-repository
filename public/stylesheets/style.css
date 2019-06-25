@@ -43,19 +43,15 @@ th {
   width: 80%;
 }
 
-#docHeader{
+#docHeader, #configHeader{
   padding: 10px 0px 2px 10px;
   background-color: royalblue;
   color: white;
   font-weight: bold;
 }
 
-#configHeader{
+#configContent{
   overflow: scroll;
-  padding: 10px 0px 2px 10px;
-  background-color: royalblue;
-  color: white;
-  font-weight: bold;
 }
 
 #config-btn{
