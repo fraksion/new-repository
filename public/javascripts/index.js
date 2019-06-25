@@ -591,9 +591,8 @@
 
     function getEncodedConfigurationString(angleTolerance=-1, chordTolerance=-1){
         var dfd = $.Deferred();
-        console.log(jsonData);
         generateJSONResponse()
-        console.log('after\n' + jsonData);
+        console.log(jsonData);
             $.ajax("/api/encodeConfig" + $('#elt-select2').val(),{
                 type: "POST",
                 dataType: "json",
