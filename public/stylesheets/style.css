@@ -25,7 +25,7 @@ th {
   height: 100%;
   min-height:100%;
   border-style: solid;
-  border-color: royalblue;
+  border-color: #408ccb;
   border-width: 2px;
 
 }
@@ -43,7 +43,7 @@ th {
 
 #stl-progress-bar {
   padding-top: 50px;
-  margin: 30% 30% 30% 40%;
+  margin: 25% 30% 30% 40%;
   width:200px;
   height:200px;
   background-color: white;
@@ -52,7 +52,7 @@ th {
 
 #docHeader, #configHeader{
   padding: 10px 0px 2px 10px;
-  background-color: royalblue;
+  background-color: #408ccb;
   color: white;
   font-weight: bold;
 }
