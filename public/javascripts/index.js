@@ -47,6 +47,7 @@
             $("#wp-select").empty();
             $('#configDiv').css("display","none");
             $('#config-btn').css("display","none");
+            $('#stl-tolerance-btn').css("display","none");
             $("#elt-select2").empty();
             $("#elt-select2").append("<option>-- Top of List --</option>");
             $("#wp-select").append("<option>-- Top of List --</option>");
@@ -56,6 +57,7 @@
         $('#wp-select').change(function(){
             $('#configDiv').css("display","none");
             $('#config-btn').css("display","none");
+            $('#stl-tolerance-btn').css("display","none");
             $("#elt-select2").empty();
             $("#elt-select2").append("<option>-- Top of List --</option>");
             getElements().then(getParts);
