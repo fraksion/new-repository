@@ -57,7 +57,9 @@ th {
 #configContent{
   overflow-y: auto;
 }
-
+#stl-tolerance-btn{
+  margin: 20px;
+}
 #config-btn, #stl-tolerance-btn{
   margin-top: 20px;
   margin-left: 15%;
