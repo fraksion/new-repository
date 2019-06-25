@@ -51,6 +51,10 @@ th {
   font-weight: bold;
 }
 
-#docContent{
+#buttons{
+  margin: 20px;
+}
+
+#docContent, #configContent{
   margin: 20px;
 }
