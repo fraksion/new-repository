@@ -524,10 +524,15 @@
     }
 
     function generateJSONResponse(){
-        console.log($('#first-input-label' + '0' + '').val());
+        
         for (var i=0; i<jsonData.parameters.length; i++)
         {
-            jsonData.parameters[i]['parameterDisplayValue'] = $('#first-input-test' + i + '').val() +  $('#first-input-label' + i + '').val();
+            let lengthArray = jsonData.parameters[i]['parameterDisplayValue'].split(' ');
+            if (lengthArray[1]==undefined){
+                lengthArray[1] = '';
+            }
+            console.log(lengthArray);
+            jsonData.parameters[i]['parameterDisplayValue'] = $('#first-input-test' + i + '').val() + lengthArray[1];
            
             jsonData.parameters[i]['parameterValue'] = jsonData.parameters[i]['parameterDisplayValue'];
         }
