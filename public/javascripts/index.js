@@ -168,7 +168,6 @@
         {
             url += '&' + configurationString;
         }
-        console.log(url);
         $('#stl-progress-bar').css("display","block");
         $.ajax(url, {
             type: 'GET',
@@ -188,7 +187,11 @@
                     loadStlData(data);
                 }
                 $('#stl-progress-bar').css("display","none");
-            }
+            },
+            error: function() {
+              console.log('loading STL error');
+              $('#stl-progress-bar').css("display","none");
+            },
         });
     }
 
@@ -373,7 +376,6 @@
     }
 
     function addElements(data, dfd) {
-        console.log('adding elements');
         var onshapeElements = $("#onshape-elements");
         onshapeElements.empty();
         for (var i = 0; i < data.length; ++i) {
@@ -458,7 +460,6 @@
                 encodedConfigString=data;
                 getMinMaxValues(data);
                 getDecodedConfig();
-              console.log('getEncoded success');
             },
             error: function() {
             }
@@ -542,7 +543,6 @@
             if (lengthArray[1]==undefined){
                 lengthArray[1] = '';
             }
-            console.log(lengthArray);
             jsonData.parameters[i]['parameterDisplayValue'] = $('#first-input-test' + i + '').val() + " " + lengthArray[1];
            
             jsonData.parameters[i]['parameterValue'] = jsonData.parameters[i]['parameterDisplayValue'];
@@ -571,7 +571,7 @@
             }
             $('<div>').appendTo(list);
             $('<label for="first-input-test' + i + '">' + data[i]['parameterName'] +'</label>').appendTo(list);
-            console.log(minAndMaxValues[i]);
+
             $('<p><input class="inputValues" type="number" value= "' + valueArray[0] + '" type="number" step="0.001" min="' + minAndMaxValues[i].min + '" max="' + minAndMaxValues[i].max + '" " id="first-input-test' + i + '"> <label id="first-input-label' + i + '">'+ valueArray[1] + '</label> </p>').appendTo(list);
             
             $('</div>').appendTo(list);
@@ -588,7 +588,6 @@
                 Accept:'application/vnd.onshape.v1+json',
                 complete: function() {
                   //called when complete
-                  console.log('update complete');
                 },
                 success: function(data) {
                     console.log('updating success');
@@ -603,7 +602,6 @@
     function getEncodedConfigurationString(angleTolerance=-1, chordTolerance=-1){
         var dfd = $.Deferred();
         generateJSONResponse();
-        console.log(jsonData);
             $.ajax("/api/encodeConfig" + $('#elt-select2').val(),{
                 type: "POST",
                 dataType: "json",
