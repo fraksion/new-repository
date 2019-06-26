@@ -67,6 +67,8 @@
             getCurrentMicroversion();
         });
         
+
+
         init();
         //loadStl(-1, -1);
         animate();
@@ -166,10 +168,12 @@
             url += '&angleTolerance=' + angleTolerance;
             url += '&chordTolerance=' + chordTolerance;
         }
+        url += '&mode=' + $('#format-select').val();
         if (configurationString != undefined)
         {
             url += '&' + configurationString;
         }
+
         $('#stl-progress-bar').css("display","block");
         var dfd = $.Deferred();
         $.ajax(url, {
