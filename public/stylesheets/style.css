@@ -82,8 +82,7 @@ th {
 }
 
 :invalid{
-  background:red;
-  opacity: 50%;
+  background-color: lightpink;
 }
 
 .windows8 {
