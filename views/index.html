@@ -24,17 +24,17 @@
             <p>            
               <strong> Documents </strong>
               <br>
-              <select id="doc-select"></select>
+              <select class="form-control" id="doc-select"></select>
             </p>
               <p>              
                 <strong> Workplaces </strong>
                 <br>
-                <select id="wp-select"></select>
+                <select class="form-control" id="wp-select"></select>
               </p>
               <p>
                 <strong> Models </strong>
                 <br>
-                <select id="elt-select2" ></select>
+                <select class="form-control" id="elt-select2" ></select>
               </p>
               <button class="btn btn-primary btn-sm clearfix" id="stl-tolerance-btn" data-toggle="modal" data-target="#stl-tolerance-modal" style="display: none;">
                 Change STL Tolerance
@@ -70,6 +70,14 @@
               </div>
               <div class="modal-body" id="stl-tolerance-form">
                 <form role="form">
+                    <div>
+                        <strong>STL Format</strong>
+                        <br>
+                        <select id="format-select" class="form-control">
+                          <option value='text'> Text </option>
+                          <option value='binary'> Binary </option>
+                        </select>
+                      </div>
                   <div class="form-group">
                     <label for="angle-tolerance">Angle Tolerance</label>
                     <input type="number" value="0.1" step="0.1" class="form-control" id="angle-tolerance">
@@ -81,14 +89,6 @@
                   <div class="form-group">
                     <label for="facet-width">Minimum facet width </label>
                     <input type="number" value="0.1" step="0.1" class="form-control" id="facet-tolerance">
-                  </div>
-                  <div>
-                    <strong>STL Format</strong>
-                    <br>
-                    <select id="format-select" class="form-control">
-                      <option value='text'> Text </option>
-                      <option value='binary'> Binary </option>
-                    </select>
                   </div>
                 </form>
               </div>
