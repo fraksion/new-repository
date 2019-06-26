@@ -190,7 +190,9 @@
             },
             error: function() {
               console.log('loading STL error');
+              
               $('#stl-progress-bar').css("display","none");
+              return dfd.resolve();
             },
         });
     }
