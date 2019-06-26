@@ -81,10 +81,6 @@ th {
   text-align: right; 
 }
 
-:invalid{
-  background-color: lightpink;
-}
-
 .windows8 {
   position: relative;
   width: 78px;
