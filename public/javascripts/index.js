@@ -466,14 +466,10 @@
 
     var minAndMaxValues = new Array();
     function getMinMaxValues(data){
-        console.log(data);
-        console.log(data.configurationParameters.length);
         for (var i=0; i<data.configurationParameters.length; i++){
             minAndMaxValues[i] = {min : data.configurationParameters[i].message.rangeAndDefault.message.minValue, 
                                   max : data.configurationParameters[i].message.rangeAndDefault.message.maxValue};
         }
-        console.log('test');
-        console.log(minAndMaxValues[0]);
     }
 
     function generateEncodedMessage()
@@ -574,7 +570,7 @@
             $('<div>').appendTo(list);
             $('<label for="first-input-test' + i + '">' + data[i]['parameterName'] +'</label>').appendTo(list);
 
-            $('<p><input class="inputValues" type="text" value= "' + valueArray[0] + '" id="first-input-test' + i + '"> <label id="first-input-label' + i + '">'+ valueArray[1] + '</label> </p>').appendTo(list);
+            $('<p><input class="inputValues" type="number" value= "' + valueArray[0] + ' type="number" step="0.001" min="' + minAndMaxValues[i].min + '" max="' + minAndMaxValues[i].max + '" " id="first-input-test' + i + '"> <label id="first-input-label' + i + '">'+ valueArray[1] + '</label> </p>').appendTo(list);
             
             $('</div>').appendTo(list);
         }
