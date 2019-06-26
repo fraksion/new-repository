@@ -188,8 +188,6 @@
                     loadStlData(data);
                 }
                 $('#stl-progress-bar').css("display","none");
-            }, error: function(){
-                console.log('ERROR');
             }
         });
     }
