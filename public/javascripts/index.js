@@ -169,6 +169,7 @@
             url += '&' + configurationString;
         }
         $('#stl-progress-bar').css("display","block");
+        var dfd = $.Deferred();
         $.ajax(url, {
             type: 'GET',
             data: {
