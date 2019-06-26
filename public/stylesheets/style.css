@@ -34,10 +34,10 @@ th {
   top: 0;
   position:absolute;
   right:0;
-  width: 100%;
+  width: 75%;
   height: 100%;
   min-height:100%;
-  /*overflow: scroll;*/
+  overflow: scroll;
   margin: auto;
 }
 
