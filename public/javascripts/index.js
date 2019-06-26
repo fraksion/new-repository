@@ -20,8 +20,7 @@
             //var chordTolerance = $('#chord-tolerance').val();
             loadStl(-1, -1);
             getEncodedConfig();
-            getMinMaxValues(encodedConfigString);
-            getDecodedConfig();
+
             $('#stl-tolerance-btn').css("display","block");
             $('#stl-tolerance-modal').modal('hide');
         });
@@ -457,7 +456,8 @@
             type: 'GET',
             success: function(data) {
                 encodedConfigString=data;
-                
+                getMinMaxValues(data);
+                getDecodedConfig();
               console.log('getEncoded success');
             },
             error: function() {
