@@ -61,7 +61,7 @@ th {
 }
 
 #configContent{
-  overflow-y: auto;
+  overflow: auto;
 }
 
 #config-btn, #stl-tolerance-btn{
