@@ -82,7 +82,7 @@ th {
 }
 
 :invalid{
-  border: 2px red solid;
+  background:red;
 }
 
 .windows8 {

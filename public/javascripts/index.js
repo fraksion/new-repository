@@ -576,7 +576,7 @@
             $('<div>').appendTo(list);
             $('<label for="first-input-test' + i + '">' + data[i]['parameterName'] +'</label>').appendTo(list);
 
-            $('<p><input class="inputValues" style="border-top: none; border-left: none; border-right: none; border-bottom: 1px dimgray solid" type="number" value= "' + valueArray[0] + '" type="number" step="0.001" min="' + minAndMaxValues[i].min + '" max="' + minAndMaxValues[i].max + '" " id="first-input-test' + i + '"> <label id="first-input-label' + i + '">'+ valueArray[1] + '</label> </p>').appendTo(list);
+            $('<p><input class="inputValues" style="border-top: none; border-left: none; border-right: none; border-bottom: 1px solid dimgray;" type="number" value= "' + valueArray[0] + '" type="number" step="0.001" min="' + minAndMaxValues[i].min + '" max="' + minAndMaxValues[i].max + '" " id="first-input-test' + i + '"> <label id="first-input-label' + i + '">'+ valueArray[1] + '</label> </p>').appendTo(list);
             
             $('</div>').appendTo(list);
         }
