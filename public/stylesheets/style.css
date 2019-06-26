@@ -42,10 +42,13 @@ th {
 }
 
 #stl-progress-bar {
-  padding-top: 50px;
-  margin: 25% 30% 30% 40%;
-  width:200px;
-  height:200px;
+  /*padding-top: 50px;*/
+  /*margin: 25% 30% 30% 40%;*/
+  top: 40%;
+  position:absolute;
+  right:40%;
+  width:20%;
+  height:20%;
   background-color: white;
   border-width: 0px;
 }
