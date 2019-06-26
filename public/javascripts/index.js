@@ -16,9 +16,9 @@
             deleteModels();
             getCurrentMicroversion();
             $("#inputs-ul").empty();
-            //var angleTolerance = $('#angle-tolerance').val();
-            //var chordTolerance = $('#chord-tolerance').val();
-            loadStl(-1, -1);
+            var angleTolerance = $('#angle-tolerance').val();
+            var chordTolerance = $('#chord-tolerance').val();
+            loadStl(angleTolerance, chordTolerance);
             getEncodedConfig();
 
             $('#stl-tolerance-btn').css("display","block");
@@ -38,7 +38,9 @@
             deleteModels();
             getCurrentMicroversion();
             generateEncodedMessage();
-            getEncodedConfigurationString();
+            var angleTolerance = $('#angle-tolerance').val();
+            var chordTolerance = $('#chord-tolerance').val();
+            getEncodedConfigurationString(angleTolerance, chordTolerance);
             updateConfiguration();
             $('#stl-tolerance-modal').modal('hide');
         });
