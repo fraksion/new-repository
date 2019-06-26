@@ -85,6 +85,14 @@ th {
   background-color: lightpink;
 }
 
+:focus, :invalid{
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid  lightpink;
+  background-color:transparent;
+}
+
 .windows8 {
   position: relative;
   width: 78px;
