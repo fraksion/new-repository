@@ -189,8 +189,9 @@
                 }
                 $('#stl-progress-bar').css("display","none");
             },
-            error: function() {
+            error: function(error) {
               console.log('loading STL error');
+              console.log(error);
               $('#stl-progress-bar').css("display","none");
             },
         });
