@@ -27,14 +27,6 @@
             }
         });
 
-        $('.inputValues').change(function(){
-            $('.inputValues').each(function(element){
-                if ($(this).is(":invalid")) {
-                    console.log("Invalid value");
-                }
-            })
-        })
-
         $('#elt-select2').change(function(){
             $('#configDiv').css("display","none");
             $('#config-btn').css("display","none");
@@ -611,6 +603,13 @@
             $('<p><input class="inputValues" style="border-top: none; border-left: none; border-right: none; border-bottom: 1px solid dimgray;" type="number" value= "' + valueArray[0] + '" type="number" step="0.001" min="' + minAndMaxValues[i].min + '" max="' + minAndMaxValues[i].max + '" " id="first-input-test' + i + '"> <label id="first-input-label' + i + '">'+ valueArray[1] + '</label> </p>').appendTo(list);
             
             $('</div>').appendTo(list);
+            $('#first-input-test' + i).change(function(){
+                $('#first-input-test' + i).each(function(element){
+                    if ($(this).is(":invalid")) {
+                        console.log("Invalid value");
+                    }
+                })
+            })
         }
     }
 
