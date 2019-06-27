@@ -611,10 +611,19 @@
                     $(this).css("backgroundColor", "transparent");
                 }
                 var test = $('.inputValues');
+                var isValid = true;
                 for (var j=0; j< test.length; j++){
-                  console.log(test.min()); 
+                  if (test.val() < minAndMaxValues[j].min || test.val() > minAndMaxValues[j].max){
+                      isValid=false;
+                  }
                 }
-
+                if (!isValid){
+                    document.getElementById('config-btn').disabled = true;
+                }
+                else{
+                    document.getElementById('config-btn').disabled = false;
+                }
+                
             });
         }
     }
