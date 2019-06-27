@@ -612,7 +612,7 @@
                 }
                 var test = $('.inputValues');
                 for (var j=0; j< test.length; j++){
-                  console.log(test.val()); 
+                  console.log(test.min); 
                 }
 
             });
