@@ -610,7 +610,7 @@
                 else{
                     $(this).css("backgroundColor", "transparent");
                 }
-                var isValid = true;
+                let isValid = true;
                 for (var j=0; j< data.length; j++){
                     if ($('#first-input-test' + j).val() < minAndMaxValues[j].min || $('#first-input-test' + j).val() > minAndMaxValues[j].max){
                         isValid=false;
