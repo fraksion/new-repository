@@ -16,6 +16,17 @@
             e.stopImmediatePropagation();
         });
 
+        $('#resolution-select').change(function(){
+            let value =  $('#resolution-select').val();
+            if (value == 'custom'){
+                $('#stl-parameters').css("display","block");
+            }
+            else
+            {
+                $('#stl-parameters').css("display","none");
+            }
+        });
+
         $('#elt-select2').change(function(){
             deleteModels();
             getCurrentMicroversion();
