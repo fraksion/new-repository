@@ -612,10 +612,9 @@
                     $(this).css("backgroundColor", "transparent");
                 }
                 var test = $('.inputValues');
-                console.log(test);
-                test.forEach(element => {
-                    console.log(element);
-                });
+                for (var j=0; j< test.length; j++){
+                    console.log(test[j]);
+                }
 
             });
         }
