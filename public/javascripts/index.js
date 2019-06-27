@@ -605,7 +605,7 @@
             $('</div>').appendTo(list);
             $('#first-input-test' + i).change(function(){
                
-                    if ($(this).is(":invalid")) {
+                    if ($('#first-input-test' + i).is(":invalid")) {
                         console.log("Invalid value");
                     }
                 
