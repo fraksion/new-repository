@@ -611,7 +611,9 @@
                 else{
                     $(this).css("backgroundColor", "transparent");
                 }
-                $('.inputValues').forEach(element => {
+                var test = $('.inputValues');
+                console.log(test);
+                test.forEach(element => {
                     console.log(element);
                 });
 
