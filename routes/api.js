@@ -159,14 +159,14 @@ var getStl = function(req, res) {
   if (req.query.partId != null) {
     url = apiUrl + '/api/parts/d/' + req.query.documentId +
     '/w/' + req.query.workspaceId + '/e/' + req.query.stlElementId +'/partid/'+ req.query.partId + '/stl/' +
-    '?mode=' + req.query.mode  +
+    '?mode=' + 'text'  +
     '&scale=1&units=inch';
     console.log("** STL for partId " + req.query.partId);
   }
   else {
     url = apiUrl + '/api/partstudios/d/' + req.query.documentId +
     '/w/' + req.query.workspaceId + '/e/' + req.query.stlElementId + '/stl/' +
-    '?mode=' + req.query.mode  +
+    '?mode=' +'text'  +
     '&scale=1&units=inch';
     console.log("** STL for partId " + req.query.partId);
   }
