@@ -28,6 +28,9 @@
         });
 
         $('#elt-select2').change(function(){
+            $('#configDiv').css("display","none");
+            $('#config-btn').css("display","none");
+            $('#stl-tolerance-btn').css("display","none");
             deleteModels();
             getCurrentMicroversion();
             $("#inputs-ul").empty();
@@ -181,7 +184,7 @@
             url += '&chordTolerance=' + chordTolerance;
             url += '&minFacetWidth=' + minFacetWidth;
         }
-        
+
         if (configurationString != undefined)
         {
             url += '&' + configurationString;
