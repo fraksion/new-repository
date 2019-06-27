@@ -9,7 +9,7 @@
     const medium = {angleTolerance: 0.1090830782496456, chordTolerance:  0.004724409448818898, minFacetWidth: 0.009999999999999998};
     const coarse = {angleTolerance: 0.2181661564992912, chordTolerance:  0.009448818897637795, minFacetWidth: 0.024999999999999998};
     const fine = {angleTolerance: 0.04363323129985824, chordTolerance:  0.002362204724409449, minFacetWidth: 0.001};
-    var configValidation;
+
     window.onload = function() {
         // prevent mouse clicks from going to model while dialog is open
         $('#stl-tolerance-modal').bind('click mousedown', function(e) {
@@ -579,7 +579,6 @@
     }
 
     function generateHTMLInput(data){
-        configValidation=[];
         $('#inputs-ul').empty();
 
         var list = document.getElementById('inputs-ul');
@@ -593,7 +592,6 @@
             $('#configDiv').css("display","none");
         }
         for (var i=0; i<data.length; i++){
-            configValidation[i] = true;
             let valueArray = data[i]['parameterDisplayValue'].split(' ');
             if (valueArray[1] == undefined){
             valueArray[1] = '';
@@ -612,17 +610,8 @@
                 }
                 else{
                     $(this).css("backgroundColor", "transparent");
-                    configValidation[i] = true;
                 }
-                for (var j=0; j<configValidation.length; j++){
-                    if (!configValidation[j])
-                    {
-                        console.log(configValidation[j]);
-                        document.getElementById('config-btn').disabled = true;
-                        break;
-                    }
-                    document.getElementById('config-btn').disabled = false;
-                }
+                console.log($('.inputValues').lengthArray);
             });
         }
     }
