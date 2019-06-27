@@ -604,11 +604,11 @@
             
             $('</div>').appendTo(list);
             $('#first-input-test' + i).change(function(){
-                $('#first-input-test' + i).each(function(element){
+               
                     if ($(this).is(":invalid")) {
                         console.log("Invalid value");
                     }
-                })
+                
             })
         }
     }
