@@ -665,6 +665,9 @@
             let angle = $('#angle-tolerance').val();
             let chord = $('#chord-tolerance').val();
             let facetWidth = $('#facet-width').val();
+            console.log('angle=' + angle);
+            console.log('chord=' + chord);
+            console.log('facetWidth=' + facetWidth);
             return {angleTolerance: angle, chordTolerance:  chord, minFacetWidth: facetWidth};
         }
     }
