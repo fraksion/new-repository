@@ -27,6 +27,14 @@
             }
         });
 
+        $('.inputValues').change(function(){
+            $('.inputValues').each(function(element){
+                if ($(this).is(":invalid")) {
+                    console.log("Invalid value");
+                }
+            })
+        })
+
         $('#elt-select2').change(function(){
             $('#configDiv').css("display","none");
             $('#config-btn').css("display","none");
