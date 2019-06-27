@@ -613,6 +613,7 @@
                 var test = $('.inputValues');
                 var isValid = true;
                 for (var j=0; j< test.length; j++){
+                    console.log(minAndMaxValues);
                   if (test.val() < minAndMaxValues[j].min || test.val() > minAndMaxValues[j].max){
                       isValid=false;
                   }
