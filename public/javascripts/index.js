@@ -607,7 +607,6 @@
             $('#first-input-test' + i).change(function() {
                 if (Boolean($(this)[0].checkValidity) && (! $(this)[0].checkValidity())) {
                     $(this).css("backgroundColor", "lightpink");
-                    document.getElementById("config-btn").disabled = true;
                 }
             });
         }
