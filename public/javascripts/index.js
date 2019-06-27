@@ -611,7 +611,10 @@
                 else{
                     $(this).css("backgroundColor", "transparent");
                 }
-                console.log($('.inputValues').length);
+                $('.inputValues').forEach(element => {
+                    console.log(element);
+                });
+
             });
         }
     }
