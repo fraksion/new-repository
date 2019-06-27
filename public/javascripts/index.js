@@ -6,6 +6,10 @@
     var previousData = false;
     var microversion;
     var configString;
+    const medium = {angleTolerance: 0.1090830782496456, chordTolerance:  0.004724409448818898, minFacetWidth: 0.009999999999999998};
+    const coarse = {angleTolerance: 0.2181661564992912, chordTolerance:  0.009448818897637795, minFacetWidth: 0.024999999999999998};
+    const fine = {angleTolerance: 0.04363323129985824, chordTolerance:  0.002362204724409449, minFacetWidth: 0.001};
+
     window.onload = function() {
         // prevent mouse clicks from going to model while dialog is open
         $('#stl-tolerance-modal').bind('click mousedown', function(e) {
@@ -16,9 +20,8 @@
             deleteModels();
             getCurrentMicroversion();
             $("#inputs-ul").empty();
-            var angleTolerance = $('#angle-tolerance').val();
-            var chordTolerance = $('#chord-tolerance').val();
-            loadStl(angleTolerance, chordTolerance);
+            let parameters = getParameters();
+            loadStl(parameters.angleTolerance, parameters.chordTolerance, parameters.minFacetWidth);
             getEncodedConfig();
 
             $('#stl-tolerance-btn').css("display","block");
@@ -27,9 +30,8 @@
 
         $('#stl-tolerance-submit').click(function() {
             deleteModels();
-            var angleTolerance = $('#angle-tolerance').val();
-            var chordTolerance = $('#chord-tolerance').val();
-            getEncodedConfigurationString(angleTolerance, chordTolerance);
+            let parameters = getParameters();
+            getEncodedConfigurationString(angleTolerance, chordTolerance,parameters.minFacetWidth);
             //loadStl(angleTolerance, chordTolerance);
             $('#stl-tolerance-modal').modal('hide');
         });
@@ -38,9 +40,8 @@
             deleteModels();
             getCurrentMicroversion();
             generateEncodedMessage();
-            var angleTolerance = $('#angle-tolerance').val();
-            var chordTolerance = $('#chord-tolerance').val();
-            getEncodedConfigurationString(angleTolerance, chordTolerance);
+            let parameters = getParameters();
+            getEncodedConfigurationString(angleTolerance, chordTolerance,parameters.minFacetWidth);
             updateConfiguration();
             $('#stl-tolerance-modal').modal('hide');
         });
@@ -144,7 +145,7 @@
      * 
      *  window.location.search == "?documentId=0d86c205100fae7001a39ea8&workspaceId=aae7a1ff196df52c5a4c153c&elementId=a7d49a58add345ddb7362051&stlElementId=a7d49a58add345ddb7362051&partId=JUD"
      */
-    function loadStl(angleTolerance, chordTolerance, configurationString) {
+    function loadStl(angleTolerance, chordTolerance,  minFacetWidth, configurationString,) {
         var url = '/api/stl' +  $("#elt-select2").val();
 
         // Parse the search string to make sure we have the last piece to load
@@ -164,9 +165,10 @@
 
         var binary = false;
 
-        if (angleTolerance && chordTolerance) {
+        if (angleTolerance && chordTolerance && minFacetWidth) {
             url += '&angleTolerance=' + angleTolerance;
             url += '&chordTolerance=' + chordTolerance;
+            url += '&minFacetWidth=' + minFacetWidth;
         }
         url += '&mode=' + $('#format-select').val();
         if (configurationString != undefined)
@@ -609,7 +611,7 @@
               return dfd.resolve();
     }
 
-    function getEncodedConfigurationString(angleTolerance=-1, chordTolerance=-1){
+    function getEncodedConfigurationString(angleTolerance, chordTolerance,  minFacetWidth){
         var dfd = $.Deferred();
         generateJSONResponse();
             $.ajax("/api/encodeConfig" + $('#elt-select2').val(),{
@@ -623,12 +625,31 @@
                   console.log('getEncodedConfigurationString complete');
                 },
                 success: function(data) {
-                    loadStl(angleTolerance, chordTolerance, data['queryParam']);
+                    loadStl(angleTolerance, chordTolerance,  minFacetWidth, data['queryParam'],);
                },
                 error: function() {
                   console.log('getEncodedConfigurationString error');
                 },
               });
               return dfd.resolve();
+    }
+
+    function getParameters(){
+       let value =  $('#resolution-select').val();
+        if (value == 'coarse'){
+            return coarse;
+        }
+        else if (value == 'medium'){
+            return medium;
+        }
+        else if (value == 'fine'){
+            return fine;
+        }
+        else {
+            let angle = $('#angle-tolerance').val();
+            let chord = $('#chord-tolerance').val();
+            let facetWidth = $('#facet-width').val();
+            return {angleTolerance: angle, chordTolerance:  chord, minFacetWidth: facetWidth};
+        }
     }
 })();

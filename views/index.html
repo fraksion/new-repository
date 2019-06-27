@@ -70,12 +70,22 @@
               </div>
               <div class="modal-body" id="stl-tolerance-form">
                 <form role="form">
-                    <div>
+                    <div class="form-group">
                         <strong>STL Format</strong>
                         <br>
                         <select id="format-select" class="form-control">
                           <option value='text'> Text </option>
                           <option value='binary'> Binary </option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <strong>Resolution</strong>
+                        <br>
+                        <select id="resolution-select" class="form-control">
+                          <option value='coarse'> Coarse </option>
+                          <option value='medium'> Medium </option>
+                          <option value='fine'> Fine </option>
+                          <option value='custom'> Custom </option>
                         </select>
                       </div>
                   <div class="form-group">
