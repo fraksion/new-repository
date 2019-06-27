@@ -606,14 +606,13 @@
             $('#first-input-test' + i).change(function() {
                 if (Boolean($(this)[0].checkValidity) && (! $(this)[0].checkValidity())) {
                     $(this).css("backgroundColor", "lightpink");
-                    configValidation[i] = false;
                 }
                 else{
                     $(this).css("backgroundColor", "transparent");
                 }
                 var test = $('.inputValues');
                 for (var j=0; j< test.length; j++){
-                    console.log(test[j]);
+                  console.log(test.val()); 
                 }
 
             });
