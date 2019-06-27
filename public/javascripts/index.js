@@ -614,9 +614,10 @@
                     $(this).css("backgroundColor", "transparent");
                     configValidation[i] = true;
                 }
-                for (var item in configValidation){
-                    if (!item)
+                for (var j=0; j<configValidation.length; j++){
+                    if (!configValidation[j])
                     {
+                        console.log(configValidation[j]);
                         document.getElementById('config-btn').disabled = true;
                         break;
                     }
