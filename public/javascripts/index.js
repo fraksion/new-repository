@@ -31,7 +31,7 @@
         $('#stl-tolerance-submit').click(function() {
             deleteModels();
             let parameters = getParameters();
-            getEncodedConfigurationString(angleTolerance, chordTolerance,parameters.minFacetWidth);
+            getEncodedConfigurationString(parameters.angleTolerance, parameters.chordTolerance, parameters.minFacetWidth);
             //loadStl(angleTolerance, chordTolerance);
             $('#stl-tolerance-modal').modal('hide');
         });
@@ -41,7 +41,7 @@
             getCurrentMicroversion();
             generateEncodedMessage();
             let parameters = getParameters();
-            getEncodedConfigurationString(angleTolerance, chordTolerance,parameters.minFacetWidth);
+            getEncodedConfigurationString(parameters.angleTolerance, parameters.chordTolerance, parameters.minFacetWidth);
             updateConfiguration();
             $('#stl-tolerance-modal').modal('hide');
         });
