@@ -608,6 +608,9 @@
                 if (Boolean($(this)[0].checkValidity) && (! $(this)[0].checkValidity())) {
                     $(this).css("backgroundColor", "lightpink");
                 }
+                else{
+                    $(this).css("backgroundColor", "transparent");
+                }
             });
         }
     }
