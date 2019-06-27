@@ -615,7 +615,7 @@
                     configValidation[i] = true;
                 }
                 for (var item in configValidation){
-                    if (!configValidation[i])
+                    if (!item)
                     {
                         document.getElementById('config-btn').disabled = true;
                         break;
