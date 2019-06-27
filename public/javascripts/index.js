@@ -610,14 +610,11 @@
                 else{
                     $(this).css("backgroundColor", "transparent");
                 }
-                var test = $('.inputValues');
                 var isValid = true;
-                for (var j=0; j< test.length; j++){
-                    console.log(minAndMaxValues[j]);
-                    console.log(test.val());
-                  if (test.val() < minAndMaxValues[j].min || test.val() > minAndMaxValues[j].max){
-                      isValid=false;
-                  }
+                for (var j=0; j< data.length; j++){
+                    if ($('#first-input-test' + j).val() < minAndMaxValues[j].min || $('#first-input-test' + j).val() > minAndMaxValues[j].max){
+                        isValid=false;
+                    }
                 }
                 if (!isValid){
                     document.getElementById('config-btn').disabled = true;
