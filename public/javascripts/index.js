@@ -181,7 +181,7 @@
             url += '&chordTolerance=' + chordTolerance;
             url += '&minFacetWidth=' + minFacetWidth;
         }
-        url += '&mode=' + $('#format-select').val();
+        
         if (configurationString != undefined)
         {
             url += '&' + configurationString;
