@@ -53,10 +53,14 @@
         $('#config-btn').click(function(){
             deleteModels();
             getCurrentMicroversion();
-            generateEncodedMessage();
+            if (encodedConfigString != undefined){
+                generateEncodedMessage();
+                updateConfiguration();
+            }
+            
             let parameters = getParameters();
             getEncodedConfigurationString(parameters.angleTolerance, parameters.chordTolerance, parameters.minFacetWidth);
-            updateConfiguration();
+            
             $('#stl-tolerance-modal').modal('hide');
         });
 
