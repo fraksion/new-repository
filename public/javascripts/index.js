@@ -45,7 +45,13 @@
         $('#stl-tolerance-submit').click(function() {
             deleteModels();
             let parameters = getParameters();
-            getEncodedConfigurationString(parameters.angleTolerance, parameters.chordTolerance, parameters.minFacetWidth);
+            if (jsonData!==undefined && jsonData.parameters!==undefined){
+                getEncodedConfigurationString(parameters.angleTolerance, parameters.chordTolerance, parameters.minFacetWidth);
+            }
+            else{
+                loadStl(parameters.angleTolerance, parameters.chordTolerance, parameters.minFacetWidth);
+            }
+           
             //loadStl(angleTolerance, chordTolerance);
             $('#stl-tolerance-modal').modal('hide');
         });
@@ -53,13 +59,10 @@
         $('#config-btn').click(function(){
             deleteModels();
             getCurrentMicroversion();
-            if (encodedConfigString != undefined){
-                generateEncodedMessage();
-                updateConfiguration();
-            }
-            
+            generateEncodedMessage();
             let parameters = getParameters();
             getEncodedConfigurationString(parameters.angleTolerance, parameters.chordTolerance, parameters.minFacetWidth);
+            updateConfiguration();
             
             $('#stl-tolerance-modal').modal('hide');
         });
@@ -568,18 +571,18 @@
     }
 
     function generateJSONResponse(){
-        
-        for (var i=0; i<jsonData.parameters.length; i++)
-        {
-            let lengthArray = jsonData.parameters[i]['parameterDisplayValue'].split(' ');
-            if (lengthArray[1]==undefined){
-                lengthArray[1] = '';
+
+            for (var i=0; i<jsonData.parameters.length; i++)
+            {
+                let lengthArray = jsonData.parameters[i]['parameterDisplayValue'].split(' ');
+                if (lengthArray[1]==undefined){
+                    lengthArray[1] = '';
+                }
+                jsonData.parameters[i]['parameterDisplayValue'] = $('#first-input-test' + i + '').val() + " " + lengthArray[1];
+               
+                jsonData.parameters[i]['parameterValue'] = jsonData.parameters[i]['parameterDisplayValue'];
             }
-            jsonData.parameters[i]['parameterDisplayValue'] = $('#first-input-test' + i + '').val() + " " + lengthArray[1];
-           
-            jsonData.parameters[i]['parameterValue'] = jsonData.parameters[i]['parameterDisplayValue'];
-        }
-                
+        
     }
 
     function generateHTMLInput(data){
@@ -654,6 +657,7 @@
 
     function getEncodedConfigurationString(angleTolerance, chordTolerance,  minFacetWidth){
         var dfd = $.Deferred();
+        console.log(jsonData);
         generateJSONResponse();
             $.ajax("/api/encodeConfig" + $('#elt-select2').val(),{
                 type: "POST",
